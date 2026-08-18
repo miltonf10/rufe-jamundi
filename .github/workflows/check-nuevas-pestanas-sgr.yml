@@ -1,17 +1,33 @@
 name: Revisar pestañas nuevas de BASE-DATOS RUFE (Sistema de Gestión del Riesgo)
 
-# Igual que check-nuevas-pestanas.yml, pero para el otro despliegue: el
-# dashboard dentro del Sistema de Gestión del Riesgo (rama
-# sistema-gestion-riesgo, hosting propio en cPanel — grj.oticjamundi.com).
-# Ese dashboard no se sirve desde GitHub Pages, así que agregar una pestaña
-# no basta con comitear: hay que compilar el sitio y subirlo al hosting.
+# Vigila si apareció un barrio nuevo en la hoja "BASE-DATOS RUFE" y lo publica
+# en grj.oticjamundi.com.
 #
-# Los cron de GitHub Actions solo se disparan desde la rama default
-# (main), por eso este workflow vive acá aunque opere sobre otra rama:
-# hace checkout de sistema-gestion-riesgo, revisa/actualiza su
-# barrioTabs.json, y si hubo cambios, comitea+empuja a esa rama, compila
-# el frontend y sube el resultado al hosting por la API de cPanel (mismos
-# pasos que se hicieron a mano la primera vez).
+# ─── Por qué este workflow ya no compila ni despliega el sitio ───────────────
+#
+# Antes hacía checkout de `sistema-gestion-riesgo`, compilaba el frontend
+# ENTERO y lo subía al hosting. Eso convertía un cambio de DATOS —un barrio
+# nuevo en una hoja de cálculo— en un despliegue completo de la aplicación, con
+# dos consecuencias graves:
+#
+#   1. Publicaba el estado de UNA rama sobre producción. El 18 de agosto de 2026
+#      esto borró de producción la sección Mapas, el buscador por cédula y el
+#      resto del trabajo que vivía en otra rama sin fusionar: el sitio siguió
+#      respondiendo, pero `index.html` pasó a apuntar a un paquete que no los
+#      tenía. Nadie se enteró hasta que alguien fue a usar una pantalla.
+#   2. Un dato no debería poder tumbar código. Cada hora había una oportunidad
+#      de romper la aplicación por una razón que no tenía nada que ver con ella.
+#
+# Ahora la lista de barrios es un dato servido (`/datos/barrios-rufe.json`), no
+# una constante compilada dentro del paquete. Así que agregar un barrio es subir
+# un JSON de dos kilobytes: sin compilar, sin tocar `index.html` y sin poder
+# llevarse por delante nada de lo que haya publicado.
+#
+# El commit a la rama se conserva, porque el repositorio sigue siendo la fuente
+# de verdad de esa lista. Lo que se quitó es el despliegue del sitio completo.
+#
+# Los cron de GitHub Actions solo se disparan desde la rama por defecto, por eso
+# este archivo vive en `main` aunque opere sobre otra rama.
 
 on:
   schedule:
@@ -68,21 +84,9 @@ jobs:
           git commit -m "Agregar pestaña(s) nueva(s) de BASE-DATOS RUFE detectada(s) automáticamente"
           git push origin HEAD:sistema-gestion-riesgo
 
-      - name: Compilar el frontend
-        if: steps.cambios.outputs.hay_cambios == 'true'
-        run: npm run build
-
-      - name: Empaquetar el build (con .htaccess incluido)
-        if: steps.cambios.outputs.hay_cambios == 'true'
-        run: |
-          cd build
-          zip -r ../sgr-deploy.zip . -x ".DS_Store"
-          unzip -l ../sgr-deploy.zip | grep -q '\.htaccess' || {
-            echo "::error::.htaccess no quedó en el zip, aborto el despliegue."
-            exit 1
-          }
-
-      - name: Subir al hosting de cPanel
+      # Se sube UN archivo, no el sitio. Es toda la diferencia entre publicar un
+      # dato y volver a publicar la aplicación.
+      - name: Publicar la lista de barrios en el hosting
         if: steps.cambios.outputs.hay_cambios == 'true'
         env:
           CPANEL_HOST: ${{ secrets.CPANEL_HOST }}
@@ -90,31 +94,35 @@ jobs:
           CPANEL_TOKEN: ${{ secrets.CPANEL_TOKEN }}
           CPANEL_DOCROOT: /home1/gilibert/grj.oticjamundi.com
         run: |
+          set -euo pipefail
           AUTH="Authorization: cpanel ${CPANEL_USER}:${CPANEL_TOKEN}"
 
+          # El nombre del archivo subido es el que ve el servidor, así que se
+          # prepara con el nombre final antes de enviarlo.
+          mkdir -p publicar
+          cp src/lib/baseDatosRufe/barrioTabs.json publicar/barrios-rufe.json
+
           curl -sf -H "$AUTH" \
-            -F "dir=${CPANEL_DOCROOT}" \
+            -F "dir=${CPANEL_DOCROOT}/datos" \
             -F "overwrite=1" \
-            -F "file-1=@sgr-deploy.zip" \
+            -F "file-1=@publicar/barrios-rufe.json" \
             "https://${CPANEL_HOST}/execute/Fileman/upload_files" -o upload.json
           cat upload.json
           python3 -c "import json,sys; d=json.load(open('upload.json')); sys.exit(0 if d.get('data',{}).get('succeeded')==1 else 1)"
 
-          curl -sf -H "$AUTH" -G \
-            --data-urlencode "cpanel_jsonapi_module=Fileman" \
-            --data-urlencode "cpanel_jsonapi_func=fileop" \
-            --data-urlencode "cpanel_jsonapi_apiversion=2" \
-            --data-urlencode "op=extract" \
-            --data-urlencode "sourcefiles=${CPANEL_DOCROOT}/sgr-deploy.zip" \
-            --data-urlencode "destfiles=${CPANEL_DOCROOT}" \
-            "https://${CPANEL_HOST}/json-api/cpanel" -o extract.json
-          cat extract.json
-          python3 -c "import json,sys; d=json.load(open('extract.json')); sys.exit(0 if d['cpanelresult']['event']['result']==1 else 1)"
-
-          curl -sf -H "$AUTH" -G \
-            --data-urlencode "cpanel_jsonapi_module=Fileman" \
-            --data-urlencode "cpanel_jsonapi_func=fileop" \
-            --data-urlencode "cpanel_jsonapi_apiversion=2" \
-            --data-urlencode "op=unlink" \
-            --data-urlencode "sourcefiles=${CPANEL_DOCROOT}/sgr-deploy.zip" \
-            "https://${CPANEL_HOST}/json-api/cpanel" -o /dev/null
+      # Comprobar que lo publicado es lo que se quería publicar. Sin esto, un
+      # fallo silencioso dejaría el tablero con la lista vieja sin avisar.
+      - name: Verificar lo publicado
+        if: steps.cambios.outputs.hay_cambios == 'true'
+        run: |
+          set -euo pipefail
+          curl -sf "https://grj.oticjamundi.com/datos/barrios-rufe.json" -o publicado.json
+          python3 - <<'PY'
+          import json, sys
+          local = json.load(open('src/lib/baseDatosRufe/barrioTabs.json'))
+          remoto = json.load(open('publicado.json'))
+          if {t['gid'] for t in local} != {t['gid'] for t in remoto}:
+              print(f'::error::Lo publicado no coincide: {len(local)} barrios locales, {len(remoto)} publicados.')
+              sys.exit(1)
+          print(f'{len(remoto)} barrios publicados y verificados.')
+          PY
