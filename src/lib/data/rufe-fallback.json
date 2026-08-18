@@ -1,6 +1,6 @@
 {
-  "total": 2856,
-  "asOf": "18 de agosto de 2026 a las 12:29 p. m.",
+  "total": 2883,
+  "asOf": "18 de agosto de 2026 a las 3:27 p. m.",
   "barrios": [
     {
       "name": "Terranova",
@@ -234,6 +234,17 @@
       "zona": "Urbana"
     },
     {
+      "name": "Bocas del Palo",
+      "total": 17,
+      "M": 4,
+      "F": 11,
+      "Ninos": 0,
+      "Jovenes": 0,
+      "Adultos": 0,
+      "AdultosMayores": 0,
+      "zona": "Urbana"
+    },
+    {
       "name": "Portal del Jordán",
       "total": 16,
       "M": 4,
@@ -319,6 +330,17 @@
       "Jovenes": 2,
       "Adultos": 4,
       "AdultosMayores": 4,
+      "zona": "Urbana"
+    },
+    {
+      "name": "Bello Horizonte",
+      "total": 9,
+      "M": 4,
+      "F": 4,
+      "Ninos": 0,
+      "Jovenes": 1,
+      "Adultos": 1,
+      "AdultosMayores": 0,
       "zona": "Urbana"
     },
     {
@@ -674,6 +696,17 @@
       "zona": "Urbana"
     },
     {
+      "name": "Bocas del Palo",
+      "total": 3,
+      "M": 0,
+      "F": 3,
+      "Ninos": 0,
+      "Jovenes": 0,
+      "Adultos": 0,
+      "AdultosMayores": 0,
+      "zona": "Rural"
+    },
+    {
       "name": "Portal de Jamundi",
       "total": 3,
       "M": 1,
@@ -814,17 +847,6 @@
       "Jovenes": 0,
       "Adultos": 1,
       "AdultosMayores": 1,
-      "zona": "Urbana"
-    },
-    {
-      "name": "Bello Horizonte",
-      "total": 2,
-      "M": 0,
-      "F": 2,
-      "Ninos": 0,
-      "Jovenes": 1,
-      "Adultos": 1,
-      "AdultosMayores": 0,
       "zona": "Urbana"
     },
     {
@@ -10639,6 +10661,279 @@
       "evacuada": "NO"
     },
     {
+      "hogar": "BELLO-HORIZONTE-1",
+      "barrio": "Bello Horizonte",
+      "zona": "Urbana",
+      "personas": 3,
+      "estadoBien": "Habitable",
+      "tipoBien": "Vivienda",
+      "tenencia": "Arrendatario",
+      "visita": "Sin dato",
+      "quienVisita": "",
+      "observacion": "Solicita visita por afectación de paredes y gradas. Varias grietas.",
+      "evacuada": "Sin dato"
+    },
+    {
+      "hogar": "BELLO-HORIZONTE-2",
+      "barrio": "Bello Horizonte",
+      "zona": "Urbana",
+      "personas": 1,
+      "estadoBien": "Habitable",
+      "tipoBien": "Vivienda",
+      "tenencia": "Ocupante",
+      "visita": "Sin dato",
+      "quienVisita": "",
+      "observacion": "",
+      "evacuada": "Sin dato"
+    },
+    {
+      "hogar": "BELLO-HORIZONTE-3",
+      "barrio": "Bello Horizonte",
+      "zona": "Urbana",
+      "personas": 2,
+      "estadoBien": "Averiado",
+      "tipoBien": "Vivienda",
+      "tenencia": "Poseedor",
+      "visita": "NO",
+      "quienVisita": "",
+      "observacion": "Agrietamientos.",
+      "evacuada": "NO"
+    },
+    {
+      "hogar": "BELLO-HORIZONTE-4",
+      "barrio": "Bello Horizonte",
+      "zona": "Urbana",
+      "personas": 3,
+      "estadoBien": "",
+      "tipoBien": "Vivienda",
+      "tenencia": "Propietario",
+      "visita": "Sin dato",
+      "quienVisita": "",
+      "observacion": "Grietas en el piso de cerámica; daños en el techo; grieta en la pared; cielo falso afectado. Caballete de vivienda dañado.",
+      "evacuada": "Sin dato"
+    },
+    {
+      "hogar": "BOCAS-DEL-PALO-1",
+      "barrio": "Bocas del Palo",
+      "zona": "Urbana",
+      "personas": 1,
+      "estadoBien": "Habitable",
+      "tipoBien": "Vivienda",
+      "tenencia": "Propietario",
+      "visita": "Sin dato",
+      "quienVisita": "",
+      "observacion": "Casa brinca.",
+      "evacuada": "Sin dato"
+    },
+    {
+      "hogar": "BOCAS-DEL-PALO-2",
+      "barrio": "Bocas del Palo",
+      "zona": "Rural",
+      "personas": 2,
+      "estadoBien": "Averiado",
+      "tipoBien": "Vivienda",
+      "tenencia": "Propietario",
+      "visita": "Sin dato",
+      "quienVisita": "",
+      "observacion": "Techo de la vivienda en mal estado; cayeron elementos donde estaban los niños y las paredes están afectadas. Está evacuada.",
+      "evacuada": "Sin dato"
+    },
+    {
+      "hogar": "BOCAS-DEL-PALO-3",
+      "barrio": "Bocas del Palo",
+      "zona": "Urbana",
+      "personas": 1,
+      "estadoBien": "",
+      "tipoBien": "Vivienda",
+      "tenencia": "Arrendatario",
+      "visita": "Sin dato",
+      "quienVisita": "",
+      "observacion": "No habitable; [ilegible].",
+      "evacuada": "Sin dato"
+    },
+    {
+      "hogar": "BOCAS-DEL-PALO-4",
+      "barrio": "Bocas del Palo",
+      "zona": "Urbana",
+      "personas": 1,
+      "estadoBien": "Habitable",
+      "tipoBien": "Vivienda",
+      "tenencia": "Propietario",
+      "visita": "Sin dato",
+      "quienVisita": "",
+      "observacion": "",
+      "evacuada": "Sin dato"
+    },
+    {
+      "hogar": "BOCAS-DEL-PALO-5",
+      "barrio": "Bocas del Palo",
+      "zona": "Rural",
+      "personas": 1,
+      "estadoBien": "Habitable",
+      "tipoBien": "Vivienda",
+      "tenencia": "Propietario",
+      "visita": "Sin dato",
+      "quienVisita": "",
+      "observacion": "Colapsó [ilegible].",
+      "evacuada": "Sin dato"
+    },
+    {
+      "hogar": "BOCAS-DEL-PALO-6",
+      "barrio": "Bocas del Palo",
+      "zona": "Urbana",
+      "personas": 1,
+      "estadoBien": "Habitable",
+      "tipoBien": "Vivienda",
+      "tenencia": "Propietario",
+      "visita": "Sin dato",
+      "quienVisita": "",
+      "observacion": "Casa con grietas.",
+      "evacuada": "Sin dato"
+    },
+    {
+      "hogar": "BOCAS-DEL-PALO-7",
+      "barrio": "Bocas del Palo",
+      "zona": "Urbana",
+      "personas": 1,
+      "estadoBien": "Habitable",
+      "tipoBien": "Vivienda",
+      "tenencia": "Propietario",
+      "visita": "Sin dato",
+      "quienVisita": "",
+      "observacion": "Cielo brinca.",
+      "evacuada": "Sin dato"
+    },
+    {
+      "hogar": "BOCAS-DEL-PALO-8",
+      "barrio": "Bocas del Palo",
+      "zona": "Urbana",
+      "personas": 1,
+      "estadoBien": "Habitable",
+      "tipoBien": "Vivienda",
+      "tenencia": "Propietario",
+      "visita": "Sin dato",
+      "quienVisita": "",
+      "observacion": "Cielo brinca.",
+      "evacuada": "Sin dato"
+    },
+    {
+      "hogar": "BOCAS-DEL-PALO-9",
+      "barrio": "Bocas del Palo",
+      "zona": "Urbana",
+      "personas": 1,
+      "estadoBien": "Habitable",
+      "tipoBien": "Vivienda",
+      "tenencia": "Arrendatario",
+      "visita": "Sin dato",
+      "quienVisita": "",
+      "observacion": "[ilegible].",
+      "evacuada": "Sin dato"
+    },
+    {
+      "hogar": "BOCAS-DEL-PALO-10",
+      "barrio": "Bocas del Palo",
+      "zona": "Urbana",
+      "personas": 1,
+      "estadoBien": "Habitable",
+      "tipoBien": "Vivienda",
+      "tenencia": "Arrendatario",
+      "visita": "Sin dato",
+      "quienVisita": "",
+      "observacion": "Casa brinca.",
+      "evacuada": "Sin dato"
+    },
+    {
+      "hogar": "BOCAS-DEL-PALO-11",
+      "barrio": "Bocas del Palo",
+      "zona": "Urbana",
+      "personas": 1,
+      "estadoBien": "Habitable",
+      "tipoBien": "Vivienda",
+      "tenencia": "Poseedor",
+      "visita": "Sin dato",
+      "quienVisita": "",
+      "observacion": "Grietas en casa.",
+      "evacuada": "Sin dato"
+    },
+    {
+      "hogar": "BOCAS-DEL-PALO-12",
+      "barrio": "Bocas del Palo",
+      "zona": "Urbana",
+      "personas": 3,
+      "estadoBien": "Habitable",
+      "tipoBien": "Vivienda",
+      "tenencia": "Propietario",
+      "visita": "Sin dato",
+      "quienVisita": "",
+      "observacion": "Casa habitable con grietas en la pared.",
+      "evacuada": "Sin dato"
+    },
+    {
+      "hogar": "BOCAS-DEL-PALO-13",
+      "barrio": "Bocas del Palo",
+      "zona": "Urbana",
+      "personas": 1,
+      "estadoBien": "Habitable",
+      "tipoBien": "Vivienda",
+      "tenencia": "Propietario",
+      "visita": "Sin dato",
+      "quienVisita": "",
+      "observacion": "Grietas casa.",
+      "evacuada": "Sin dato"
+    },
+    {
+      "hogar": "BOCAS-DEL-PALO-14",
+      "barrio": "Bocas del Palo",
+      "zona": "Urbana",
+      "personas": 1,
+      "estadoBien": "Habitable",
+      "tipoBien": "Vivienda",
+      "tenencia": "Propietario",
+      "visita": "Sin dato",
+      "quienVisita": "",
+      "observacion": "Grietas casa.",
+      "evacuada": "Sin dato"
+    },
+    {
+      "hogar": "BOCAS-DEL-PALO-15",
+      "barrio": "Bocas del Palo",
+      "zona": "Urbana",
+      "personas": 1,
+      "estadoBien": "Habitable",
+      "tipoBien": "Vivienda",
+      "tenencia": "Propietario",
+      "visita": "Sin dato",
+      "quienVisita": "",
+      "observacion": "Grietas casa.",
+      "evacuada": "Sin dato"
+    },
+    {
+      "hogar": "BOCAS-DEL-PALO-16",
+      "barrio": "Bocas del Palo",
+      "zona": "Urbana",
+      "personas": 1,
+      "estadoBien": "Habitable",
+      "tipoBien": "Vivienda",
+      "tenencia": "Propietario",
+      "visita": "Sin dato",
+      "quienVisita": "",
+      "observacion": "Grieta casa.",
+      "evacuada": "Sin dato"
+    },
+    {
+      "hogar": "BOCAS-DEL-PALO-17",
+      "barrio": "Bocas del Palo",
+      "zona": "Urbana",
+      "personas": 1,
+      "estadoBien": "Habitable",
+      "tipoBien": "Vivienda",
+      "tenencia": "Propietario",
+      "visita": "Sin dato",
+      "quienVisita": "",
+      "observacion": "Hay grietas.",
+      "evacuada": "Sin dato"
+    },
+    {
       "hogar": "2",
       "barrio": "El Jordán",
       "zona": "Rural",
@@ -11001,19 +11296,6 @@
       "quienVisita": "GRITA CAPILAR SUPERFICIAL HASTA EL MOMENTO NO COMPROMETE ESTRUCTURA, RIESGO NIVEL BAJO",
       "observacion": "",
       "evacuada": "Sin dato"
-    },
-    {
-      "hogar": "35",
-      "barrio": "Bello Horizonte",
-      "zona": "Urbana",
-      "personas": 2,
-      "estadoBien": "Averiado",
-      "tipoBien": "Vivienda",
-      "tenencia": "Poseedor",
-      "visita": "NO",
-      "quienVisita": "",
-      "observacion": "AGRIETAMIENTOS",
-      "evacuada": "NO"
     },
     {
       "hogar": "36",
@@ -18908,6 +19190,6 @@
     }
   ],
   "warnings": [
-    "49 persona(s) re-digitalizada(s) en BASE-DATOS RUFE: se actualizaron sus datos de bien/tenencia/zona y se reasignaron a un hogar nuevo — el hogar original al que pertenecían puede haber quedado con menos integrantes de los reales si sus demás compañeros de hogar aún no fueron re-digitalizados."
+    "51 persona(s) re-digitalizada(s) en BASE-DATOS RUFE: se actualizaron sus datos de bien/tenencia/zona y se reasignaron a un hogar nuevo — el hogar original al que pertenecían puede haber quedado con menos integrantes de los reales si sus demás compañeros de hogar aún no fueron re-digitalizados."
   ]
 }
