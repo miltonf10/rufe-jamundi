@@ -1,6 +1,6 @@
 {
-  "total": 2836,
-  "asOf": "18 de agosto de 2026 a las 11:35 a. m.",
+  "total": 2856,
+  "asOf": "18 de agosto de 2026 a las 12:29 p. m.",
   "barrios": [
     {
       "name": "Terranova",
@@ -286,6 +286,28 @@
       "Jovenes": 0,
       "Adultos": 7,
       "AdultosMayores": 2,
+      "zona": "Urbana"
+    },
+    {
+      "name": "Alférez Real",
+      "total": 12,
+      "M": 6,
+      "F": 6,
+      "Ninos": 0,
+      "Jovenes": 1,
+      "Adultos": 0,
+      "AdultosMayores": 0,
+      "zona": "Urbana"
+    },
+    {
+      "name": "Alfaguara",
+      "total": 11,
+      "M": 2,
+      "F": 6,
+      "Ninos": 0,
+      "Jovenes": 0,
+      "Adultos": 1,
+      "AdultosMayores": 0,
       "zona": "Urbana"
     },
     {
@@ -905,17 +927,6 @@
       "zona": "Urbana"
     },
     {
-      "name": "Alferez Real",
-      "total": 2,
-      "M": 2,
-      "F": 0,
-      "Ninos": 0,
-      "Jovenes": 1,
-      "Adultos": 0,
-      "AdultosMayores": 0,
-      "zona": "Urbana"
-    },
-    {
       "name": "Casa 51",
       "total": 2,
       "M": 1,
@@ -1258,17 +1269,6 @@
     },
     {
       "name": "Centenario",
-      "total": 1,
-      "M": 0,
-      "F": 1,
-      "Ninos": 0,
-      "Jovenes": 0,
-      "Adultos": 1,
-      "AdultosMayores": 0,
-      "zona": "Urbana"
-    },
-    {
-      "name": "Sendero de las Mercedes",
       "total": 1,
       "M": 0,
       "F": 1,
@@ -10535,6 +10535,110 @@
       "evacuada": "Sin dato"
     },
     {
+      "hogar": "ALFAGUARA-1",
+      "barrio": "Alfaguara",
+      "zona": "Urbana",
+      "personas": 1,
+      "estadoBien": "",
+      "tipoBien": "",
+      "tenencia": "Propietario",
+      "visita": "Sin dato",
+      "quienVisita": "",
+      "observacion": "Fachada y paredes agrietadas; se abrieron.",
+      "evacuada": "Sin dato"
+    },
+    {
+      "hogar": "ALFAGUARA-2",
+      "barrio": "Alfaguara",
+      "zona": "Urbana",
+      "personas": 1,
+      "estadoBien": "",
+      "tipoBien": "Vivienda",
+      "tenencia": "Arrendatario",
+      "visita": "Sin dato",
+      "quienVisita": "",
+      "observacion": "La vivienda presenta grietas en paredes, baldosas y columnas. De los dos pisos, el segundo piso es el más afectado.",
+      "evacuada": "Sin dato"
+    },
+    {
+      "hogar": "ALFAGUARA-3",
+      "barrio": "Alfaguara",
+      "zona": "Urbana",
+      "personas": 4,
+      "estadoBien": "",
+      "tipoBien": "Vivienda",
+      "tenencia": "Propietario",
+      "visita": "Sin dato",
+      "quienVisita": "",
+      "observacion": "La vivienda presenta fracturas y fisuras en toda la vivienda; es un edificio y todas las escaleras están averiadas. Las personas están evacuadas donde un familiar.",
+      "evacuada": "Sin dato"
+    },
+    {
+      "hogar": "ALFAGUARA-4",
+      "barrio": "Alfaguara",
+      "zona": "Urbana",
+      "personas": 5,
+      "estadoBien": "No habitable",
+      "tipoBien": "Vivienda",
+      "tenencia": "Propietario",
+      "visita": "Sin dato",
+      "quienVisita": "",
+      "observacion": "Apartamento afectado por fisuras en X en un muro de cemento y desprendimiento de las zonas del ascensor.",
+      "evacuada": "Sin dato"
+    },
+    {
+      "hogar": "ALFEREZ-REAL-1",
+      "barrio": "Alférez Real",
+      "zona": "Urbana",
+      "personas": 6,
+      "estadoBien": "Averiado",
+      "tipoBien": "Vivienda",
+      "tenencia": "Propietario",
+      "visita": "Sin dato",
+      "quienVisita": "",
+      "observacion": "Grietas largas en sala y [ilegible]; partes de la casa de consideración.",
+      "evacuada": "Sin dato"
+    },
+    {
+      "hogar": "ALFEREZ-REAL-2",
+      "barrio": "Alférez Real",
+      "zona": "Urbana",
+      "personas": 3,
+      "estadoBien": "Averiado",
+      "tipoBien": "Vivienda",
+      "tenencia": "Arrendatario",
+      "visita": "Sin dato",
+      "quienVisita": "",
+      "observacion": "Fisura en paredes.",
+      "evacuada": "Sin dato"
+    },
+    {
+      "hogar": "ALFEREZ-REAL-3",
+      "barrio": "Alférez Real",
+      "zona": "Urbana",
+      "personas": 1,
+      "estadoBien": "Habitable",
+      "tipoBien": "",
+      "tenencia": "Ocupante",
+      "visita": "Sin dato",
+      "quienVisita": "",
+      "observacion": "Grieta, dilatación del piso y la cocina.",
+      "evacuada": "Sin dato"
+    },
+    {
+      "hogar": "ALFEREZ-REAL-4",
+      "barrio": "Alférez Real",
+      "zona": "Urbana",
+      "personas": 2,
+      "estadoBien": "Averiado",
+      "tipoBien": "",
+      "tenencia": "Arrendatario",
+      "visita": "NO",
+      "quienVisita": "",
+      "observacion": "Vivienda con afectaciones.",
+      "evacuada": "NO"
+    },
+    {
       "hogar": "2",
       "barrio": "El Jordán",
       "zona": "Rural",
@@ -15579,19 +15683,6 @@
       "evacuada": "NO"
     },
     {
-      "hogar": "413",
-      "barrio": "Alferez Real",
-      "zona": "Urbana",
-      "personas": 2,
-      "estadoBien": "Averiado",
-      "tipoBien": "Vivienda",
-      "tenencia": "Arrendatario",
-      "visita": "NO",
-      "quienVisita": "",
-      "observacion": "",
-      "evacuada": "NO"
-    },
-    {
       "hogar": "415",
       "barrio": "Hacienda el Pino",
       "zona": "Urbana",
@@ -17071,19 +17162,6 @@
       "visita": "Sin dato",
       "quienVisita": "",
       "observacion": "DOS TEJAS PARTIDAS",
-      "evacuada": "Sin dato"
-    },
-    {
-      "hogar": "540",
-      "barrio": "Sendero de las Mercedes",
-      "zona": "Urbana",
-      "personas": 1,
-      "estadoBien": "No informa",
-      "tipoBien": "",
-      "tenencia": "Propietario",
-      "visita": "Sin dato",
-      "quienVisita": "",
-      "observacion": "",
       "evacuada": "Sin dato"
     },
     {
@@ -18830,6 +18908,6 @@
     }
   ],
   "warnings": [
-    "46 persona(s) re-digitalizada(s) en BASE-DATOS RUFE: se actualizaron sus datos de bien/tenencia/zona y se reasignaron a un hogar nuevo — el hogar original al que pertenecían puede haber quedado con menos integrantes de los reales si sus demás compañeros de hogar aún no fueron re-digitalizados."
+    "49 persona(s) re-digitalizada(s) en BASE-DATOS RUFE: se actualizaron sus datos de bien/tenencia/zona y se reasignaron a un hogar nuevo — el hogar original al que pertenecían puede haber quedado con menos integrantes de los reales si sus demás compañeros de hogar aún no fueron re-digitalizados."
   ]
 }
