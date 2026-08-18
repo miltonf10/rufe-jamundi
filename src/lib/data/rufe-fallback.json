@@ -1,6 +1,6 @@
 {
-  "total": 2893,
-  "asOf": "18 de agosto de 2026 a las 4:27 p. m.",
+  "total": 2919,
+  "asOf": "18 de agosto de 2026 a las 5:27 p. m.",
   "barrios": [
     {
       "name": "Terranova",
@@ -256,6 +256,17 @@
       "zona": "Urbana"
     },
     {
+      "name": "Rosario",
+      "total": 16,
+      "M": 6,
+      "F": 9,
+      "Ninos": 0,
+      "Jovenes": 0,
+      "Adultos": 0,
+      "AdultosMayores": 0,
+      "zona": "Urbana"
+    },
+    {
       "name": "Los Naranjos",
       "total": 15,
       "M": 4,
@@ -264,6 +275,17 @@
       "Jovenes": 3,
       "Adultos": 6,
       "AdultosMayores": 0,
+      "zona": "Urbana"
+    },
+    {
+      "name": "El Rosario",
+      "total": 14,
+      "M": 3,
+      "F": 11,
+      "Ninos": 0,
+      "Jovenes": 0,
+      "Adultos": 1,
+      "AdultosMayores": 2,
       "zona": "Urbana"
     },
     {
@@ -616,17 +638,6 @@
       "Jovenes": 1,
       "Adultos": 3,
       "AdultosMayores": 0,
-      "zona": "Urbana"
-    },
-    {
-      "name": "El Rosario",
-      "total": 4,
-      "M": 1,
-      "F": 3,
-      "Ninos": 0,
-      "Jovenes": 0,
-      "Adultos": 1,
-      "AdultosMayores": 2,
       "zona": "Urbana"
     },
     {
@@ -10943,7 +10954,7 @@
       "tenencia": "Propietario",
       "visita": "Sin dato",
       "quienVisita": "",
-      "observacion": "Afectación en mampostería, pisos y fisuras.",
+      "observacion": "Afectación en mampostería, grietas y fisuras.",
       "evacuada": "Sin dato"
     },
     {
@@ -10969,7 +10980,7 @@
       "tenencia": "Poseedor",
       "visita": "Sin dato",
       "quienVisita": "",
-      "observacion": "[ilegible]",
+      "observacion": "Agrietamiento paredes de la habitacion, cocina, grieta en sala",
       "evacuada": "Sin dato"
     },
     {
@@ -10995,7 +11006,85 @@
       "tenencia": "Propietario",
       "visita": "Sin dato",
       "quienVisita": "",
-      "observacion": "[ilegible]",
+      "observacion": "Afectaciones rompimiento de vidrios de seguridad de la Fundacion Cristiana",
+      "evacuada": "Sin dato"
+    },
+    {
+      "hogar": "EL-ROSARIO-1",
+      "barrio": "El Rosario",
+      "zona": "Urbana",
+      "personas": 5,
+      "estadoBien": "",
+      "tipoBien": "Vivienda",
+      "tenencia": "Propietario",
+      "visita": "Sin dato",
+      "quienVisita": "",
+      "observacion": "Daños estructurales en toda la vivienda.",
+      "evacuada": "Sin dato"
+    },
+    {
+      "hogar": "EL-ROSARIO-2",
+      "barrio": "Rosario",
+      "zona": "Urbana",
+      "personas": 4,
+      "estadoBien": "Averiado",
+      "tipoBien": "Vivienda",
+      "tenencia": "Arrendatario",
+      "visita": "Sin dato",
+      "quienVisita": "",
+      "observacion": "Agrietamiento de la infraestructura; pared de casa vecina con riesgo de caída sobre la vivienda.",
+      "evacuada": "Sin dato"
+    },
+    {
+      "hogar": "EL-ROSARIO-3",
+      "barrio": "El Rosario",
+      "zona": "Urbana",
+      "personas": 3,
+      "estadoBien": "Averiado",
+      "tipoBien": "Vivienda",
+      "tenencia": "Propietario",
+      "visita": "Sin dato",
+      "quienVisita": "",
+      "observacion": "La casa presenta varias grietas profundas en el empate de paredes; se evidencian paredes sueltas.",
+      "evacuada": "Sin dato"
+    },
+    {
+      "hogar": "EL-ROSARIO-4",
+      "barrio": "Rosario",
+      "zona": "Urbana",
+      "personas": 5,
+      "estadoBien": "Habitable",
+      "tipoBien": "Vivienda",
+      "tenencia": "Propietario",
+      "visita": "Sin dato",
+      "quienVisita": "",
+      "observacion": "Grietas en pared, afectación en techo, piso, vigas y cerchas.",
+      "evacuada": "Sin dato"
+    },
+    {
+      "hogar": "EL-ROSARIO-5",
+      "barrio": "El Rosario",
+      "zona": "Urbana",
+      "personas": 2,
+      "estadoBien": "",
+      "tipoBien": "Vivienda",
+      "tenencia": "Propietario",
+      "visita": "Sin dato",
+      "quienVisita": "",
+      "observacion": "Grietas y fisuras en las paredes.",
+      "evacuada": "Sin dato"
+    },
+    {
+      "hogar": "EL-ROSARIO-6",
+      "barrio": "Rosario",
+      "zona": "Urbana",
+      "personas": 7,
+      "estadoBien": "Habitable",
+      "tipoBien": "Vivienda",
+      "tenencia": "Poseedor",
+      "visita": "Sin dato",
+      "quienVisita": "",
+      "observacion": "Fisuras en las paredes.",
       "evacuada": "Sin dato"
     },
     {
