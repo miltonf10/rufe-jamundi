@@ -1,6 +1,6 @@
 {
-  "total": 2883,
-  "asOf": "18 de agosto de 2026 a las 3:27 p. m.",
+  "total": 2893,
+  "asOf": "18 de agosto de 2026 a las 4:27 p. m.",
   "barrios": [
     {
       "name": "Terranova",
@@ -319,6 +319,17 @@
       "Jovenes": 0,
       "Adultos": 1,
       "AdultosMayores": 0,
+      "zona": "Urbana"
+    },
+    {
+      "name": "Ciro Velasco",
+      "total": 11,
+      "M": 7,
+      "F": 3,
+      "Ninos": 0,
+      "Jovenes": 0,
+      "Adultos": 0,
+      "AdultosMayores": 1,
       "zona": "Urbana"
     },
     {
@@ -1254,17 +1265,6 @@
       "Jovenes": 0,
       "Adultos": 1,
       "AdultosMayores": 0,
-      "zona": "Urbana"
-    },
-    {
-      "name": "Ciro Velasco",
-      "total": 1,
-      "M": 1,
-      "F": 0,
-      "Ninos": 0,
-      "Jovenes": 0,
-      "Adultos": 0,
-      "AdultosMayores": 1,
       "zona": "Urbana"
     },
     {
@@ -10618,7 +10618,7 @@
       "tenencia": "Propietario",
       "visita": "Sin dato",
       "quienVisita": "",
-      "observacion": "Grietas largas en sala y [ilegible]; partes de la casa de consideración.",
+      "observacion": "Grietas largas en sala y varias partes de la casa de consideración.",
       "evacuada": "Sin dato"
     },
     {
@@ -10722,7 +10722,7 @@
       "tenencia": "Propietario",
       "visita": "Sin dato",
       "quienVisita": "",
-      "observacion": "Casa brinca.",
+      "observacion": "Casa grietas",
       "evacuada": "Sin dato"
     },
     {
@@ -10735,7 +10735,7 @@
       "tenencia": "Propietario",
       "visita": "Sin dato",
       "quienVisita": "",
-      "observacion": "Techo de la vivienda en mal estado; cayeron elementos donde estaban los niños y las paredes están afectadas. Está evacuada.",
+      "observacion": "Techo de la vivienda en mal estado; (caido) por lo cual los vidrios y las paredes están afectadas. Está evacuada.",
       "evacuada": "Sin dato"
     },
     {
@@ -10748,7 +10748,7 @@
       "tenencia": "Arrendatario",
       "visita": "Sin dato",
       "quienVisita": "",
-      "observacion": "No habitable; [ilegible].",
+      "observacion": "No habitable; grietas casa",
       "evacuada": "Sin dato"
     },
     {
@@ -10774,7 +10774,7 @@
       "tenencia": "Propietario",
       "visita": "Sin dato",
       "quienVisita": "",
-      "observacion": "Colapsó [ilegible].",
+      "observacion": "Colegio Grietas",
       "evacuada": "Sin dato"
     },
     {
@@ -10800,7 +10800,7 @@
       "tenencia": "Propietario",
       "visita": "Sin dato",
       "quienVisita": "",
-      "observacion": "Cielo brinca.",
+      "observacion": "Casa con grietas.",
       "evacuada": "Sin dato"
     },
     {
@@ -10813,7 +10813,7 @@
       "tenencia": "Propietario",
       "visita": "Sin dato",
       "quienVisita": "",
-      "observacion": "Cielo brinca.",
+      "observacion": "Casa con grietas.",
       "evacuada": "Sin dato"
     },
     {
@@ -10826,7 +10826,7 @@
       "tenencia": "Arrendatario",
       "visita": "Sin dato",
       "quienVisita": "",
-      "observacion": "[ilegible].",
+      "observacion": "Casa con grietas.",
       "evacuada": "Sin dato"
     },
     {
@@ -10839,7 +10839,7 @@
       "tenencia": "Arrendatario",
       "visita": "Sin dato",
       "quienVisita": "",
-      "observacion": "Casa brinca.",
+      "observacion": "Casa con grietas.",
       "evacuada": "Sin dato"
     },
     {
@@ -10878,7 +10878,7 @@
       "tenencia": "Propietario",
       "visita": "Sin dato",
       "quienVisita": "",
-      "observacion": "Grietas casa.",
+      "observacion": "Casa con grietas.",
       "evacuada": "Sin dato"
     },
     {
@@ -10891,7 +10891,7 @@
       "tenencia": "Propietario",
       "visita": "Sin dato",
       "quienVisita": "",
-      "observacion": "Grietas casa.",
+      "observacion": "Casa con grietas.",
       "evacuada": "Sin dato"
     },
     {
@@ -10904,7 +10904,7 @@
       "tenencia": "Propietario",
       "visita": "Sin dato",
       "quienVisita": "",
-      "observacion": "Grietas casa.",
+      "observacion": "Casa con grietas.",
       "evacuada": "Sin dato"
     },
     {
@@ -10917,7 +10917,7 @@
       "tenencia": "Propietario",
       "visita": "Sin dato",
       "quienVisita": "",
-      "observacion": "Grieta casa.",
+      "observacion": "Casa con grietas.",
       "evacuada": "Sin dato"
     },
     {
@@ -10930,7 +10930,72 @@
       "tenencia": "Propietario",
       "visita": "Sin dato",
       "quienVisita": "",
-      "observacion": "Hay grietas.",
+      "observacion": "Casa con grietas.",
+      "evacuada": "Sin dato"
+    },
+    {
+      "hogar": "CIRO-VELASCO-1",
+      "barrio": "Ciro Velasco",
+      "zona": "Urbana",
+      "personas": 1,
+      "estadoBien": "Averiado",
+      "tipoBien": "Vivienda",
+      "tenencia": "Propietario",
+      "visita": "Sin dato",
+      "quienVisita": "",
+      "observacion": "Afectación en mampostería, pisos y fisuras.",
+      "evacuada": "Sin dato"
+    },
+    {
+      "hogar": "CIRO-VELASCO-2",
+      "barrio": "Ciro Velasco",
+      "zona": "Urbana",
+      "personas": 1,
+      "estadoBien": "Habitable",
+      "tipoBien": "Vivienda",
+      "tenencia": "Propietario",
+      "visita": "NO",
+      "quienVisita": "",
+      "observacion": "",
+      "evacuada": "NO"
+    },
+    {
+      "hogar": "CIRO-VELASCO-3",
+      "barrio": "Ciro Velasco",
+      "zona": "Urbana",
+      "personas": 3,
+      "estadoBien": "Averiado",
+      "tipoBien": "Vivienda",
+      "tenencia": "Poseedor",
+      "visita": "Sin dato",
+      "quienVisita": "",
+      "observacion": "[ilegible]",
+      "evacuada": "Sin dato"
+    },
+    {
+      "hogar": "CIRO-VELASCO-4",
+      "barrio": "Ciro Velasco",
+      "zona": "Urbana",
+      "personas": 5,
+      "estadoBien": "",
+      "tipoBien": "Vivienda",
+      "tenencia": "Propietario",
+      "visita": "Sin dato",
+      "quienVisita": "",
+      "observacion": "Se les cayó una parte del techo.",
+      "evacuada": "Sin dato"
+    },
+    {
+      "hogar": "CIRO-VELASCO-5",
+      "barrio": "Ciro Velasco",
+      "zona": "Urbana",
+      "personas": 1,
+      "estadoBien": "Averiado",
+      "tipoBien": "",
+      "tenencia": "Propietario",
+      "visita": "Sin dato",
+      "quienVisita": "",
+      "observacion": "[ilegible]",
       "evacuada": "Sin dato"
     },
     {
@@ -16108,19 +16173,6 @@
       "evacuada": "NO"
     },
     {
-      "hogar": "428",
-      "barrio": "Ciro Velasco",
-      "zona": "Urbana",
-      "personas": 1,
-      "estadoBien": "Averiado",
-      "tipoBien": "Vivienda",
-      "tenencia": "Propietario",
-      "visita": "NO",
-      "quienVisita": "",
-      "observacion": "",
-      "evacuada": "NO"
-    },
-    {
       "hogar": "429",
       "barrio": "San Antonio",
       "zona": "Rural",
@@ -19190,6 +19242,6 @@
     }
   ],
   "warnings": [
-    "51 persona(s) re-digitalizada(s) en BASE-DATOS RUFE: se actualizaron sus datos de bien/tenencia/zona y se reasignaron a un hogar nuevo — el hogar original al que pertenecían puede haber quedado con menos integrantes de los reales si sus demás compañeros de hogar aún no fueron re-digitalizados."
+    "52 persona(s) re-digitalizada(s) en BASE-DATOS RUFE: se actualizaron sus datos de bien/tenencia/zona y se reasignaron a un hogar nuevo — el hogar original al que pertenecían puede haber quedado con menos integrantes de los reales si sus demás compañeros de hogar aún no fueron re-digitalizados."
   ]
 }
