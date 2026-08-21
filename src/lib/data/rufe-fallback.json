@@ -1,47 +1,47 @@
 {
-  "total": 2919,
-  "asOf": "18 de agosto de 2026 a las 5:27 p. m.",
+  "total": 2947,
+  "asOf": "20 de agosto de 2026 a las 11:41 p. m.",
   "barrios": [
     {
       "name": "Terranova",
-      "total": 998,
-      "M": 382,
-      "F": 587,
+      "total": 1003,
+      "M": 385,
+      "F": 589,
       "Ninos": 19,
-      "Jovenes": 38,
+      "Jovenes": 39,
       "Adultos": 107,
-      "AdultosMayores": 44,
+      "AdultosMayores": 45,
       "zona": "Urbana"
     },
     {
       "name": "San Antonio",
-      "total": 361,
-      "M": 146,
+      "total": 360,
+      "M": 145,
       "F": 199,
       "Ninos": 27,
       "Jovenes": 45,
       "Adultos": 106,
-      "AdultosMayores": 53,
-      "zona": "Rural"
-    },
-    {
-      "name": "Robles",
-      "total": 260,
-      "M": 91,
-      "F": 158,
-      "Ninos": 17,
-      "Jovenes": 35,
-      "Adultos": 97,
       "AdultosMayores": 55,
       "zona": "Rural"
     },
     {
+      "name": "Robles",
+      "total": 261,
+      "M": 92,
+      "F": 162,
+      "Ninos": 17,
+      "Jovenes": 35,
+      "Adultos": 96,
+      "AdultosMayores": 56,
+      "zona": "Rural"
+    },
+    {
       "name": "El Rodeo",
-      "total": 214,
-      "M": 76,
-      "F": 138,
+      "total": 217,
+      "M": 77,
+      "F": 140,
       "Ninos": 35,
-      "Jovenes": 56,
+      "Jovenes": 57,
       "Adultos": 98,
       "AdultosMayores": 24,
       "zona": "Urbana"
@@ -80,6 +80,17 @@
       "zona": "Rural"
     },
     {
+      "name": "Bonanza",
+      "total": 60,
+      "M": 26,
+      "F": 33,
+      "Ninos": 12,
+      "Jovenes": 13,
+      "Adultos": 31,
+      "AdultosMayores": 2,
+      "zona": "Urbana"
+    },
+    {
       "name": "Pangola",
       "total": 57,
       "M": 27,
@@ -91,15 +102,15 @@
       "zona": "Urbana"
     },
     {
-      "name": "Bonanza",
-      "total": 48,
+      "name": "Potrerito",
+      "total": 57,
       "M": 24,
-      "F": 23,
-      "Ninos": 7,
-      "Jovenes": 11,
-      "Adultos": 27,
-      "AdultosMayores": 1,
-      "zona": "Urbana"
+      "F": 33,
+      "Ninos": 3,
+      "Jovenes": 8,
+      "Adultos": 10,
+      "AdultosMayores": 10,
+      "zona": "Rural"
     },
     {
       "name": "Chagres",
@@ -113,6 +124,17 @@
       "zona": "Rural"
     },
     {
+      "name": "Peón",
+      "total": 40,
+      "M": 12,
+      "F": 28,
+      "Ninos": 2,
+      "Jovenes": 3,
+      "Adultos": 22,
+      "AdultosMayores": 9,
+      "zona": "Rural"
+    },
+    {
       "name": "La Liberia",
       "total": 38,
       "M": 16,
@@ -121,17 +143,6 @@
       "Jovenes": 6,
       "Adultos": 19,
       "AdultosMayores": 5,
-      "zona": "Rural"
-    },
-    {
-      "name": "Potrerito",
-      "total": 35,
-      "M": 16,
-      "F": 19,
-      "Ninos": 3,
-      "Jovenes": 8,
-      "Adultos": 10,
-      "AdultosMayores": 10,
       "zona": "Rural"
     },
     {
@@ -147,8 +158,8 @@
     },
     {
       "name": "Terranova Sector J",
-      "total": 31,
-      "M": 12,
+      "total": 32,
+      "M": 13,
       "F": 19,
       "Ninos": 3,
       "Jovenes": 8,
@@ -168,15 +179,15 @@
       "zona": "Rural"
     },
     {
-      "name": "Peón",
-      "total": 25,
-      "M": 7,
-      "F": 18,
-      "Ninos": 1,
-      "Jovenes": 3,
-      "Adultos": 12,
-      "AdultosMayores": 5,
-      "zona": "Rural"
+      "name": "El Rosario",
+      "total": 30,
+      "M": 9,
+      "F": 20,
+      "Ninos": 0,
+      "Jovenes": 0,
+      "Adultos": 1,
+      "AdultosMayores": 2,
+      "zona": "Urbana"
     },
     {
       "name": "Sector J Terranova",
@@ -212,25 +223,14 @@
       "zona": "Rural"
     },
     {
-      "name": "Chontaduro",
-      "total": 19,
-      "M": 7,
+      "name": "Sin especificar",
+      "total": 20,
+      "M": 8,
       "F": 12,
       "Ninos": 1,
-      "Jovenes": 0,
-      "Adultos": 13,
-      "AdultosMayores": 4,
-      "zona": "Rural"
-    },
-    {
-      "name": "Sin especificar",
-      "total": 18,
-      "M": 7,
-      "F": 11,
-      "Ninos": 1,
       "Jovenes": 7,
-      "Adultos": 8,
-      "AdultosMayores": 0,
+      "Adultos": 9,
+      "AdultosMayores": 1,
       "zona": "Urbana"
     },
     {
@@ -256,17 +256,6 @@
       "zona": "Urbana"
     },
     {
-      "name": "Rosario",
-      "total": 16,
-      "M": 6,
-      "F": 9,
-      "Ninos": 0,
-      "Jovenes": 0,
-      "Adultos": 0,
-      "AdultosMayores": 0,
-      "zona": "Urbana"
-    },
-    {
       "name": "Los Naranjos",
       "total": 15,
       "M": 4,
@@ -275,17 +264,6 @@
       "Jovenes": 3,
       "Adultos": 6,
       "AdultosMayores": 0,
-      "zona": "Urbana"
-    },
-    {
-      "name": "El Rosario",
-      "total": 14,
-      "M": 3,
-      "F": 11,
-      "Ninos": 0,
-      "Jovenes": 0,
-      "Adultos": 1,
-      "AdultosMayores": 2,
       "zona": "Urbana"
     },
     {
@@ -298,17 +276,6 @@
       "Adultos": 1,
       "AdultosMayores": 5,
       "zona": "Rural"
-    },
-    {
-      "name": "Las Flores",
-      "total": 13,
-      "M": 2,
-      "F": 11,
-      "Ninos": 5,
-      "Jovenes": 2,
-      "Adultos": 5,
-      "AdultosMayores": 1,
-      "zona": "Urbana"
     },
     {
       "name": "Portal de Jamundí",
@@ -399,15 +366,15 @@
       "zona": "Urbana"
     },
     {
-      "name": "Oasis de Terranova",
+      "name": "Chontaduro",
       "total": 8,
-      "M": 5,
-      "F": 3,
+      "M": 3,
+      "F": 5,
       "Ninos": 0,
-      "Jovenes": 1,
+      "Jovenes": 0,
       "Adultos": 6,
       "AdultosMayores": 1,
-      "zona": "Urbana"
+      "zona": "Rural"
     },
     {
       "name": "Bosque Encantado Sur",
@@ -440,6 +407,17 @@
       "Jovenes": 0,
       "Adultos": 3,
       "AdultosMayores": 4,
+      "zona": "Urbana"
+    },
+    {
+      "name": "Oasis de Terranova",
+      "total": 7,
+      "M": 4,
+      "F": 3,
+      "Ninos": 0,
+      "Jovenes": 1,
+      "Adultos": 6,
+      "AdultosMayores": 0,
       "zona": "Urbana"
     },
     {
@@ -542,17 +520,6 @@
       "zona": "Urbana"
     },
     {
-      "name": "Simon Bolívar",
-      "total": 5,
-      "M": 2,
-      "F": 3,
-      "Ninos": 1,
-      "Jovenes": 0,
-      "Adultos": 3,
-      "AdultosMayores": 0,
-      "zona": "Urbana"
-    },
-    {
       "name": "Campos de Pangola",
       "total": 5,
       "M": 2,
@@ -619,17 +586,6 @@
       "zona": "Urbana"
     },
     {
-      "name": "Anturios",
-      "total": 4,
-      "M": 2,
-      "F": 2,
-      "Ninos": 0,
-      "Jovenes": 2,
-      "Adultos": 1,
-      "AdultosMayores": 1,
-      "zona": "Urbana"
-    },
-    {
       "name": "Marbella",
       "total": 4,
       "M": 1,
@@ -638,17 +594,6 @@
       "Jovenes": 1,
       "Adultos": 3,
       "AdultosMayores": 0,
-      "zona": "Urbana"
-    },
-    {
-      "name": "Chontaduro",
-      "total": 4,
-      "M": 1,
-      "F": 3,
-      "Ninos": 0,
-      "Jovenes": 0,
-      "Adultos": 3,
-      "AdultosMayores": 1,
       "zona": "Urbana"
     },
     {
@@ -681,6 +626,17 @@
       "Ninos": 1,
       "Jovenes": 2,
       "Adultos": 1,
+      "AdultosMayores": 0,
+      "zona": "Urbana"
+    },
+    {
+      "name": "Simon Bolívar",
+      "total": 4,
+      "M": 1,
+      "F": 3,
+      "Ninos": 1,
+      "Jovenes": 0,
+      "Adultos": 3,
       "AdultosMayores": 0,
       "zona": "Urbana"
     },
@@ -1081,6 +1037,17 @@
       "zona": "Urbana"
     },
     {
+      "name": "Anturios",
+      "total": 1,
+      "M": 0,
+      "F": 1,
+      "Ninos": 0,
+      "Jovenes": 1,
+      "Adultos": 0,
+      "AdultosMayores": 0,
+      "zona": "Urbana"
+    },
+    {
       "name": "La Isla",
       "total": 1,
       "M": 0,
@@ -1154,6 +1121,17 @@
       "Ninos": 0,
       "Jovenes": 1,
       "Adultos": 0,
+      "AdultosMayores": 0,
+      "zona": "Urbana"
+    },
+    {
+      "name": "Las Flores",
+      "total": 1,
+      "M": 0,
+      "F": 1,
+      "Ninos": 0,
+      "Jovenes": 0,
+      "Adultos": 1,
       "AdultosMayores": 0,
       "zona": "Urbana"
     },
@@ -1430,7 +1408,7 @@
     },
     {
       "hogar": "BONANZA-1",
-      "barrio": "Las Flores",
+      "barrio": "Bonanza",
       "zona": "Urbana",
       "personas": 2,
       "estadoBien": "Averiado",
@@ -1534,7 +1512,7 @@
     },
     {
       "hogar": "BONANZA-9",
-      "barrio": "Las Flores",
+      "barrio": "Bonanza",
       "zona": "Urbana",
       "personas": 2,
       "estadoBien": "Averiado",
@@ -1612,7 +1590,7 @@
     },
     {
       "hogar": "BONANZA-15",
-      "barrio": "Las Flores",
+      "barrio": "Bonanza",
       "zona": "Urbana",
       "personas": 4,
       "estadoBien": "Averiado",
@@ -1625,7 +1603,7 @@
     },
     {
       "hogar": "BONANZA-16",
-      "barrio": "Las Flores",
+      "barrio": "Bonanza",
       "zona": "Urbana",
       "personas": 2,
       "estadoBien": "Averiado",
@@ -1638,7 +1616,7 @@
     },
     {
       "hogar": "BONANZA-17",
-      "barrio": "Las Flores",
+      "barrio": "Bonanza",
       "zona": "Urbana",
       "personas": 2,
       "estadoBien": "Averiado",
@@ -1959,19 +1937,6 @@
       "visita": "Sin dato",
       "quienVisita": "",
       "observacion": "Grieta pared y paredes. (Anotación: 'No contestó')",
-      "evacuada": "Sin dato"
-    },
-    {
-      "hogar": "PORTAL-JORDAN-7",
-      "barrio": "Portal de Jamundí",
-      "zona": "Urbana",
-      "personas": 4,
-      "estadoBien": "Habitable",
-      "tipoBien": "Vivienda",
-      "tenencia": "Arrendatario",
-      "visita": "Sin dato",
-      "quienVisita": "",
-      "observacion": "Grietas en patio, grietas en paredes de cuartos y sala.",
       "evacuada": "Sin dato"
     },
     {
@@ -2560,6 +2525,136 @@
       "evacuada": "Sin dato"
     },
     {
+      "hogar": "POTRERITO-1",
+      "barrio": "Potrerito",
+      "zona": "Rural",
+      "personas": 2,
+      "estadoBien": "Averiado",
+      "tipoBien": "Vivienda",
+      "tenencia": "Propietario",
+      "visita": "Sin dato",
+      "quienVisita": "",
+      "observacion": "Casa de bahareque tiene grietas en las paredes y se está empezando a caer el repello, tienen miedo a que se caiga.",
+      "evacuada": "Sin dato"
+    },
+    {
+      "hogar": "POTRERITO-2",
+      "barrio": "Potrerito",
+      "zona": "Rural",
+      "personas": 2,
+      "estadoBien": "Averiado",
+      "tipoBien": "Vivienda",
+      "tenencia": "Propietario",
+      "visita": "Sin dato",
+      "quienVisita": "",
+      "observacion": "Grieta en pared, grieta en techo, casa de bahareque caída de tejas.",
+      "evacuada": "Sin dato"
+    },
+    {
+      "hogar": "POTRERITO-3",
+      "barrio": "Potrerito",
+      "zona": "Rural",
+      "personas": 2,
+      "estadoBien": "Averiado",
+      "tipoBien": "Finca",
+      "tenencia": "Propietario",
+      "visita": "Sin dato",
+      "quienVisita": "",
+      "observacion": "Grietas en las paredes, columnas del techo pérdida y averiación.",
+      "evacuada": "Sin dato"
+    },
+    {
+      "hogar": "POTRERITO-4",
+      "barrio": "Potrerito",
+      "zona": "Rural",
+      "personas": 2,
+      "estadoBien": "Averiado",
+      "tipoBien": "Vivienda",
+      "tenencia": "Propietario",
+      "visita": "Sin dato",
+      "quienVisita": "",
+      "observacion": "Grietas por toda la parte del piso alrededor de la casa, está toda la casa agrietada, en puerta está muy dañada, se pide evacuar.",
+      "evacuada": "Sin dato"
+    },
+    {
+      "hogar": "POTRERITO-5",
+      "barrio": "Potrerito",
+      "zona": "Rural",
+      "personas": 4,
+      "estadoBien": "No habitable",
+      "tipoBien": "Vivienda",
+      "tenencia": "Propietario",
+      "visita": "Sin dato",
+      "quienVisita": "",
+      "observacion": "Grietas en las paredes donde no están habitando porque está la grieta en equis.",
+      "evacuada": "Sin dato"
+    },
+    {
+      "hogar": "POTRERITO-6",
+      "barrio": "Potrerito",
+      "zona": "Rural",
+      "personas": 1,
+      "estadoBien": "Destruido",
+      "tipoBien": "Vivienda",
+      "tenencia": "Propietario",
+      "visita": "Sin dato",
+      "quienVisita": "",
+      "observacion": "Vivienda con afectaciones severas.",
+      "evacuada": "Sin dato"
+    },
+    {
+      "hogar": "POTRERITO-7",
+      "barrio": "Potrerito",
+      "zona": "Rural",
+      "personas": 1,
+      "estadoBien": "Averiado",
+      "tipoBien": "Vivienda",
+      "tenencia": "Propietario",
+      "visita": "Sin dato",
+      "quienVisita": "",
+      "observacion": "Afectación estructural por sismo.",
+      "evacuada": "Sin dato"
+    },
+    {
+      "hogar": "POTRERITO-8",
+      "barrio": "Potrerito",
+      "zona": "Rural",
+      "personas": 4,
+      "estadoBien": "Averiado",
+      "tipoBien": "Vivienda",
+      "tenencia": "Propietario",
+      "visita": "Sin dato",
+      "quienVisita": "",
+      "observacion": "Afectaciones en paredes y techos.",
+      "evacuada": "Sin dato"
+    },
+    {
+      "hogar": "POTRERITO-9",
+      "barrio": "Potrerito",
+      "zona": "Rural",
+      "personas": 3,
+      "estadoBien": "Averiado",
+      "tipoBien": "Vivienda",
+      "tenencia": "Propietario",
+      "visita": "NO",
+      "quienVisita": "",
+      "observacion": "Afectaciones estructurales en vivienda.",
+      "evacuada": "NO"
+    },
+    {
+      "hogar": "POTRERITO-10",
+      "barrio": "Potrerito",
+      "zona": "Rural",
+      "personas": 3,
+      "estadoBien": "Averiado",
+      "tipoBien": "Vivienda",
+      "tenencia": "Propietario",
+      "visita": "Sin dato",
+      "quienVisita": "",
+      "observacion": "Afectaciones en estructura por sismo.",
+      "evacuada": "Sin dato"
+    },
+    {
       "hogar": "PORTAL-JAMUNDI-1",
       "barrio": "Portal de Jamundí",
       "zona": "Urbana",
@@ -2635,6 +2730,19 @@
       "visita": "Sin dato",
       "quienVisita": "",
       "observacion": "Grietas en paredes.",
+      "evacuada": "Sin dato"
+    },
+    {
+      "hogar": "PORTAL-JAMUNDI-7",
+      "barrio": "Portal de Jamundí",
+      "zona": "Urbana",
+      "personas": 4,
+      "estadoBien": "Habitable",
+      "tipoBien": "Vivienda",
+      "tenencia": "Arrendatario",
+      "visita": "Sin dato",
+      "quienVisita": "",
+      "observacion": "Grietas en patio, grietas en paredes de cuartos y sala.",
       "evacuada": "Sin dato"
     },
     {
@@ -2732,7 +2840,7 @@
       "hogar": "RODEO-5",
       "barrio": "El Rodeo",
       "zona": "Urbana",
-      "personas": 2,
+      "personas": 3,
       "estadoBien": "Averiado",
       "tipoBien": "Vivienda",
       "tenencia": "Propietario",
@@ -3627,7 +3735,7 @@
     },
     {
       "hogar": "PEON-CHONTADURO-19",
-      "barrio": "Chontaduro",
+      "barrio": "Peón",
       "zona": "Rural",
       "personas": 2,
       "estadoBien": "Averiado",
@@ -3640,7 +3748,7 @@
     },
     {
       "hogar": "PEON-CHONTADURO-20",
-      "barrio": "Chontaduro",
+      "barrio": "Peón",
       "zona": "Rural",
       "personas": 1,
       "estadoBien": "Averiado",
@@ -3653,7 +3761,7 @@
     },
     {
       "hogar": "PEON-CHONTADURO-21",
-      "barrio": "Chontaduro",
+      "barrio": "Peón",
       "zona": "Rural",
       "personas": 2,
       "estadoBien": "Averiado",
@@ -3666,7 +3774,7 @@
     },
     {
       "hogar": "PEON-CHONTADURO-22",
-      "barrio": "Chontaduro",
+      "barrio": "Peón",
       "zona": "Rural",
       "personas": 1,
       "estadoBien": "Averiado",
@@ -3679,7 +3787,7 @@
     },
     {
       "hogar": "PEON-CHONTADURO-23",
-      "barrio": "Chontaduro",
+      "barrio": "Peón",
       "zona": "Rural",
       "personas": 1,
       "estadoBien": "Averiado",
@@ -3692,7 +3800,7 @@
     },
     {
       "hogar": "PEON-CHONTADURO-24",
-      "barrio": "Chontaduro",
+      "barrio": "Peón",
       "zona": "Rural",
       "personas": 1,
       "estadoBien": "Averiado",
@@ -3705,7 +3813,7 @@
     },
     {
       "hogar": "PEON-CHONTADURO-25",
-      "barrio": "Chontaduro",
+      "barrio": "Peón",
       "zona": "Rural",
       "personas": 1,
       "estadoBien": "Averiado",
@@ -3718,7 +3826,7 @@
     },
     {
       "hogar": "PEON-CHONTADURO-26",
-      "barrio": "Chontaduro",
+      "barrio": "Peón",
       "zona": "Rural",
       "personas": 1,
       "estadoBien": "Averiado",
@@ -3731,7 +3839,7 @@
     },
     {
       "hogar": "PEON-CHONTADURO-27",
-      "barrio": "Chontaduro",
+      "barrio": "Peón",
       "zona": "Rural",
       "personas": 1,
       "estadoBien": "Averiado",
@@ -3744,7 +3852,7 @@
     },
     {
       "hogar": "PEON-CHONTADURO-28",
-      "barrio": "Chontaduro",
+      "barrio": "Peón",
       "zona": "Rural",
       "personas": 1,
       "estadoBien": "Averiado",
@@ -3757,7 +3865,7 @@
     },
     {
       "hogar": "PEON-CHONTADURO-29",
-      "barrio": "Chontaduro",
+      "barrio": "Peón",
       "zona": "Rural",
       "personas": 1,
       "estadoBien": "Averiado",
@@ -3770,7 +3878,7 @@
     },
     {
       "hogar": "PEON-CHONTADURO-30",
-      "barrio": "Chontaduro",
+      "barrio": "Peón",
       "zona": "Rural",
       "personas": 1,
       "estadoBien": "Averiado",
@@ -3783,7 +3891,7 @@
     },
     {
       "hogar": "PEON-CHONTADURO-31",
-      "barrio": "Chontaduro",
+      "barrio": "Peón",
       "zona": "Rural",
       "personas": 1,
       "estadoBien": "Averiado",
@@ -6554,7 +6662,7 @@
       "hogar": "TERRANOVA-108",
       "barrio": "Terranova",
       "zona": "Urbana",
-      "personas": 2,
+      "personas": 3,
       "estadoBien": "Averiado",
       "tipoBien": "Vivienda",
       "tenencia": "Propietario",
@@ -6580,7 +6688,7 @@
       "hogar": "TERRANOVA-110",
       "barrio": "Terranova",
       "zona": "Urbana",
-      "personas": 3,
+      "personas": 2,
       "estadoBien": "",
       "tipoBien": "Vivienda",
       "tenencia": "Propietario",
@@ -9700,7 +9808,7 @@
       "hogar": "TERRANOVA-366",
       "barrio": "Terranova",
       "zona": "Urbana",
-      "personas": 1,
+      "personas": 3,
       "estadoBien": "",
       "tipoBien": "Vivienda",
       "tenencia": "Propietario",
@@ -11024,7 +11132,7 @@
     },
     {
       "hogar": "EL-ROSARIO-2",
-      "barrio": "Rosario",
+      "barrio": "El Rosario",
       "zona": "Urbana",
       "personas": 4,
       "estadoBien": "Averiado",
@@ -11050,7 +11158,7 @@
     },
     {
       "hogar": "EL-ROSARIO-4",
-      "barrio": "Rosario",
+      "barrio": "El Rosario",
       "zona": "Urbana",
       "personas": 5,
       "estadoBien": "Habitable",
@@ -11076,7 +11184,7 @@
     },
     {
       "hogar": "EL-ROSARIO-6",
-      "barrio": "Rosario",
+      "barrio": "El Rosario",
       "zona": "Urbana",
       "personas": 7,
       "estadoBien": "Habitable",
@@ -11332,7 +11440,7 @@
       "visita": "NO",
       "quienVisita": "",
       "observacion": "VIVIENDA COLAPSADA POR EL SISMO",
-      "evacuada": "NO"
+      "evacuada": "SI"
     },
     {
       "hogar": "23",
@@ -11559,7 +11667,7 @@
       "hogar": "45",
       "barrio": "Terranova Sector J",
       "zona": "Urbana",
-      "personas": 1,
+      "personas": 2,
       "estadoBien": "Habitable",
       "tipoBien": "Vivienda",
       "tenencia": "Arrendatario",
@@ -11713,8 +11821,8 @@
     },
     {
       "hogar": "57",
-      "barrio": "Simon Bolívar",
-      "zona": "Urbana",
+      "barrio": "Robles",
+      "zona": "Rural",
       "personas": 1,
       "estadoBien": "Destruido",
       "tipoBien": "Local comercial",
@@ -13223,7 +13331,7 @@
       "hogar": "179",
       "barrio": "Terranova",
       "zona": "Urbana",
-      "personas": 5,
+      "personas": 6,
       "estadoBien": "Habitable",
       "tipoBien": "Vivienda",
       "tenencia": "Propietario",
@@ -13236,7 +13344,7 @@
       "hogar": "180",
       "barrio": "Terranova",
       "zona": "Urbana",
-      "personas": 1,
+      "personas": 3,
       "estadoBien": "Averiado",
       "tipoBien": "Vivienda",
       "tenencia": "Propietario",
@@ -13246,23 +13354,10 @@
       "evacuada": "NO"
     },
     {
-      "hogar": "181",
-      "barrio": "Oasis de Terranova",
-      "zona": "Urbana",
-      "personas": 1,
-      "estadoBien": "Averiado",
-      "tipoBien": "Vivienda",
-      "tenencia": "Propietario",
-      "visita": "SI",
-      "quienVisita": "",
-      "observacion": "LA VIVIENDA PRESENTA AGRIETAMIENTO EN LAS PAREDES EN LAS PAREDES Y EN LAS VIGAS TORRE DE 5 PISOS",
-      "evacuada": "NO"
-    },
-    {
       "hogar": "182",
-      "barrio": "Anturios",
+      "barrio": "Sin especificar",
       "zona": "Urbana",
-      "personas": 3,
+      "personas": 2,
       "estadoBien": "Averiado",
       "tipoBien": "Vivienda",
       "tenencia": "Propietario",
@@ -14533,19 +14628,6 @@
       "evacuada": "SI"
     },
     {
-      "hogar": "285",
-      "barrio": "Potrerito",
-      "zona": "Rural",
-      "personas": 1,
-      "estadoBien": "",
-      "tipoBien": "",
-      "tenencia": "",
-      "visita": "Sin dato",
-      "quienVisita": "",
-      "observacion": "",
-      "evacuada": "Sin dato"
-    },
-    {
       "hogar": "286",
       "barrio": "Terranova",
       "zona": "Urbana",
@@ -14965,7 +15047,7 @@
       "hogar": "318",
       "barrio": "El Rodeo",
       "zona": "Urbana",
-      "personas": 1,
+      "personas": 3,
       "estadoBien": "Habitable",
       "tipoBien": "Vivienda",
       "tenencia": "Propietario",
@@ -15755,19 +15837,6 @@
       "evacuada": "NO"
     },
     {
-      "hogar": "383",
-      "barrio": "Potrerito",
-      "zona": "Rural",
-      "personas": 1,
-      "estadoBien": "No habitable",
-      "tipoBien": "Vivienda",
-      "tenencia": "Propietario",
-      "visita": "NO",
-      "quienVisita": "",
-      "observacion": "REQUIERE VISITA",
-      "evacuada": "NO"
-    },
-    {
       "hogar": "384",
       "barrio": "Torres de Jamundi",
       "zona": "Urbana",
@@ -15823,26 +15892,13 @@
       "hogar": "390",
       "barrio": "Villa Colombia",
       "zona": "Rural",
-      "personas": 6,
+      "personas": 7,
       "estadoBien": "Averiado",
       "tipoBien": "Vivienda",
       "tenencia": "Ocupante",
       "visita": "NO",
       "quienVisita": "",
       "observacion": "AFECTACION DE LA VIVIENDA PAREDES AGRIETADAS Y TECHO",
-      "evacuada": "NO"
-    },
-    {
-      "hogar": "391",
-      "barrio": "San Antonio",
-      "zona": "Rural",
-      "personas": 1,
-      "estadoBien": "Averiado",
-      "tipoBien": "Vivienda",
-      "tenencia": "Propietario",
-      "visita": "NO",
-      "quienVisita": "",
-      "observacion": "AFECTACIÓN EN PAREDES, GRIETAS Y TECHAS",
       "evacuada": "NO"
     },
     {
@@ -17339,19 +17395,6 @@
       "quienVisita": "",
       "observacion": "AFECTACION VIVIENDA AGRIETAMIENTOS PARED",
       "evacuada": "NO"
-    },
-    {
-      "hogar": "521",
-      "barrio": "San Antonio",
-      "zona": "Rural",
-      "personas": 1,
-      "estadoBien": "",
-      "tipoBien": "",
-      "tenencia": "",
-      "visita": "Sin dato",
-      "quienVisita": "",
-      "observacion": "",
-      "evacuada": "Sin dato"
     },
     {
       "hogar": "522",
@@ -19331,6 +19374,10 @@
     }
   ],
   "warnings": [
-    "52 persona(s) re-digitalizada(s) en BASE-DATOS RUFE: se actualizaron sus datos de bien/tenencia/zona y se reasignaron a un hogar nuevo — el hogar original al que pertenecían puede haber quedado con menos integrantes de los reales si sus demás compañeros de hogar aún no fueron re-digitalizados."
+    "Zona inconsistente para \"Chontaduro\" (hogar 160): se mantuvo Rural, se ignoró Urbana.",
+    "Zona inconsistente para \"Chontaduro\" (hogar 186): se mantuvo Rural, se ignoró Urbana.",
+    "Zona inconsistente para \"Chontaduro\" (hogar 188): se mantuvo Rural, se ignoró Urbana.",
+    "Zona inconsistente para \"Chontaduro\" (hogar 190): se mantuvo Rural, se ignoró Urbana.",
+    "55 persona(s) re-digitalizada(s) en BASE-DATOS RUFE: se actualizaron sus datos de bien/tenencia/zona y se reasignaron a un hogar nuevo — el hogar original al que pertenecían puede haber quedado con menos integrantes de los reales si sus demás compañeros de hogar aún no fueron re-digitalizados."
   ]
 }
