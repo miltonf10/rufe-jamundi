@@ -138,5 +138,73 @@
 	{
 		"nombre": "Summary_Terranova",
 		"gid": "999888777"
+	},
+	{
+		"nombre": "Parque Natura",
+		"gid": "1041609087"
+	},
+	{
+		"nombre": "Condominio San Marino",
+		"gid": "1474533318"
+	},
+	{
+		"nombre": "Conjunto Carbonero",
+		"gid": "1113681467"
+	},
+	{
+		"nombre": "La Aurora",
+		"gid": "1801591066"
+	},
+	{
+		"nombre": "Ciudad de Dios 2",
+		"gid": "1011463945"
+	},
+	{
+		"nombre": "Villa Elvira",
+		"gid": "274236848"
+	},
+	{
+		"nombre": "Angel Maria Camacho",
+		"gid": "1150486005"
+	},
+	{
+		"nombre": "Las Acacias",
+		"gid": "584182255"
+	},
+	{
+		"nombre": "Cantabria",
+		"gid": "1857363769"
+	},
+	{
+		"nombre": "Ciudad Sur",
+		"gid": "268316575"
+	},
+	{
+		"nombre": "Portal del Saman",
+		"gid": "1635276045"
+	},
+	{
+		"nombre": "San Cayetano",
+		"gid": "839655283"
+	},
+	{
+		"nombre": "Villa Estela",
+		"gid": "607330618"
+	},
+	{
+		"nombre": "Villa Monica",
+		"gid": "825122744"
+	},
+	{
+		"nombre": "El Socorro",
+		"gid": "1149396808"
+	},
+	{
+		"nombre": "La Esperanza",
+		"gid": "1703612423"
+	},
+	{
+		"nombre": "La Arboleda",
+		"gid": "1382667104"
 	}
 ]
