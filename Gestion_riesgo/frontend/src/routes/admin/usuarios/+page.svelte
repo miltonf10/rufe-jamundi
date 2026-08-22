@@ -20,11 +20,51 @@
 	let erroresCampo = $state<Record<string, string>>({});
 	let errorModal = $state('');
 
-	let form = $state<DatosUsuario>({ nombre: '', email: '', rol: 'VISUALIZACION', activo: true, password: '' });
+	const PERFIL_VACIO = {
+		profesion: '',
+		tarjeta_profesional: '',
+		documento: '',
+		documento_de: '',
+		telefono: '',
+		direccion: ''
+	};
+
+	let form = $state<DatosUsuario>({
+		nombre: '',
+		email: '',
+		rol: 'VISUALIZACION',
+		activo: true,
+		password: '',
+		...PERFIL_VACIO
+	});
+
+	/**
+	 * Los datos del numeral 1 solo se piden a quien va a diligenciarlo.
+	 *
+	 * Enseñárselos a un administrador o a un visor sería pedir seis campos que
+	 * nunca se van a usar, y en un formulario cada campo de más es un motivo para
+	 * dejarlo a medias.
+	 */
+	const esInspector = $derived(form.rol === 'INSPECTOR');
+
+	/**
+	 * Las profesiones con tarjeta que habilitan para evaluar daño estructural.
+	 *
+	 * Vienen del servidor, de la MISMA lista que ofrece el numeral 1. Escritas
+	 * aquí a mano acabarían divergiendo, y entonces el dato precargado no
+	 * coincidiría con ninguna opción del formulario.
+	 */
+	let profesiones = $state<string[]>([]);
 	let passwordNueva = $state('');
 
-	const claseRol = (rol: string) =>
-		rol === 'ADMINISTRADOR' ? 'etiqueta--admin' : rol === 'GESTOR' ? 'etiqueta--gestor' : 'etiqueta--visor';
+	const CLASE_ROL: Record<string, string> = {
+		ADMINISTRADOR: 'etiqueta--admin',
+		GESTOR: 'etiqueta--gestor',
+		INSPECTOR: 'etiqueta--inspector',
+		VISUALIZACION: 'etiqueta--visor'
+	};
+
+	const claseRol = (rol: string) => CLASE_ROL[rol] ?? 'etiqueta--visor';
 
 	async function cargar() {
 		cargando = true;
@@ -33,6 +73,7 @@
 			const datos = await usuariosApi.listar();
 			usuarios = datos.usuarios;
 			roles = datos.roles;
+			profesiones = datos.profesiones ?? [];
 		} catch (e) {
 			error = e instanceof Error ? e.message : 'No se pudo cargar la lista de usuarios.';
 		} finally {
@@ -41,14 +82,25 @@
 	}
 
 	function abrirCrear() {
-		form = { nombre: '', email: '', rol: 'VISUALIZACION', activo: true, password: '' };
+		form = { nombre: '', email: '', rol: 'VISUALIZACION', activo: true, password: '', ...PERFIL_VACIO };
 		erroresCampo = {};
 		errorModal = '';
 		modo = { tipo: 'crear' };
 	}
 
 	function abrirEditar(u: Usuario) {
-		form = { nombre: u.nombre, email: u.email, rol: u.rol, activo: u.activo };
+		form = {
+			nombre: u.nombre,
+			email: u.email,
+			rol: u.rol,
+			activo: u.activo,
+			profesion: u.profesion ?? '',
+			tarjeta_profesional: u.tarjeta_profesional ?? '',
+			documento: u.documento ?? '',
+			documento_de: u.documento_de ?? '',
+			telefono: u.telefono ?? '',
+			direccion: u.direccion ?? ''
+		};
 		erroresCampo = {};
 		errorModal = '';
 		modo = { tipo: 'editar', usuario: u };
@@ -64,6 +116,31 @@
 	function cerrar() {
 		modo = { tipo: 'cerrado' };
 	}
+
+	/**
+	 * Escape cierra el modal, salvo mientras se está guardando: cortar a mitad de
+	 * un guardado deja al usuario sin saber si el cambio se aplicó.
+	 */
+	function alPulsar(e: KeyboardEvent) {
+		if (e.key !== 'Escape' || modo.tipo === 'cerrado' || guardando) return;
+
+		cerrar();
+		e.preventDefault();
+	}
+
+	// Con el modal abierto, la página de detrás no debe desplazarse. En el
+	// teléfono era especialmente confuso: al aparecer el teclado, el fondo se
+	// movía y el formulario parecía irse de la pantalla.
+	$effect(() => {
+		if (modo.tipo === 'cerrado') return;
+
+		const previo = document.body.style.overflow;
+		document.body.style.overflow = 'hidden';
+
+		return () => {
+			document.body.style.overflow = previo;
+		};
+	});
 
 	/** Traduce cualquier fallo de la API a los mensajes del formulario. */
 	function manejarError(e: unknown, porDefecto: string) {
@@ -92,6 +169,12 @@
 					nombre: form.nombre,
 					email: form.email,
 					rol: form.rol,
+					profesion: form.profesion,
+					tarjeta_profesional: form.tarjeta_profesional,
+					documento: form.documento,
+					documento_de: form.documento_de,
+					telefono: form.telefono,
+					direccion: form.direccion,
 					activo: form.activo
 				});
 				exito = `Usuario ${form.email} actualizado.`;
@@ -245,6 +328,8 @@
 	</div>
 {/if}
 
+<svelte:window onkeydown={alPulsar} />
+
 <!-- ── Ventanas modales ── -->
 {#if modo.tipo === 'crear' || modo.tipo === 'editar'}
 	<div class="modal-fondo" role="presentation">
@@ -286,6 +371,71 @@
 					</span>
 					{#if erroresCampo.rol}<span class="campo__error">{erroresCampo.rol}</span>{/if}
 				</label>
+
+				{#if esInspector}
+					<!--
+						Los datos del numeral 1 del formato. Guardarlos aquí es lo que
+						evita que el profesional los reescriba en cada visita; llegan
+						precargados al formulario y allí puede corregirlos.
+					-->
+					<fieldset class="perfil">
+						<legend>Datos del profesional</legend>
+						<p class="ayuda">
+							Se usan para precargar el numeral 1 del formato de inspección. Puede dejarlos en
+							blanco y completarlos después.
+						</p>
+
+						<label class="campo">
+							<span class="campo__etiqueta">Profesión</span>
+							<select class="campo__control" bind:value={form.profesion} disabled={guardando}>
+								<option value="">Sin definir</option>
+								{#each profesiones as p (p)}
+									<option value={p}>{p}</option>
+								{/each}
+							</select>
+							<span class="ayuda">
+								Debe ser una profesión con tarjeta profesional que habilite para evaluar daño
+								estructural.
+							</span>
+						</label>
+
+						<label class="campo">
+							<span class="campo__etiqueta">Tarjeta profesional</span>
+							<input class="campo__control" bind:value={form.tarjeta_profesional} disabled={guardando} />
+						</label>
+
+						<label class="campo">
+							<span class="campo__etiqueta">Cédula</span>
+							<input
+								class="campo__control"
+								inputmode="numeric"
+								bind:value={form.documento}
+								disabled={guardando}
+							/>
+						</label>
+
+						<label class="campo">
+							<span class="campo__etiqueta">Expedida en</span>
+							<input class="campo__control" bind:value={form.documento_de} disabled={guardando} />
+						</label>
+
+						<label class="campo">
+							<span class="campo__etiqueta">Teléfono</span>
+							<input
+								class="campo__control"
+								type="tel"
+								inputmode="tel"
+								bind:value={form.telefono}
+								disabled={guardando}
+							/>
+						</label>
+
+						<label class="campo">
+							<span class="campo__etiqueta">Dirección</span>
+							<input class="campo__control" bind:value={form.direccion} disabled={guardando} />
+						</label>
+					</fieldset>
+				{/if}
 
 				{#if modo.tipo === 'crear'}
 					<label class="campo">
@@ -379,6 +529,20 @@
 {/if}
 
 <style>
+	.perfil {
+		margin: 0 0 0.9rem;
+		padding: 0.8rem;
+		border: 1px solid var(--color-border);
+		border-radius: 0.6rem;
+		background: var(--color-surface-alt);
+	}
+
+	.perfil legend {
+		padding: 0 0.35rem;
+		font-size: 0.82rem;
+		font-weight: 600;
+	}
+
 	.cabecera {
 		display: flex;
 		align-items: center;

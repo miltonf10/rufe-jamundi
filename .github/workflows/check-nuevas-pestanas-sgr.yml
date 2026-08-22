@@ -1,0 +1,128 @@
+name: Revisar pestañas nuevas de BASE-DATOS RUFE (Sistema de Gestión del Riesgo)
+
+# Vigila si apareció un barrio nuevo en la hoja "BASE-DATOS RUFE" y lo publica
+# en grj.oticjamundi.com.
+#
+# ─── Por qué este workflow ya no compila ni despliega el sitio ───────────────
+#
+# Antes hacía checkout de `sistema-gestion-riesgo`, compilaba el frontend
+# ENTERO y lo subía al hosting. Eso convertía un cambio de DATOS —un barrio
+# nuevo en una hoja de cálculo— en un despliegue completo de la aplicación, con
+# dos consecuencias graves:
+#
+#   1. Publicaba el estado de UNA rama sobre producción. El 18 de agosto de 2026
+#      esto borró de producción la sección Mapas, el buscador por cédula y el
+#      resto del trabajo que vivía en otra rama sin fusionar: el sitio siguió
+#      respondiendo, pero `index.html` pasó a apuntar a un paquete que no los
+#      tenía. Nadie se enteró hasta que alguien fue a usar una pantalla.
+#   2. Un dato no debería poder tumbar código. Cada hora había una oportunidad
+#      de romper la aplicación por una razón que no tenía nada que ver con ella.
+#
+# Ahora la lista de barrios es un dato servido (`/datos/barrios-rufe.json`), no
+# una constante compilada dentro del paquete. Así que agregar un barrio es subir
+# un JSON de dos kilobytes: sin compilar, sin tocar `index.html` y sin poder
+# llevarse por delante nada de lo que haya publicado.
+#
+# El commit a la rama se conserva, porque el repositorio sigue siendo la fuente
+# de verdad de esa lista. Lo que se quitó es el despliegue del sitio completo.
+#
+# Los cron de GitHub Actions solo se disparan desde la rama por defecto, por eso
+# este archivo vive en `main` aunque opere sobre otra rama.
+
+on:
+  schedule:
+    - cron: '20 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: check-nuevas-pestanas-sgr
+  cancel-in-progress: false
+
+defaults:
+  run:
+    working-directory: Gestion_riesgo/frontend
+
+jobs:
+  revisar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: sistema-gestion-riesgo
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: Gestion_riesgo/frontend/package-lock.json
+
+      - run: npm ci
+
+      - run: npm run data:check-pestanas
+
+      - id: cambios
+        run: |
+          if git diff --quiet -- src/lib/baseDatosRufe/barrioTabs.json; then
+            echo "hay_cambios=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "hay_cambios=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Refrescar el snapshot de respaldo con el barrio nuevo
+        if: steps.cambios.outputs.hay_cambios == 'true'
+        run: npm run data:refresh
+
+      - name: Comitear y subir a sistema-gestion-riesgo
+        if: steps.cambios.outputs.hay_cambios == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/lib/baseDatosRufe/barrioTabs.json src/lib/data/rufe-fallback.json
+          git commit -m "Agregar pestaña(s) nueva(s) de BASE-DATOS RUFE detectada(s) automáticamente"
+          git push origin HEAD:sistema-gestion-riesgo
+
+      # Se sube UN archivo, no el sitio. Es toda la diferencia entre publicar un
+      # dato y volver a publicar la aplicación.
+      - name: Publicar la lista de barrios en el hosting
+        if: steps.cambios.outputs.hay_cambios == 'true'
+        env:
+          CPANEL_HOST: ${{ secrets.CPANEL_HOST }}
+          CPANEL_USER: ${{ secrets.CPANEL_USER }}
+          CPANEL_TOKEN: ${{ secrets.CPANEL_TOKEN }}
+          CPANEL_DOCROOT: /home1/gilibert/grj.oticjamundi.com
+        run: |
+          set -euo pipefail
+          AUTH="Authorization: cpanel ${CPANEL_USER}:${CPANEL_TOKEN}"
+
+          # El nombre del archivo subido es el que ve el servidor, así que se
+          # prepara con el nombre final antes de enviarlo.
+          mkdir -p publicar
+          cp src/lib/baseDatosRufe/barrioTabs.json publicar/barrios-rufe.json
+
+          curl -sf -H "$AUTH" \
+            -F "dir=${CPANEL_DOCROOT}/datos" \
+            -F "overwrite=1" \
+            -F "file-1=@publicar/barrios-rufe.json" \
+            "https://${CPANEL_HOST}/execute/Fileman/upload_files" -o upload.json
+          cat upload.json
+          python3 -c "import json,sys; d=json.load(open('upload.json')); sys.exit(0 if d.get('data',{}).get('succeeded')==1 else 1)"
+
+      # Comprobar que lo publicado es lo que se quería publicar. Sin esto, un
+      # fallo silencioso dejaría el tablero con la lista vieja sin avisar.
+      - name: Verificar lo publicado
+        if: steps.cambios.outputs.hay_cambios == 'true'
+        run: |
+          set -euo pipefail
+          curl -sf "https://grj.oticjamundi.com/datos/barrios-rufe.json" -o publicado.json
+          python3 - <<'PY'
+          import json, sys
+          local = json.load(open('src/lib/baseDatosRufe/barrioTabs.json'))
+          remoto = json.load(open('publicado.json'))
+          if {t['gid'] for t in local} != {t['gid'] for t in remoto}:
+              print(f'::error::Lo publicado no coincide: {len(local)} barrios locales, {len(remoto)} publicados.')
+              sys.exit(1)
+          print(f'{len(remoto)} barrios publicados y verificados.')
+          PY

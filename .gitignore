@@ -20,6 +20,7 @@ build/
 # Configuración de producción del backend: contiene la contraseña de MySQL.
 # La plantilla versionada es backend/config.example.php.
 Gestion_riesgo/backend/config.php
+VIVE-HELP-MANAGER/backend/config.php
 
 # Sistema operativo / editor
 .DS_Store
@@ -32,3 +33,14 @@ Thumbs.db
 npm-debug.log*
 storage/logs/
 tmp/
+
+# Otros sistemas que viven en esta misma carpeta y tienen su propio repositorio.
+# Se ignoran a propósito: el 21 de agosto de 2026 un `git add -A` los arrastró
+# enteros a un commit de Gestion_riesgo, y con ellos dos hojas de cálculo con la
+# cédula y el teléfono de 1.722 personas damnificadas, en un repositorio público.
+cuenta-conmigo/
+VIVE-HELP-MANAGER/
+
+# Caché de herramientas locales: 52 MB de índice que no es código y que GitHub
+# rechaza por tamaño.
+.codetree/

@@ -33,10 +33,36 @@ DirectoryIndex index.html
   <FilesMatch "\.(js|css|woff2)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
+
+  # Excepciones a la regla de arriba. Van DESPUÉS para que ganen.
+  #
+  # El Service Worker es un .js, pero cachearlo un año lo dejaría congelado: el
+  # navegador nunca vería una versión nueva y el envío en segundo plano se
+  # quedaría con el código del día que se desplegó. El resto de los .js sí
+  # pueden ser inmutables porque llevan el hash en el nombre; este no.
+  <FilesMatch "^service-worker\.js$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+
+  # El manifiesto cambia poco, pero un año es demasiado para algo que decide
+  # cómo se instala la aplicación.
+  <FilesMatch "\.webmanifest$">
+    Header set Cache-Control "public, max-age=3600"
+  </FilesMatch>
   # El HTML se revalida siempre para que un despliegue nuevo se vea de inmediato.
   <FilesMatch "\.html$">
     Header set Cache-Control "no-cache, must-revalidate"
   </FilesMatch>
+  # HSTS. Sin esto, quien tenga el marcador con http:// entra por HTTP: ve el
+  # aviso de "no es seguro" y, lo que de verdad importa, el navegador desactiva
+  # el Service Worker, que solo funciona en contexto seguro. El redirect 301 no
+  # basta porque actúa después de que la primera petición ya salió en claro.
+  #
+  # Un año, incluyendo subdominios. Antes de ampliarlo a la lista precargada de
+  # los navegadores hay que estar seguro de que TODO oticjamundi.com hablará
+  # HTTPS para siempre: esa decisión no se deshace en semanas.
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
   Header set X-Content-Type-Options "nosniff"
   Header set X-Frame-Options "SAMEORIGIN"
   Header set Referrer-Policy "strict-origin-when-cross-origin"

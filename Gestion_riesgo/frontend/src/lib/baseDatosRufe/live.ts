@@ -1,5 +1,5 @@
 import { parseBarrioTabCsv } from './parse';
-import { BARRIO_TABS, csvUrlFor } from './source';
+import { csvUrlFor, pestanasVigentes } from './source';
 import type { PersonRecord } from '../rufe/parse';
 
 /**
@@ -12,8 +12,12 @@ import type { PersonRecord } from '../rufe/parse';
 export async function fetchLiveBaseDatosRufe(
 	signal?: AbortSignal
 ): Promise<{ records: PersonRecord[]; warnings?: string[] }> {
+	// La lista se pide en cada carga: así un barrio nuevo aparece sin necesidad
+	// de recompilar ni redesplegar el sitio.
+	const pestanas = await pestanasVigentes(signal);
+
 	const resultados = await Promise.allSettled(
-		BARRIO_TABS.map(async (tab) => {
+		pestanas.map(async (tab) => {
 			const res = await fetch(csvUrlFor(tab.gid), { signal, cache: 'no-store' });
 			if (!res.ok) {
 				throw new Error(`"${tab.nombre}" respondió ${res.status}.`);

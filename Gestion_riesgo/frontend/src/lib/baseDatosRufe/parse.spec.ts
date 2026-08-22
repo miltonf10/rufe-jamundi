@@ -269,3 +269,29 @@ describe('parseBarrioTabCsv + buildDataset integration', () => {
 		expect(ds.barrios[0]).toMatchObject({ name: 'Jordán', zona: 'Rural' });
 	});
 });
+
+describe('dirección del predio', () => {
+	it('la lee para poder ubicar el predio en el mapa', () => {
+		const out = parseBarrioTabCsv(
+			csv([row({ hogar: '1', direccion: 'Carrera 11 # 8-26', item: '1', nombre: 'Ana', documento: '1' })]),
+			'Terranova'
+		);
+
+		expect(out[0].direccion).toBe('Carrera 11 # 8-26');
+	});
+
+	// La dirección solo la necesita la sección Mapas, así que su encabezado es
+	// opcional. Tratarlo como obligatorio haría que una pestaña sin esa columna
+	// tumbara la lectura entera de BASE-DATOS RUFE y, con ella, las cifras del
+	// tablero: dejar al municipio sin datos porque falta un dato de un mapa sería
+	// una respuesta desproporcionada.
+	it('si la pestaña no trae esa columna, no se cae: solo queda sin ubicar', () => {
+		const encabezadoSinDireccion = HEADER.replace(',Dirección,', ',Otra Cosa,');
+		const fila = row({ hogar: '1', item: '1', nombre: 'Ana', documento: '1' });
+
+		const out = parseBarrioTabCsv([encabezadoSinDireccion, fila].join('\n'), 'Terranova');
+
+		expect(out).toHaveLength(1);
+		expect(out[0].direccion).toBe('');
+	});
+});

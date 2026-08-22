@@ -1,4 +1,5 @@
 import { browser } from '$app/environment';
+import { borrarSesionGuardada } from '$lib/stores/sesionCache';
 
 /**
  * Cliente HTTP de la API.
@@ -31,6 +32,11 @@ export function guardarToken(token: string): void {
 
 export function borrarToken(): void {
 	if (browser) window.localStorage.removeItem(CLAVE_TOKEN);
+
+	// El espejo del usuario se va con el token, siempre. Separarlos dejaría al
+	// sistema arrancando sin conexión con una identidad cuya credencial ya no
+	// existe: el formulario se dibujaría y el envío fallaría después.
+	borrarSesionGuardada();
 }
 
 /** Error de la API con el estado HTTP y los errores por campo. */
@@ -100,9 +106,17 @@ async function request<T>(ruta: string, opciones: Opciones = {}): Promise<T> {
 }
 
 export const api = {
-	get: <T>(ruta: string) => request<T>(ruta),
+	// `autenticada = false` para la pre-inscripción ciudadana, que la abre
+	// alguien sin cuenta: mandar una cabecera con un token vacío haría que el
+	// servidor respondiera 401 en vez de servir la ruta pública.
+	get: <T>(ruta: string, autenticada = true) => request<T>(ruta, { autenticada }),
 	post: <T>(ruta: string, body?: unknown, autenticada = true) =>
 		request<T>(ruta, { method: 'POST', body, autenticada }),
 	put: <T>(ruta: string, body?: unknown) => request<T>(ruta, { method: 'PUT', body }),
-	delete: <T>(ruta: string) => request<T>(ruta, { method: 'DELETE' })
+	/**
+	 * Admite cuerpo: borrar una solicitud ciudadana exige mandar el motivo, y
+	 * ponerlo en la URL lo dejaría escrito en el registro de accesos del
+	 * servidor, que es justo donde no debe quedar el nombre de nadie.
+	 */
+	delete: <T>(ruta: string, body?: unknown) => request<T>(ruta, { method: 'DELETE', body })
 };

@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 use App\Core\Config;
 use App\Core\Db;
+use App\Core\Migrador;
 
 $raiz = dirname(__DIR__);
 
@@ -62,32 +63,12 @@ if (! hash_equals($claveEsperada, $claveRecibida)) {
 }
 
 try {
-    // 1. Esquema. El archivo trae varias sentencias; PDO::exec no acepta más de
-    //    una por llamada con sentencias preparadas reales, así que se separan.
-    $sql = file_get_contents($raiz.'/database/schema.sql');
-    if ($sql === false) {
-        salir(500, ['ok' => false, 'message' => 'No se encontró database/schema.sql.']);
-    }
+    // 1. Esquema. La lista de archivos y el troceo viven en Migrador, que es lo
+    //    mismo que usa migrar.php: así una instalación nueva y una ya existente
+    //    no pueden acabar con esquemas distintos.
+    Migrador::aplicar($raiz.'/database');
 
-    // Los comentarios se quitan ANTES de partir por ';'. Si se filtrara por
-    // "la sentencia empieza con --", se descartaría todo bloque precedido por
-    // un comentario, que aquí es prácticamente cada CREATE TABLE.
-    $sinComentarios = preg_replace('/^\s*--.*$/m', '', $sql) ?? $sql;
-
-    $sentencias = array_filter(
-        array_map('trim', explode(';', $sinComentarios)),
-        static fn (string $s): bool => $s !== ''
-    );
-
-    $pdo = Db::conn();
-    foreach ($sentencias as $sentencia) {
-        $pdo->exec($sentencia);
-    }
-
-    $tablas = array_map(
-        static fn (array $f): string => (string) reset($f),
-        Db::all('SHOW TABLES')
-    );
+    $tablas = Migrador::tablas();
 
     // 2. Primer administrador. Solo si aún no hay ninguno: este archivo no debe
     //    poder usarse para inyectar un administrador en un sistema ya en uso.

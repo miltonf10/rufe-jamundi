@@ -13,6 +13,7 @@ function hogar(overrides: Partial<Hogar>): Hogar {
 		hogar: '1',
 		barrio: 'Terranova',
 		zona: 'Urbana',
+		direccion: '',
 		personas: 1,
 		estadoBien: '',
 		tipoBien: '',

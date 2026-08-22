@@ -235,7 +235,8 @@ final class Github
             $cuerpo = curl_exec($ch);
             $estado = (int) curl_getinfo($ch, CURLINFO_HTTP_CODE);
             $errorCurl = curl_error($ch);
-            curl_close($ch);
+            // curl_close() no se llama: desde PHP 8.0 no hace nada y en 8.5 avisa
+            // como obsoleta. El manejador se libera solo al salir de ámbito.
 
             if ($cuerpo === false) {
                 throw new \RuntimeException('no se pudo contactar a GitHub ('.$errorCurl.')');

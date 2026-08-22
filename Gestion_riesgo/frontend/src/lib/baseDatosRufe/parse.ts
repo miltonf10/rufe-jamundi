@@ -41,7 +41,21 @@ const HEADER_NAMES = {
 	observacion: 'Observaciones'
 } as const;
 
-type ColumnIndex = Record<keyof typeof HEADER_NAMES, number>;
+/** Encabezados que se aprovechan si están, pero cuya ausencia no es motivo para
+ * tumbar nada.
+ *
+ * La dirección solo la necesita la sección Mapas. Tratarla como obligatoria
+ * haría que una pestaña sin esa columna hiciera fallar la lectura entera de
+ * BASE-DATOS RUFE y, con ella, el tablero — dejar el municipio sin cifras
+ * porque falta un dato de un mapa sería una respuesta desproporcionada. Si no
+ * está, ese hogar simplemente no se puede ubicar, que es justo lo que la
+ * pantalla del mapa ya sabe contar. */
+const HEADER_NAMES_OPCIONALES = {
+	direccion: 'Dirección'
+} as const;
+
+type ColumnIndex = Record<keyof typeof HEADER_NAMES, number> &
+	Partial<Record<keyof typeof HEADER_NAMES_OPCIONALES, number>>;
 
 function resolveColumnIndex(headerRow: string[], nombreTab: string): ColumnIndex {
 	const normalizado = headerRow.map((h) => h.trim());
@@ -60,6 +74,16 @@ function resolveColumnIndex(headerRow: string[], nombreTab: string): ColumnIndex
 			`La pestaña "${nombreTab}" de BASE-DATOS RUFE no tiene la(s) columna(s) esperada(s): ${faltantes.join(', ')}. ¿Cambió el encabezado?`
 		);
 	}
+
+	// Las opcionales se buscan igual, pero su ausencia no interrumpe nada.
+	for (const [campo, encabezado] of Object.entries(HEADER_NAMES_OPCIONALES) as [
+		keyof typeof HEADER_NAMES_OPCIONALES,
+		string
+	][]) {
+		const idx = normalizado.indexOf(encabezado);
+		if (idx !== -1) resultado[campo] = idx;
+	}
+
 	return resultado;
 }
 
@@ -172,6 +196,9 @@ export function parseBarrioTabCsv(csvText: string, nombreTab: string): PersonRec
 			hogar,
 			corregimiento,
 			barrio,
+			// La columna puede no existir en una pestaña: entonces el hogar queda
+			// sin dirección y el mapa lo cuenta como no ubicado.
+			direccion: COL.direccion === undefined ? '' : clean(r[COL.direccion]),
 			documento,
 			// "Ubicación del Bien" es la zona del predio puntual, no la del
 			// corregimiento en general (un corregimiento suele tener cabecera

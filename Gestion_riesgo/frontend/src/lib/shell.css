@@ -301,10 +301,36 @@ h3 {
 	z-index: 20;
 	display: flex;
 	align-items: center;
-	gap: 0.8rem;
+
+	/* Hueco base pequeño: el escudo y el nombre forman una sola unidad visual,
+	   y el botón de menú se separa aparte con su propio margen. */
+	gap: 0.55rem;
 	padding: 0.7rem 1rem;
 	background: var(--color-surface);
 	border-bottom: 1px solid var(--color-border);
+}
+
+/* El escudo de la Alcaldía acompaña al nombre en la barra superior. Va con
+ * alto fijo y ancho automático: el blasón es más alto que ancho y forzarle un
+ * cuadrado lo deformaría. `flex: 0 0 auto` evita que se comprima cuando el
+ * título es largo — en un teléfono, «Registro Unifamiliar de Emergencias»
+ * empujaría hasta aplastarlo. */
+.barra__escudo {
+	display: block;
+	flex: 0 0 auto;
+	height: 28px;
+	width: auto;
+}
+
+/* La barra recibe el foco al pulsar «Volver arriba», pero no es un control:
+ * no debe dibujar un anillo cuando eso ocurre con el ratón. */
+.barra:focus {
+	outline: none;
+}
+
+.barra:focus-visible {
+	outline: 2px solid var(--color-primary);
+	outline-offset: -2px;
 }
 
 /* Este botón es la única forma de llegar al resto del sistema, así que está
@@ -312,6 +338,9 @@ h3 {
 .barra__menu-btn {
 	display: grid;
 	place-items: center;
+
+	/* Separa el botón del par escudo + nombre, que sí van juntos. */
+	margin-right: 0.3rem;
 	width: 38px;
 	height: 38px;
 	flex: 0 0 auto;
@@ -352,6 +381,9 @@ h3 {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
+	/* Un elemento flex no baja de su contenido salvo que se le permita: sin
+	   esto, un título largo ensancha la barra en vez de recortarse. */
+	min-width: 0;
 }
 
 @media (max-width: 600px) {
@@ -365,6 +397,24 @@ h3 {
 	padding: 1.25rem;
 	flex: 1;
 	min-width: 0;
+
+	/*
+	 * Red de seguridad contra el desbordamiento horizontal.
+	 *
+	 * Basta un elemento difícil de partir —el nombre de archivo de treinta
+	 * dígitos que pone la cámara de Android, una tabla ancha, una URL larga—
+	 * para que toda la página se vuelva más ancha que la pantalla del teléfono.
+	 * El síntoma es desconcertante: no se rompe lo que desborda, sino que TODO
+	 * el contenido queda recortado por la derecha.
+	 *
+	 * Se usa `clip` y no `hidden` a propósito: `hidden` crea un contenedor de
+	 * desplazamiento y rompería el `position: sticky` de la barra superior.
+	 * `clip` recorta sin crear ese contenedor.
+	 *
+	 * Lo que sí necesita ancho propio —las tablas— se desplaza dentro de
+	 * `.tabla-envoltura`, que tiene su propio `overflow-x: auto`.
+	 */
+	overflow-x: clip;
 }
 
 .pagina--sin-relleno {
@@ -486,6 +536,11 @@ h3 {
 	color: var(--color-success);
 }
 
+.etiqueta--inspector {
+	background: var(--color-warning-bg, var(--color-surface-alt));
+	color: var(--nivel-moderado);
+}
+
 .etiqueta--visor {
 	background: var(--color-surface-alt);
 	color: var(--color-muted);
@@ -590,20 +645,29 @@ h3 {
 
 .aviso--error {
 	background: var(--color-danger-bg);
-	color: #8f271c;
-	border-color: #f0c2bc;
+	color: var(--aviso-error-texto);
+	border-color: var(--aviso-error-borde);
 }
 
 .aviso--ok {
 	background: var(--color-success-bg);
-	color: #146643;
-	border-color: #b6e0cd;
+	color: var(--aviso-ok-texto);
+	border-color: var(--aviso-ok-borde);
 }
 
 .aviso--info {
 	background: var(--color-info-bg);
 	color: var(--color-primary-dark);
-	border-color: #bcd9f6;
+	border-color: var(--aviso-info-borde);
+}
+
+/* Aviso de advertencia: algo que hay que saber pero que no impide seguir. Usa
+   los tokens de alerta, que sí están definidos en los tres temas —claro,
+   oscuro y el del sistema—, no colores escritos a mano. */
+.aviso--alerta {
+	background: var(--aviso-alerta-fondo);
+	color: var(--aviso-alerta-texto);
+	border-color: var(--aviso-alerta-borde);
 }
 
 .vacio {
@@ -643,10 +707,28 @@ h3 {
 	position: fixed;
 	inset: 0;
 	background: rgb(6 20 40 / 55%);
-	display: grid;
-	place-items: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	padding: 1rem;
 	z-index: 80;
+}
+
+/*
+ * En el teléfono la ventana se mide de otra forma.
+ *
+ * `vh` se refiere SIEMPRE a la pantalla con la barra del navegador escondida,
+ * aunque esté a la vista. Así que un modal de `90vh` puede ser más alto que lo
+ * que de verdad se ve, y lo primero que se pierde por abajo son los botones de
+ * Guardar y Cancelar: el formulario parecía no tener salida.
+ *
+ * `dvh` mide lo que hay de verdad en cada momento, barra incluida y teclado
+ * incluido. Se deja `vh` primero como respaldo para navegadores viejos.
+ */
+@supports (height: 100dvh) {
+	.modal-fondo {
+		height: 100dvh;
+	}
 }
 
 .modal {
@@ -655,14 +737,29 @@ h3 {
 	width: min(520px, 100%);
 	max-height: 90vh;
 	overflow-y: auto;
+
+	/* Sin esto, al llegar al final del modal el desplazamiento sigue en la página
+	   de detrás: se cierra el teclado y uno acaba en otro punto de la pantalla. */
+	overscroll-behavior: contain;
+
 	padding: 1.35rem;
 	box-shadow: 0 18px 50px rgb(10 30 60 / 28%);
+}
+
+@supports (max-height: 90dvh) {
+	.modal {
+		max-height: 90dvh;
+	}
 }
 
 .modal__titulo {
 	margin: 0 0 1rem;
 	font-size: 1.1rem;
 	font-weight: 700;
+
+	/* «Editar a Fulanito de Tal y Tal» o un correo largo desbordaban el modal a lo
+	   ancho en una pantalla estrecha. */
+	overflow-wrap: anywhere;
 }
 
 .modal__acciones {
@@ -671,4 +768,261 @@ h3 {
 	justify-content: flex-end;
 	margin-top: 1.2rem;
 	flex-wrap: wrap;
+}
+
+/* En pantalla estrecha los botones ocupan el ancho y se apilan, en vez de
+   quedar apretados en una esquina donde es fácil pulsar el que no es. */
+@media (max-width: 480px) {
+	.modal {
+		padding: 1.1rem;
+	}
+
+	.modal__acciones {
+		flex-direction: column-reverse;
+		gap: 0.5rem;
+	}
+
+	.modal__acciones .boton {
+		width: 100%;
+		justify-content: center;
+	}
+}
+
+/* ── Formularios largos (RUFE ciudadano) ─────────────────────────────────────
+   Lo que sigue lo usa el formulario público, pensado para un teléfono de gama
+   baja: controles de al menos 44 px de alto (el mínimo cómodo para el pulgar,
+   según la guía de accesibilidad de la WCAG para objetivos táctiles) y texto que
+   no obliga a hacer zoom. */
+
+.campo__ayuda {
+	display: block;
+	margin-bottom: 0.35rem;
+	font-size: 0.78rem;
+	color: var(--color-muted);
+	font-weight: 400;
+}
+
+/* El error no se señala solo con color: además del borde rojo, el mensaje va
+   escrito bajo el campo y el control queda marcado con aria-invalid. */
+.campo--invalido .campo__control {
+	border-color: var(--color-danger);
+	border-width: 2px;
+}
+
+.campo__requerido {
+	color: var(--color-danger);
+	margin-left: 0.15rem;
+}
+
+.campo--grande .campo__control {
+	min-height: 44px;
+	font-size: 1rem;
+}
+
+/* Indicador de progreso por pasos. */
+.pasos {
+	margin-bottom: 1.25rem;
+}
+
+.pasos__texto {
+	display: flex;
+	justify-content: space-between;
+	gap: 0.75rem;
+	font-size: 0.8rem;
+	color: var(--color-muted);
+	margin-bottom: 0.4rem;
+}
+
+.pasos__actual {
+	font-weight: 600;
+	color: var(--color-text);
+}
+
+.pasos__barra {
+	height: 6px;
+	border-radius: var(--radius-full);
+	background: var(--color-surface-alt);
+	overflow: hidden;
+}
+
+.pasos__avance {
+	height: 100%;
+	border-radius: var(--radius-full);
+	background: var(--gradient-brand);
+	transition: width var(--transition);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.pasos__avance {
+		transition: none;
+	}
+}
+
+/* Opciones grandes de selección única (radio o casilla) para dedo pulgar. */
+.opciones {
+	display: grid;
+	gap: 0.5rem;
+	border: 0;
+	padding: 0;
+	margin: 0;
+}
+
+.opcion {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.6rem;
+	padding: 0.7rem 0.8rem;
+	min-height: 44px;
+	border: 1px solid var(--color-border-strong);
+	border-radius: 10px;
+	background: var(--color-surface);
+	cursor: pointer;
+	font-size: 0.92rem;
+	line-height: 1.35;
+}
+
+.opcion:hover {
+	background: var(--color-surface-alt);
+}
+
+.opcion:focus-within {
+	outline: 2px solid var(--color-primary);
+	outline-offset: 1px;
+}
+
+.opcion input {
+	margin: 0.15rem 0 0;
+	width: 1.05rem;
+	height: 1.05rem;
+	accent-color: var(--color-primary);
+	flex: none;
+}
+
+/* Seleccionado: no solo cambia el color de fondo, también engorda el borde, para
+   que se distinga sin percibir color. */
+.opcion--activa {
+	border-color: var(--color-primary);
+	border-width: 2px;
+	background: var(--color-info-bg);
+	padding: calc(0.7rem - 1px) calc(0.8rem - 1px);
+}
+
+.opcion__texto {
+	display: block;
+}
+
+.opcion__nota {
+	display: block;
+	font-size: 0.78rem;
+	color: var(--color-muted);
+	margin-top: 0.1rem;
+}
+
+/* Bloque de «tomar la ubicación aquí». Lo usan los dos formatos de campo —el
+   censo y la inspección—, así que vive aquí y no en una de las dos páginas: la
+   copia de la otra se habría quedado atrás en el primer retoque. */
+.ubicacion {
+margin: 1.2rem 0;
+padding: 0.9rem;
+border: 1px solid var(--color-border);
+border-radius: 10px;
+background: var(--color-surface);
+}
+
+.ubicacion__titulo {
+margin: 0 0 0.25rem;
+font-size: 0.86rem;
+font-weight: 600;
+}
+
+.ubicacion__ayuda {
+margin: 0 0 0.7rem;
+font-size: 0.78rem;
+color: var(--color-muted);
+}
+
+.ubicacion__valor {
+display: flex;
+align-items: center;
+gap: 0.3rem;
+margin: 0 0 0.6rem;
+font-size: 0.84rem;
+color: var(--color-success);
+}
+
+.ubicacion__estado {
+margin: 0.5rem 0 0;
+min-height: 1rem;
+font-size: 0.78rem;
+color: var(--color-muted);
+}
+
+
+/* Aviso de versión nueva. Va bajo la barra, sin taparla: informa, no interrumpe.
+   Recargar es decisión de quien está usando el sistema, que puede estar a mitad
+   de una ficha. */
+.aviso-version {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 0.6rem;
+	margin: 0;
+	padding: 0.55rem 1rem;
+	background: var(--aviso-info-fondo, var(--color-surface-alt));
+	border-bottom: 1px solid var(--color-border);
+	font-size: 0.85rem;
+}
+
+/* Franja de «sin conexión». Va bajo la barra, como el aviso de versión, y con
+   los tonos de alerta —no de error—: quedarse sin señal en una vereda es lo
+   esperado, no una avería. Lo que tiene que transmitir es que se puede seguir
+   trabajando. */
+.aviso-sin-red {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	margin: 0;
+	padding: 0.55rem 1rem;
+	background: var(--aviso-alerta-fondo);
+	color: var(--aviso-alerta-texto);
+	border-bottom: 1px solid var(--aviso-alerta-borde);
+	font-size: 0.85rem;
+	text-align: center;
+}
+
+/* Pantalla de las secciones que sí necesitan servidor. Explica y ofrece salida:
+   dejar a alguien en un callejón sin fondo fue justo el fallo que esto corrige. */
+.sin-red {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.7rem;
+	max-width: 32rem;
+	margin: 3rem auto;
+	padding: 0 1rem;
+	text-align: center;
+	color: var(--color-muted);
+}
+
+.sin-red h2 {
+	margin: 0;
+	font-size: 1.05rem;
+	color: var(--color-text);
+}
+
+.sin-red p {
+	margin: 0;
+	font-size: 0.9rem;
+	line-height: 1.5;
+}
+
+.sin-red__nota {
+	font-size: 0.83rem;
+}
+
+.sin-red .boton {
+	margin-top: 0.4rem;
 }

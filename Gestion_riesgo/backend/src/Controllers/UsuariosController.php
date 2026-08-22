@@ -10,6 +10,7 @@ use App\Core\Db;
 use App\Core\HttpError;
 use App\Core\Request;
 use App\Core\Response;
+use App\Inspeccion\Catalogos as CatalogosInspeccion;
 use PDOException;
 
 /**
@@ -21,7 +22,26 @@ use PDOException;
  */
 final class UsuariosController
 {
-    private const CAMPOS = 'id, nombre, email, rol, activo, ultimo_acceso, creado_en, actualizado_en';
+    private const CAMPOS = 'id, nombre, email, rol, activo, ultimo_acceso, creado_en, actualizado_en, '
+        .'profesion, tarjeta_profesional, documento, documento_de, telefono, direccion';
+
+    /**
+     * Datos propios del profesional que inspecciona viviendas.
+     *
+     * Son los del numeral 1 del formato. Viven en su usuario porque son suyos y
+     * no de la vivienda: sin esto los reescribe a mano, en un teléfono y de pie,
+     * en cada visita.
+     *
+     * @var list<string>
+     */
+    private const PERFIL = [
+        'profesion',
+        'tarjeta_profesional',
+        'documento',
+        'documento_de',
+        'telefono',
+        'direccion',
+    ];
 
     public function listar(Request $req): void
     {
@@ -30,6 +50,11 @@ final class UsuariosController
         Response::ok([
             'usuarios' => array_map([$this, 'presentar'], $usuarios),
             'roles'    => $this->catalogoRoles(),
+            // La lista de profesiones viaja desde aquí, y no escrita otra vez en
+            // TypeScript, para que sea la MISMA que ofrece el numeral 1 del
+            // formato. Dos listas parecidas acaban divergiendo, y entonces el
+            // dato precargado no coincide con ninguna opción del formulario.
+            'profesiones' => array_values(CatalogosInspeccion::PROFESIONES),
         ]);
     }
 
@@ -58,15 +83,17 @@ final class UsuariosController
 
         try {
             Db::exec(
-                'INSERT INTO usuarios (nombre, email, password_hash, rol, activo)
-                 VALUES (:nombre, :email, :hash, :rol, :activo)',
-                [
+                'INSERT INTO usuarios (nombre, email, password_hash, rol, activo,
+                    profesion, tarjeta_profesional, documento, documento_de, telefono, direccion)
+                 VALUES (:nombre, :email, :hash, :rol, :activo,
+                    :profesion, :tarjeta_profesional, :documento, :documento_de, :telefono, :direccion)',
+                array_merge([
                     'nombre' => $nombre,
                     'email'  => $email,
                     'hash'   => password_hash($password, PASSWORD_BCRYPT),
                     'rol'    => $rol,
                     'activo' => $activo,
-                ]
+                ], $this->perfil($req))
             );
         } catch (PDOException $e) {
             // 23000 = violación de la clave única del correo. Se traduce a un
@@ -122,9 +149,17 @@ final class UsuariosController
 
         try {
             Db::exec(
-                'UPDATE usuarios SET nombre = :nombre, email = :email, rol = :rol, activo = :activo
+                'UPDATE usuarios SET nombre = :nombre, email = :email, rol = :rol, activo = :activo,
+                    profesion = :profesion, tarjeta_profesional = :tarjeta_profesional,
+                    documento = :documento, documento_de = :documento_de,
+                    telefono = :telefono, direccion = :direccion
                   WHERE id = :id',
-                ['nombre' => $nombre, 'email' => $email, 'rol' => $rol, 'activo' => $activo, 'id' => $id]
+                array_merge(
+                    ['nombre' => $nombre, 'email' => $email, 'rol' => $rol, 'activo' => $activo, 'id' => $id],
+                    // Se parte de lo que ya tiene: una edición que solo cambie el
+                    // nombre no puede borrarle la tarjeta profesional.
+                    $this->perfil($req, $usuario)
+                )
             );
         } catch (PDOException $e) {
             if ($e->getCode() === '23000') {
@@ -228,6 +263,29 @@ final class UsuariosController
         return $errores;
     }
 
+
+    /**
+     * Los seis campos del perfil, tal como vengan.
+     *
+     * No se exigen ni siquiera para el inspector: un usuario a medio completar
+     * es preferible a no poder crearlo, y quien llena el formato ve el numeral 1
+     * precargado y puede corregirlo allí mismo. Lo que sí se hace es no guardar
+     * cadenas vacías, para que «no lo sé» y «está en blanco» sean la misma cosa.
+     *
+     * @return array<string,string|null>
+     */
+    private function perfil(Request $req, array $previo = []): array
+    {
+        $salida = [];
+
+        foreach (self::PERFIL as $campo) {
+            $valor = trim($req->texto($campo, (string) ($previo[$campo] ?? '')));
+            $salida[$campo] = $valor === '' ? null : mb_substr($valor, 0, 160);
+        }
+
+        return $salida;
+    }
+
     private function presentar(array $u): array
     {
         return [
@@ -239,6 +297,15 @@ final class UsuariosController
             'activo'         => (bool) $u['activo'],
             'ultimo_acceso'  => $u['ultimo_acceso'],
             'creado_en'      => $u['creado_en'],
+            // El perfil viaja siempre, aunque el rol no sea inspector: si a
+            // alguien se le cambia el rol y luego se le devuelve, sus datos
+            // siguen ahí en vez de haberse perdido por el camino.
+            'profesion'           => $u['profesion'] ?? null,
+            'tarjeta_profesional' => $u['tarjeta_profesional'] ?? null,
+            'documento'           => $u['documento'] ?? null,
+            'documento_de'        => $u['documento_de'] ?? null,
+            'telefono'            => $u['telefono'] ?? null,
+            'direccion'           => $u['direccion'] ?? null,
         ];
     }
 

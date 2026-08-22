@@ -1,0 +1,164 @@
+{
+  "_porque": [
+    "La misma tabla de casos la ejecutan las dos implementaciones del cálculo del",
+    "combo: backend/src/Inspeccion/BancoMateriales.php y",
+    "frontend/src/lib/inspeccion-form/combo.ts. El servidor manda —su resultado es",
+    "el que se guarda— y el navegador solo replica para mostrarlo en vivo mientras",
+    "se llena la tabla del 5.4.",
+    "",
+    "Existe porque de este cálculo depende una entrega de materiales públicos. Si",
+    "alguien toca una de las dos y no la otra, falla una de las dos suites; sin",
+    "esta tabla, divergirían en silencio y el papel diría una cosa y la pantalla",
+    "otra. Ya pasó una vez en este proyecto con el parser de las hojas de cálculo.",
+    "",
+    "«elemento» es cuál de los estructurales decidió el nivel: el motivo que se",
+    "imprime en el expediente sale de ahí, así que también tiene que coincidir."
+  ],
+  "casos": [
+    {
+      "nombre": "mampostería, daño leve en la estructura",
+      "sistema": "MAMPOSTERIA",
+      "danos": { "VIGAS_COLUMNAS": "LEVE" },
+      "espera": { "combo": "COMBO_1", "nivel": "LEVE", "elemento": "VIGAS_COLUMNAS" }
+    },
+    {
+      "nombre": "mampostería, daño moderado",
+      "sistema": "MAMPOSTERIA",
+      "danos": { "VIGAS_COLUMNAS": "MODERADO", "MUROS_CARGA": "LEVE" },
+      "espera": { "combo": "COMBO_2", "nivel": "MODERADO", "elemento": "VIGAS_COLUMNAS" }
+    },
+    {
+      "nombre": "mampostería, daño severo",
+      "sistema": "MAMPOSTERIA",
+      "danos": { "VIGAS_COLUMNAS": "LEVE", "MUROS_CARGA": "SEVERO" },
+      "espera": { "combo": "COMBO_3", "nivel": "SEVERO", "elemento": "MUROS_CARGA" }
+    },
+    {
+      "nombre": "mampostería, la estructura colapsó sin marcar la casilla global",
+      "sistema": "MAMPOSTERIA",
+      "danos": { "MUROS_CARGA": "COLAPSO_TOTAL" },
+      "espera": { "combo": "COLAPSO_MAMPOSTERIA", "nivel": "COLAPSO_TOTAL", "elemento": "MUROS_CARGA" }
+    },
+    {
+      "nombre": "madera, daño leve",
+      "sistema": "MADERA",
+      "danos": { "VIGAS_COLUMNAS": "LEVE" },
+      "espera": { "combo": "COMBO_4", "nivel": "LEVE", "elemento": "VIGAS_COLUMNAS" }
+    },
+    {
+      "nombre": "madera, daño moderado",
+      "sistema": "MADERA",
+      "danos": { "VIGAS_COLUMNAS": "MODERADO" },
+      "espera": { "combo": "COMBO_5", "nivel": "MODERADO", "elemento": "VIGAS_COLUMNAS" }
+    },
+    {
+      "nombre": "madera, daño severo",
+      "sistema": "MADERA",
+      "danos": { "VIGAS_COLUMNAS": "SEVERO" },
+      "espera": { "combo": "COMBO_6", "nivel": "SEVERO", "elemento": "VIGAS_COLUMNAS" }
+    },
+    {
+      "nombre": "madera, colapso de la estructura",
+      "sistema": "MADERA",
+      "danos": { "VIGAS_COLUMNAS": "COLAPSO_TOTAL" },
+      "espera": { "combo": "COLAPSO_MADERA", "nivel": "COLAPSO_TOTAL", "elemento": "VIGAS_COLUMNAS" }
+    },
+
+    {
+      "nombre": "la cubierta destruida NO arrastra el combo",
+      "_porque": "Es la razón de ser de la regla del numeral 6. Entregar un combo severo aquí sería entregar materiales que la casa no necesita.",
+      "sistema": "MAMPOSTERIA",
+      "danos": {
+        "VIGAS_COLUMNAS": "LEVE",
+        "MUROS_CARGA": "LEVE",
+        "CUBIERTA": "COLAPSO_TOTAL",
+        "HIDROSANITARIAS": "SEVERO",
+        "ELECTRICAS": "SEVERO"
+      },
+      "espera": { "combo": "COMBO_1", "nivel": "LEVE", "elemento": "VIGAS_COLUMNAS" }
+    },
+    {
+      "nombre": "solo daños no estructurales: no corresponde combo",
+      "_porque": "El banco de materiales repara estructura. Sin daño estructural no hay combo, y hay que decirlo en vez de devolver un vacío que parezca una avería.",
+      "sistema": "MAMPOSTERIA",
+      "danos": { "CUBIERTA": "SEVERO", "MUROS_DIVISORIOS": "MODERADO", "PLACA_PISO": "SEVERO" },
+      "espera": { "combo": null, "nivel": null, "elemento": null }
+    },
+    {
+      "nombre": "vivienda sin ningún daño",
+      "sistema": "MADERA",
+      "danos": {},
+      "espera": { "combo": null, "nivel": null, "elemento": null }
+    },
+    {
+      "nombre": "los elementos sin daño se envían como null y no cuentan",
+      "sistema": "MAMPOSTERIA",
+      "danos": { "VIGAS_COLUMNAS": null, "MUROS_CARGA": "MODERADO" },
+      "espera": { "combo": "COMBO_2", "nivel": "MODERADO", "elemento": "MUROS_CARGA" }
+    },
+
+    {
+      "nombre": "con empate manda el primero del formato",
+      "_porque": "El motivo que se imprime tiene que ser estable, no depender del orden en que se recorrió un arreglo.",
+      "sistema": "MAMPOSTERIA",
+      "danos": { "VIGAS_COLUMNAS": "SEVERO", "MUROS_CARGA": "SEVERO" },
+      "espera": { "combo": "COMBO_3", "nivel": "SEVERO", "elemento": "VIGAS_COLUMNAS" }
+    },
+    {
+      "nombre": "el peor estructural manda aunque venga en segundo lugar",
+      "sistema": "MAMPOSTERIA",
+      "danos": { "VIGAS_COLUMNAS": "MODERADO", "MUROS_CARGA": "COLAPSO_TOTAL" },
+      "espera": { "combo": "COLAPSO_MAMPOSTERIA", "nivel": "COLAPSO_TOTAL", "elemento": "MUROS_CARGA" }
+    },
+
+    {
+      "nombre": "la casilla de colapso total manda sobre toda la tabla",
+      "_porque": "El formato dice «si la vivienda sufrió colapso estructural total, marque solo esta casilla».",
+      "sistema": "MAMPOSTERIA",
+      "colapso_total": true,
+      "danos": { "VIGAS_COLUMNAS": "LEVE" },
+      "espera": { "combo": "COLAPSO_MAMPOSTERIA", "nivel": "COLAPSO_TOTAL", "elemento": null }
+    },
+    {
+      "nombre": "colapso total en madera, sin ningún daño registrado",
+      "sistema": "MADERA",
+      "colapso_total": true,
+      "danos": {},
+      "espera": { "combo": "COLAPSO_MADERA", "nivel": "COLAPSO_TOTAL", "elemento": null }
+    },
+    {
+      "nombre": "colapso total aunque solo se hubieran marcado daños no estructurales",
+      "sistema": "MADERA",
+      "colapso_total": true,
+      "danos": { "CUBIERTA": "LEVE" },
+      "espera": { "combo": "COLAPSO_MADERA", "nivel": "COLAPSO_TOTAL", "elemento": null }
+    },
+
+    {
+      "nombre": "en madera no se busca un muro de carga que no existe",
+      "_porque": "«Muros de Carga» es terminología de mampostería. En madera el único estructural es vigas y columnas.",
+      "sistema": "MADERA",
+      "danos": { "MUROS_MADERA": "COLAPSO_TOTAL", "ENTREPISOS": "SEVERO", "VIGAS_COLUMNAS": "LEVE" },
+      "espera": { "combo": "COMBO_4", "nivel": "LEVE", "elemento": "VIGAS_COLUMNAS" }
+    },
+    {
+      "nombre": "un muro de carga enviado en una vivienda de madera se ignora",
+      "_porque": "No es un elemento de ese sistema; aceptarlo dejaría entrar un combo por una fila que el formato no tiene.",
+      "sistema": "MADERA",
+      "danos": { "MUROS_CARGA": "SEVERO", "VIGAS_COLUMNAS": "LEVE" },
+      "espera": { "combo": "COMBO_4", "nivel": "LEVE", "elemento": "VIGAS_COLUMNAS" }
+    },
+    {
+      "nombre": "un elemento desconocido no altera el resultado",
+      "sistema": "MAMPOSTERIA",
+      "danos": { "PISCINA": "COLAPSO_TOTAL", "VIGAS_COLUMNAS": "MODERADO" },
+      "espera": { "combo": "COMBO_2", "nivel": "MODERADO", "elemento": "VIGAS_COLUMNAS" }
+    },
+    {
+      "nombre": "sin sistema constructivo no hay combo que calcular",
+      "sistema": "",
+      "danos": { "VIGAS_COLUMNAS": "SEVERO" },
+      "espera": { "combo": null, "nivel": null, "elemento": null }
+    }
+  ]
+}

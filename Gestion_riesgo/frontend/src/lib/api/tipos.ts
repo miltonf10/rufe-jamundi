@@ -9,6 +9,19 @@ export type Usuario = {
 	activo: boolean;
 	ultimo_acceso: string | null;
 	creado_en: string;
+	/**
+	 * Datos propios del profesional que inspecciona viviendas.
+	 *
+	 * Son los del numeral 1 del formato. Viven en el usuario porque son suyos y
+	 * no de la vivienda: sin esto se reescriben a mano, en un teléfono y de pie,
+	 * en cada visita.
+	 */
+	profesion?: string | null;
+	tarjeta_profesional?: string | null;
+	documento?: string | null;
+	documento_de?: string | null;
+	telefono?: string | null;
+	direccion?: string | null;
 };
 
 export type UsuarioSesion = {
@@ -17,6 +30,19 @@ export type UsuarioSesion = {
 	email: string;
 	rol: Rol;
 	capacidades: string[];
+	/**
+	 * Datos propios del profesional que inspecciona viviendas.
+	 *
+	 * Son los del numeral 1 del formato. Viven en el usuario porque son suyos y
+	 * no de la vivienda: sin esto se reescriben a mano, en un teléfono y de pie,
+	 * en cada visita.
+	 */
+	profesion?: string | null;
+	tarjeta_profesional?: string | null;
+	documento?: string | null;
+	documento_de?: string | null;
+	telefono?: string | null;
+	direccion?: string | null;
 };
 
 export type RolCatalogo = {

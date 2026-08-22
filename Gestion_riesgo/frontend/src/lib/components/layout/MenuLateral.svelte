@@ -3,6 +3,7 @@
 	import logo from '$lib/assets/logo-jamundi.svg';
 	import { menuParaRol, esActivo, ETIQUETA_ROL, type Seccion } from '$lib/navigation';
 	import { sesion } from '$lib/stores/sesion.svelte';
+	import BotonInstalar from './BotonInstalar.svelte';
 
 	type Props = {
 		rutaActual: string;
@@ -117,6 +118,11 @@
 					</div>
 				</div>
 			</div>
+			<!-- Instalada, Android le da al sistema garantías de almacenamiento mucho
+			     mejores: deja de ser una pestaña que el navegador puede desalojar
+			     llevándose las fichas que aún no se han enviado. -->
+			<BotonInstalar />
+
 			<button class="menu__salir" type="button" onclick={onSalir} tabindex={abierto ? 0 : -1}>
 				<LogOut size={16} aria-hidden="true" />
 				Cerrar sesión

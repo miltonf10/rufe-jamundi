@@ -19,14 +19,41 @@ final class Auth
     public const GESTOR        = 'GESTOR';
     public const VISUALIZACION = 'VISUALIZACION';
 
-    /** Todos los roles válidos, en orden de mayor a menor privilegio. */
-    public const ROLES = [self::ADMINISTRADOR, self::GESTOR, self::VISUALIZACION];
+    /**
+     * El profesional que evalúa las viviendas: ingeniero o arquitecto con
+     * tarjeta. Suele ser personal contratado para la emergencia, así que su
+     * acceso llega hasta el formato de inspección y no más allá — darle Gestor
+     * para que pudiera trabajar le abría el censo entero y el mapa.
+     */
+    public const INSPECTOR = 'INSPECTOR';
 
-    /** Roles que pueden escribir datos. */
+    /** Todos los roles válidos, en orden de mayor a menor privilegio. */
+    public const ROLES = [self::ADMINISTRADOR, self::GESTOR, self::INSPECTOR, self::VISUALIZACION];
+
+    /** Roles que pueden escribir datos del censo y decidir sobre las fichas. */
     public const ESCRITURA = [self::ADMINISTRADOR, self::GESTOR];
 
-    /** Cualquier usuario autenticado. */
-    public const TODOS = [self::ADMINISTRADOR, self::GESTOR, self::VISUALIZACION];
+    /**
+     * Cualquier usuario autenticado.
+     *
+     * Es lo que su nombre promete, así que el inspector entra: si no, no podría
+     * ni abrir su sesión ni cerrarla. Lo que NO se puede hacer es apoyarse en
+     * esta lista para proteger lectura de datos del censo — para eso está
+     * `LECTURA_RUFE`.
+     */
+    public const TODOS = [self::ADMINISTRADOR, self::GESTOR, self::INSPECTOR, self::VISUALIZACION];
+
+    /**
+     * Quién puede leer el censo, sus evidencias y el mapa.
+     *
+     * Existe porque `TODOS` dejó de servir para esto al entrar el inspector:
+     * son fichas con nombres, cédulas y direcciones de hogares damnificados, y
+     * su trabajo no las necesita.
+     */
+    public const LECTURA_RUFE = [self::ADMINISTRADOR, self::GESTOR, self::VISUALIZACION];
+
+    /** Quién levanta y consulta inspecciones de vivienda. */
+    public const INSPECCION = [self::ADMINISTRADOR, self::GESTOR, self::INSPECTOR];
 
     /**
      * Capacidades por rol. El frontend las usa para mostrar u ocultar
@@ -52,6 +79,12 @@ final class Auth
             'acerca.ver',
             'actualizaciones.ver',
         ],
+        self::INSPECTOR => [
+            // Ni `dashboard.ver` ni `datos.leer`: su trabajo es el formato de
+            // inspección, no la consulta del censo.
+            'inspeccion.levantar',
+            'acerca.ver',
+        ],
         self::VISUALIZACION => [
             'dashboard.ver',
             'datos.leer',
@@ -68,6 +101,11 @@ final class Auth
         self::GESTOR => [
             'etiqueta'    => 'Gestor',
             'descripcion' => 'Carga de datos: lectura y escritura, sin acceso a la gestión de usuarios.',
+        ],
+        self::INSPECTOR => [
+            'etiqueta'    => 'Insp. de vivienda',
+            'descripcion' => 'Profesional que evalúa las viviendas afectadas: solo el formato de '
+                .'inspección y sus fichas. No accede al censo, al mapa ni a la aprobación.',
         ],
         self::VISUALIZACION => [
             'etiqueta'    => 'Visualización',
@@ -104,7 +142,12 @@ final class Auth
         }
 
         $fila = Db::first(
-            'SELECT u.id, u.nombre, u.email, u.rol, u.activo, s.id AS sesion_id, s.expira_en
+            // El perfil del profesional viaja con la sesión para que el formato
+            // de inspección llegue con el numeral 1 precargado, también sin señal.
+            'SELECT u.id, u.nombre, u.email, u.rol, u.activo,
+                    u.profesion, u.tarjeta_profesional, u.documento, u.documento_de,
+                    u.telefono, u.direccion,
+                    s.id AS sesion_id, s.expira_en
                FROM sesiones s
                JOIN usuarios u ON u.id = s.usuario_id
               WHERE s.token_hash = :hash

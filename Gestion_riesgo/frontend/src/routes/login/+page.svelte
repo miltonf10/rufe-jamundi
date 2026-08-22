@@ -4,6 +4,7 @@
 	import logo from '$lib/assets/logo-jamundi.svg';
 	import { ApiError } from '$lib/api/client';
 	import { sesion } from '$lib/stores/sesion.svelte';
+	import { preparacion } from '$lib/offline/estado.svelte';
 
 	let email = $state('');
 	let password = $state('');
@@ -21,6 +22,14 @@
 
 		try {
 			await sesion.iniciar(email.trim(), password);
+
+			// Se deja el teléfono listo para trabajar sin internet en cuanto se
+			// entra: aquí hay señal por definición —se acaba de hablar con el
+			// servidor— y es el único momento garantizado antes de salir a campo.
+			// No se espera a que termine: descargar el formato oficial puede tardar
+			// y no tiene por qué retrasar la entrada.
+			void preparacion.ejecutar();
+
 			await goto('/dashboard', { replaceState: true });
 		} catch (e) {
 			if (e instanceof ApiError) {

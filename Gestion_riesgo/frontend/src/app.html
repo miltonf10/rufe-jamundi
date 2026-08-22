@@ -3,9 +3,77 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="theme-color" content="#1577d6" />
+		<!--
+			El color de la barra de estado cuando la aplicación corre instalada.
+
+			Son dos y no uno porque la barra superior de la aplicación es blanca en
+			modo claro y casi negra en oscuro: con un solo azul fijo —el que había
+			antes— quedaba una franja de color encima de una cabecera blanca, que
+			parecía un fallo de dibujado.
+
+			El azul institucional NO desaparece: vive en `theme_color` del
+			manifiesto, que es el que Chrome usa para la pantalla de arranque, junto
+			con `background_color`. Aquí manda lo que se ve una vez arrancada.
+		-->
+		<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+		<meta name="theme-color" content="#101e33" media="(prefers-color-scheme: dark)" />
+
+		<!-- Título de arranque. La aplicación lo sustituye por el de cada pantalla
+		     al montarse, pero hasta entonces —y para quien no ejecute JavaScript,
+		     como los rastreadores— este es el único que hay. -->
+		<title>Sistema de Gestión del Riesgo · Jamundí</title>
 		<meta name="description" content="Sistema de Gestión del Riesgo — Alcaldía Municipal de Jamundí" />
 		<link rel="icon" href="%sveltekit.assets%/favicon.svg" type="image/svg+xml" />
+
+		<!--
+			Tarjeta para cuando alguien comparte el enlace por WhatsApp, Facebook o
+			Teams.
+
+			Va aquí, en el HTML fijo, y no en una página de Svelte: el rastreador de
+			WhatsApp NO ejecuta JavaScript. Lee el documento tal como sale del
+			servidor y se marcha; cualquier etiqueta que pusiera la aplicación al
+			arrancar llegaría tarde y el enlace se compartiría pelado.
+
+			La dirección de la imagen es absoluta porque un rastreador no resuelve
+			rutas relativas de forma fiable. Y lleva número de versión: WhatsApp
+			guarda la vista previa de cada enlace durante semanas, así que cambiar la
+			imagen sin cambiar su nombre no se vería.
+		-->
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="Alcaldía Municipal de Jamundí" />
+		<meta property="og:locale" content="es_CO" />
+		<meta property="og:url" content="https://grj.oticjamundi.com/" />
+		<meta property="og:title" content="Sistema de Gestión del Riesgo · Jamundí" />
+		<meta
+			property="og:description"
+			content="Registro, seguimiento y mapa de la afectación por emergencias en el municipio. Alcaldía de Jamundí · Oficina TIC."
+		/>
+		<meta property="og:image" content="https://grj.oticjamundi.com/og-sgr.jpg?v=1" />
+		<meta property="og:image:type" content="image/jpeg" />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:image:alt" content="Sistema de Gestión del Riesgo — Alcaldía Municipal de Jamundí" />
+
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content="Sistema de Gestión del Riesgo · Jamundí" />
+		<meta
+			name="twitter:description"
+			content="Registro, seguimiento y mapa de la afectación por emergencias en el municipio."
+		/>
+		<meta name="twitter:image" content="https://grj.oticjamundi.com/og-sgr.jpg?v=1" />
+		<!--
+			iOS aplica su propia máscara al icono y no admite transparencia. Antes
+			esto apuntaba al icono de 192, que ya trae las esquinas redondeadas
+			dibujadas: iOS las redondeaba otra vez y dejaba un reborde oscuro
+			alrededor. Este va a sangre y en los 180 px que pide el sistema.
+		-->
+		<link rel="apple-touch-icon" sizes="180x180" href="%sveltekit.assets%/apple-touch-icon.png" />
+
+		<!-- Instalable en el teléfono. No es solo comodidad: una aplicación
+		     instalada tiene muchas más probabilidades de que Chrome le conceda
+		     almacenamiento persistente, y sin eso la cola de fichas sin enviar
+		     puede desalojarse cuando el teléfono se quede sin espacio. -->
+		<link rel="manifest" href="%sveltekit.assets%/manifest.webmanifest" />
 
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

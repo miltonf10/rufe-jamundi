@@ -26,6 +26,9 @@ const COL = {
 	hogar: 1,
 	corregimiento: 2,
 	barrio: 3,
+	// La dirección la ignoraba el tablero, que agrega por barrio. La sección
+	// Mapas sí la necesita: es lo único con lo que se puede ubicar un predio.
+	direccion: 4,
 	nombre: 5,
 	apellido: 6,
 	documento: 8,
@@ -203,6 +206,8 @@ export interface PersonRecord {
 	hogar: string;
 	corregimiento: string;
 	barrio: string;
+	/** Dirección del predio, para poder ubicarlo en el mapa. */
+	direccion: string;
 	documento: string;
 	/** Cuando la fuente trae la zona directa por predio (BASE-DATOS RUFE:
 	 * "Ubicación del Bien") en vez de haber que inferirla del corregimiento.
@@ -227,6 +232,7 @@ function parseRows(rows: string[][]): PersonRecord[] {
 	const dataRows = rows.slice(HEADER_ROWS);
 	const coreByHogar = new Map<string, string>();
 	const barrioByHogar = new Map<string, string>();
+	const direccionByHogar = new Map<string, string>();
 	const records: PersonRecord[] = [];
 
 	for (const raw of dataRows) {
@@ -235,6 +241,7 @@ function parseRows(rows: string[][]): PersonRecord[] {
 		const hogar = clean(r[COL.hogar]);
 		let corregimiento = clean(r[COL.corregimiento]);
 		let barrio = clean(r[COL.barrio]);
+		let direccion = clean(r[COL.direccion]);
 		const nombre = clean(r[COL.nombre]);
 		const apellido = clean(r[COL.apellido]);
 		const documento = clean(r[COL.documento]);
@@ -253,6 +260,10 @@ function parseRows(rows: string[][]): PersonRecord[] {
 			else if (coreByHogar.has(hogar)) corregimiento = coreByHogar.get(hogar)!;
 			if (barrio) barrioByHogar.set(hogar, barrio);
 			else if (barrioByHogar.has(hogar)) barrio = barrioByHogar.get(hogar)!;
+			// La dirección es del predio, no de la persona: suele venir solo en el
+			// primer integrante, igual que corregimiento y barrio.
+			if (direccion) direccionByHogar.set(hogar, direccion);
+			else if (direccionByHogar.has(hogar)) direccion = direccionByHogar.get(hogar)!;
 		}
 
 		// Filas de relleno del formulario (sin nombre/apellido/documento).
@@ -272,6 +283,7 @@ function parseRows(rows: string[][]): PersonRecord[] {
 			hogar,
 			corregimiento,
 			barrio,
+			direccion,
 			documento,
 			genero,
 			edad,
@@ -408,6 +420,7 @@ function buildDataset(records: PersonRecord[], asOf: string): Dataset {
 					hogar: rec.hogar,
 					barrio: label,
 					zona,
+					direccion: '',
 					personas: 0,
 					estadoBien: '',
 					tipoBien: '',
@@ -433,6 +446,7 @@ function buildDataset(records: PersonRecord[], asOf: string): Dataset {
 			if (!h.tenencia && rec.tenencia) {
 				h.tenencia = CANON_TENENCIA[rec.tenencia.toUpperCase()] ?? titleCase(rec.tenencia);
 			}
+			if (!h.direccion && rec.direccion) h.direccion = rec.direccion;
 			if (h.visita === 'Sin dato' && rec.visita) h.visita = rec.visita;
 			if (h.evacuada === 'Sin dato' && rec.evacuada) h.evacuada = rec.evacuada;
 			if (!h.quienVisita && rec.quienVisita) h.quienVisita = rec.quienVisita;

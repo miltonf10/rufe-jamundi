@@ -1,0 +1,33 @@
+<!--
+	Marca para la pestaña del navegador.
+
+	NO es el escudo oficial, y no por descuido: el blasón de Jamundí tiene un
+	rostro, tres árboles, una antorcha y una cinta con dos fechas. A los 16 px de
+	una pestaña todo eso se convierte en una mancha parda que no se distingue de
+	la de cualquier otra alcaldía. Esto conserva lo único que sí sobrevive a ese
+	tamaño —el azul institucional, la silueta del escudo y la cinta dorada— y
+	pesa medio kilobyte en vez de 110.
+
+	El escudo completo sí va en los iconos de la aplicación instalada, que se
+	dibujan a 180 px o más. Ver `scripts/generar-iconos.mjs`.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+	<defs>
+		<linearGradient id="fondo" x1="0" y1="0" x2="0.42" y2="1">
+			<stop offset="0" stop-color="#123a63"/>
+			<stop offset="0.52" stop-color="#0d2b4e"/>
+			<stop offset="1" stop-color="#0a2140"/>
+		</linearGradient>
+	</defs>
+
+	<rect width="64" height="64" rx="14" fill="url(#fondo)"/>
+
+	<!-- La silueta del blasón: lados rectos y el pie escotado en tres puntas. -->
+	<path
+		d="M22 21h20v17q0 9-6 13-3 2-4-3-1 5-4 3-6-4-6-13Z"
+		fill="#dfe7f5"
+	/>
+
+	<!-- La cinta dorada que en el escudo lleva «1536 · JAMUNDÍ · 1986». -->
+	<rect x="19" y="16" width="26" height="7" rx="2" fill="#f2b705"/>
+</svg>

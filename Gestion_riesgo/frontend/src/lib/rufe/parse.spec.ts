@@ -276,3 +276,45 @@ describe('parseRufeCsv', () => {
 		});
 	});
 });
+
+describe('dirección del predio', () => {
+	// La sección Mapas necesita la dirección: es lo único con lo que se puede
+	// ubicar un predio. El tablero la ignoraba porque agrega por barrio.
+	it('lee la columna DIRECCION y la deja en el hogar', () => {
+		const out = parseRufeCsv(
+			csv([
+				'1,1,,Terranova,CRA 11 # 8-26,Javier,Aguilar,3,111,1,M,2,1,1957,69,6,,PROPIETARIO,HABITABLE,VIVIENDA,NO,SI,,'
+			]),
+			'2026-01-01'
+		);
+		expect(out.hogares[0].direccion).toBe('CRA 11 # 8-26');
+	});
+
+	// La dirección es del predio, no de la persona: en la hoja suele venir solo
+	// en el primer integrante, igual que corregimiento y barrio.
+	it('la hereda el resto del hogar aunque la celda venga vacía', () => {
+		const out = parseRufeCsv(
+			csv([
+				'1,1,,Terranova,CALLE 12 # 3-45,Javier,Aguilar,3,111,1,M,2,1,1957,69,6,,PROPIETARIO,HABITABLE,VIVIENDA,NO,SI,,',
+				'1,1,,,,Maria,Aguilar,3,222,2,F,1,1,1960,66,6,,,,,,,,'
+			]),
+			'2026-01-01'
+		);
+		expect(out.hogares).toHaveLength(1);
+		expect(out.hogares[0].direccion).toBe('CALLE 12 # 3-45');
+		// Y lo que ya contaba el tablero no se mueve.
+		expect(out.total).toBe(2);
+		expect(out.hogares[0].personas).toBe(2);
+	});
+
+	it('un hogar sin dirección no rompe nada: queda vacía', () => {
+		const out = parseRufeCsv(
+			csv([
+				'1,1,,Terranova,,Javier,Aguilar,3,111,1,M,2,1,1957,69,6,,PROPIETARIO,HABITABLE,VIVIENDA,NO,SI,,'
+			]),
+			'2026-01-01'
+		);
+		expect(out.hogares[0].direccion).toBe('');
+		expect(out.total).toBe(1);
+	});
+});

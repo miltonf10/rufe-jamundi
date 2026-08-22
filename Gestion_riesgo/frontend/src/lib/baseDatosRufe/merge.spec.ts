@@ -7,6 +7,7 @@ function persona(overrides: Partial<PersonRecord>): PersonRecord {
 		hogar: '1',
 		corregimiento: '',
 		barrio: 'Terranova',
+		direccion: '',
 		documento: '',
 		genero: 'M',
 		edad: 30,

@@ -1,0 +1,683 @@
+{
+    "MAMPOSTERIA": {
+        "combo": [
+            {
+                "kit": "Kit Estructura tipo concreto (Vigas, columnas, placas de piso)",
+                "items": [
+                    {
+                        "descripcion": "Cemento Bulto 50 Kg",
+                        "unidad": "Und",
+                        "cantidades": {
+                            "LEVE": "5",
+                            "MODERADO": "16",
+                            "SEVERO": "25"
+                        }
+                    },
+                    {
+                        "descripcion": "Varilla de 1\/4\" L=6M",
+                        "unidad": "Und",
+                        "cantidades": {
+                            "MODERADO": "40",
+                            "SEVERO": "67"
+                        }
+                    },
+                    {
+                        "descripcion": "Varilla de 3\/8\"L=6M",
+                        "unidad": "Und",
+                        "cantidades": {
+                            "MODERADO": "12",
+                            "SEVERO": "20"
+                        }
+                    },
+                    {
+                        "descripcion": "Varilla de 1\/2\"L=6M",
+                        "unidad": "Und",
+                        "cantidades": {
+                            "MODERADO": "8",
+                            "SEVERO": "14"
+                        }
+                    },
+                    {
+                        "descripcion": "Alambre negro No. 18",
+                        "unidad": "Kg",
+                        "cantidades": {
+                            "MODERADO": "5",
+                            "SEVERO": "10"
+                        }
+                    },
+                    {
+                        "descripcion": "Puntilla de 2\"",
+                        "unidad": "Lb",
+                        "cantidades": {
+                            "MODERADO": "2",
+                            "SEVERO": "4"
+                        }
+                    },
+                    {
+                        "descripcion": "Tabla común L=3m para encofrado",
+                        "unidad": "Und",
+                        "cantidades": {
+                            "MODERADO": "10",
+                            "SEVERO": "15"
+                        }
+                    },
+                    {
+                        "descripcion": "Malla electrosoldada 3mm 15x15cm (6x2,35)",
+                        "unidad": "Und",
+                        "cantidades": {
+                            "MODERADO": "2",
+                            "SEVERO": "4"
+                        }
+                    }
+                ]
+            },
+            {
+                "kit": "Kit Mampostería adobe macizo",
+                "items": [
+                    {
+                        "descripcion": "Ladrillo tolete común",
+                        "unidad": "Und",
+                        "cantidades": {
+                            "LEVE": "500",
+                            "MODERADO": "1500",
+                            "SEVERO": "2050"
+                        }
+                    },
+                    {
+                        "descripcion": "Cemento Bulto 50 Kg",
+                        "unidad": "Und",
+                        "cantidades": {
+                            "LEVE": "4",
+                            "MODERADO": "12",
+                            "SEVERO": "21"
+                        }
+                    },
+                    {
+                        "descripcion": "Sika",
+                        "unidad": "Kg",
+                        "cantidades": {
+                            "LEVE": "2",
+                            "MODERADO": "4",
+                            "SEVERO": "6"
+                        }
+                    }
+                ]
+            },
+            {
+                "kit": "Kit Hidrosanitario",
+                "items": [
+                    {
+                        "descripcion": "Tubería Hidráulica PVC Presión 1\/2\" RDE 13,5 - 315 PSI L=6m",
+                        "unidad": "Und",
+                        "cantidades": {
+                            "LEVE": "1",
+                            "MODERADO": "2",
+                            "SEVERO": "3"
+                        }
+                    },
+                    {
+                        "descripcion": "Tanque de agua 500 L",
+                        "unidad": "Und",
+                        "cantidades": {
+                            "SEVERO": "1"
+                        }
+                    },
+                    {
+                        "descripcion": "Tubería PVC sanitaria de 2\" L=6m",
+                        "unidad": "Und",
+                        "cantidades": {
+                            "LEVE": "1",
+                            "MODERADO": "3",
+                            "SEVERO": "5"
+                        }
+                    },
+                    {
+                        "descripcion": "Tubería PVC sanitaria de 3\" L=6m",
+                        "unidad": "Und",
+                        "cantidades": {
+                            "LEVE": "1",
+                            "MODERADO": "3",
+                            "SEVERO": "5"
+                        }
+                    },
+                    {
+                        "descripcion": "Tubería PVC sanitaria de 4\" L=6m",
+                        "unidad": "Und",
+                        "cantidades": {
+                            "LEVE": "2",
+                            "MODERADO": "4",
+                            "SEVERO": "6"
+                        }
+                    },
+                    {
+                        "descripcion": "Tanque pozo séptico",
+                        "unidad": "Und",
+                        "cantidades": {
+                            "SEVERO": "1"
+                        }
+                    },
+                    {
+                        "descripcion": "Rejilla metálica 3x2\" con sosco",
+                        "unidad": "Und",
+                        "cantidades": {
+                            "MODERADO": "2",
+                            "SEVERO": "3"
+                        }
+                    },
+                    {
+                        "descripcion": "Pegante PVC PAVCO 1\/4 galón (Soldadura)",
+                        "unidad": "Und",
+                        "cantidades": {
+                            "LEVE": "1",
+                            "MODERADO": "1",
+                            "SEVERO": "1"
+                        }
+                    },
+                    {
+                        "descripcion": "Limpiador liquido PVC PAVCO 1\/4 galón",
+                        "unidad": "Und",
+                        "cantidades": {
+                            "LEVE": "1",
+                            "MODERADO": "1",
+                            "SEVERO": "1"
+                        }
+                    }
+                ]
+            },
+            {
+                "kit": "Kit Eléctrico",
+                "items": [
+                    {
+                        "descripcion": "Tablero monofásico de 4 circuitos",
+                        "unidad": "Und",
+                        "cantidades": {
+                            "SEVERO": "1"
+                        }
+                    },
+                    {
+                        "descripcion": "Braker Luminex o similar enchufable 40Amp",
+                        "unidad": "Und",
+                        "cantidades": {
+                            "SEVERO": "1"
+                        }
+                    },
+                    {
+                        "descripcion": "Cable 10 AWG - THW",
+                        "unidad": "m",
+                        "cantidades": {
+                            "MODERADO": "25",
+                            "SEVERO": "50"
+                        }
+                    },
+                    {
+                        "descripcion": "Cable 12 AWG - THW",
+                        "unidad": "m",
+                        "cantidades": {
+                            "MODERADO": "25",
+                            "SEVERO": "50"
+                        }
+                    },
+                    {
+                        "descripcion": "Varilla polo a tierra - Copper Weld",
+                        "unidad": "Und",
+                        "cantidades": {
+                            "SEVERO": "1"
+                        }
+                    },
+                    {
+                        "descripcion": "Tubería PVC de 1\/2\" conduit L= 3m",
+                        "unidad": "m",
+                        "cantidades": {
+                            "MODERADO": "2",
+                            "SEVERO": "6"
+                        }
+                    },
+                    {
+                        "descripcion": "Curva PVC de 1\/2\" conduit 90° c*e",
+                        "unidad": "Und",
+                        "cantidades": {
+                            "MODERADO": "4",
+                            "SEVERO": "8"
+                        }
+                    },
+                    {
+                        "descripcion": "Caja Sencilla Rectangular PVC para Electricidad de 4x2\"",
+                        "unidad": "Und",
+                        "cantidades": {
+                            "SEVERO": "4"
+                        }
+                    },
+                    {
+                        "descripcion": "Caja Sencilla Rectangular PVC para Electricidad de 4x4\"",
+                        "unidad": "Und",
+                        "cantidades": {
+                            "SEVERO": "4"
+                        }
+                    },
+                    {
+                        "descripcion": "Caja plástica eléctrica octagonal de 4\"",
+                        "unidad": "Und",
+                        "cantidades": {
+                            "SEVERO": "4"
+                        }
+                    },
+                    {
+                        "descripcion": "Toma corriente doble",
+                        "unidad": "Und",
+                        "cantidades": {
+                            "MODERADO": "3",
+                            "SEVERO": "5"
+                        }
+                    },
+                    {
+                        "descripcion": "Interruptor Sencillo",
+                        "unidad": "Und",
+                        "cantidades": {
+                            "MODERADO": "3",
+                            "SEVERO": "5"
+                        }
+                    }
+                ]
+            }
+        ],
+        "cubierta": {
+            "ZINC": [
+                {
+                    "kit": "Kit Cubierta Zinc",
+                    "items": [
+                        {
+                            "descripcion": "Teja lámina de zinc (L=2,44 m)",
+                            "unidad": "Und",
+                            "cantidades": {
+                                "LEVE": "4",
+                                "MODERADO": "10",
+                                "SEVERO": "20"
+                            }
+                        },
+                        {
+                            "descripcion": "Amarras",
+                            "unidad": "Und",
+                            "cantidades": {
+                                "LEVE": "24",
+                                "MODERADO": "60",
+                                "SEVERO": "120"
+                            }
+                        },
+                        {
+                            "descripcion": "Perfil metálico 3\"x1-1\/2\"x6m",
+                            "unidad": "Und",
+                            "cantidades": {
+                                "MODERADO": "2",
+                                "SEVERO": "3"
+                            }
+                        },
+                        {
+                            "descripcion": "Canaleta de aguas lluvias, L=2m",
+                            "unidad": "Und",
+                            "cantidades": {
+                                "MODERADO": "2",
+                                "SEVERO": "3"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "FIBROCEMENTO": [
+                {
+                    "kit": "Kit Cubierta Fibrocemento",
+                    "items": [
+                        {
+                            "descripcion": "Teja No. 8 (L=2,44 m)",
+                            "unidad": "Und",
+                            "cantidades": {
+                                "LEVE": "4",
+                                "MODERADO": "10",
+                                "SEVERO": "20"
+                            }
+                        },
+                        {
+                            "descripcion": "Caballete para teja fibrocemento",
+                            "unidad": "Und",
+                            "cantidades": {
+                                "MODERADO": "4",
+                                "SEVERO": "8"
+                            }
+                        },
+                        {
+                            "descripcion": "Ganchos para teja",
+                            "unidad": "Und",
+                            "cantidades": {
+                                "LEVE": "16",
+                                "MODERADO": "40",
+                                "SEVERO": "80"
+                            }
+                        },
+                        {
+                            "descripcion": "Perfil metálico 3\"x1-1\/2\"x6m",
+                            "unidad": "Und",
+                            "cantidades": {
+                                "MODERADO": "2",
+                                "SEVERO": "3"
+                            }
+                        },
+                        {
+                            "descripcion": "Canaleta de aguas lluvias, L=2m",
+                            "unidad": "Und",
+                            "cantidades": {
+                                "MODERADO": "2",
+                                "SEVERO": "3"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "MADERA": {
+        "combo": [
+            {
+                "kit": "Kit estructura (Vigas, columnas, cimentación)",
+                "items": [
+                    {
+                        "descripcion": "Bamba en madera 70x70cm",
+                        "unidad": "Und",
+                        "cantidades": {
+                            "MODERADO": "4",
+                            "SEVERO": "8"
+                        }
+                    },
+                    {
+                        "descripcion": "Pilote en madera, Diámetro 6\", L= 7m",
+                        "unidad": "Und",
+                        "cantidades": {
+                            "MODERADO": "8",
+                            "SEVERO": "16"
+                        }
+                    },
+                    {
+                        "descripcion": "Columna en guayacán 4\"x5m",
+                        "unidad": "Und",
+                        "cantidades": {
+                            "LEVE": "4",
+                            "MODERADO": "10",
+                            "SEVERO": "22"
+                        }
+                    },
+                    {
+                        "descripcion": "Columna en madera 4\"x5m",
+                        "unidad": "Und",
+                        "cantidades": {
+                            "LEVE": "4",
+                            "MODERADO": "6",
+                            "SEVERO": "9"
+                        }
+                    },
+                    {
+                        "descripcion": "Vigas de carga en madera 4\"x4\"x5m",
+                        "unidad": "Und",
+                        "cantidades": {
+                            "LEVE": "6",
+                            "MODERADO": "14",
+                            "SEVERO": "22"
+                        }
+                    },
+                    {
+                        "descripcion": "Puntillas de 2-1\/2\"",
+                        "unidad": "Lb",
+                        "cantidades": {
+                            "LEVE": "2",
+                            "MODERADO": "3",
+                            "SEVERO": "5"
+                        }
+                    }
+                ]
+            },
+            {
+                "kit": "Kit Muros",
+                "items": [
+                    {
+                        "descripcion": "Cuarton de 3x2\"x3m",
+                        "unidad": "m",
+                        "cantidades": {
+                            "MODERADO": "8",
+                            "SEVERO": "12"
+                        }
+                    },
+                    {
+                        "descripcion": "Tablas una cara pulida 25 cm x 2,5 cm L= 3m",
+                        "unidad": "Und",
+                        "cantidades": {
+                            "MODERADO": "48",
+                            "SEVERO": "72"
+                        }
+                    },
+                    {
+                        "descripcion": "Puntillas de 2\"",
+                        "unidad": "Lb",
+                        "cantidades": {
+                            "MODERADO": "2",
+                            "SEVERO": "4"
+                        }
+                    }
+                ]
+            },
+            {
+                "kit": "Kit Entrepisos",
+                "items": [
+                    {
+                        "descripcion": "Tablas una cara pulida 25 cm L= 3m",
+                        "unidad": "Und",
+                        "cantidades": {
+                            "LEVE": "25",
+                            "MODERADO": "36",
+                            "SEVERO": "75"
+                        }
+                    },
+                    {
+                        "descripcion": "Puntillas de 2\"",
+                        "unidad": "Lb",
+                        "cantidades": {
+                            "LEVE": "2",
+                            "MODERADO": "4",
+                            "SEVERO": "6"
+                        }
+                    }
+                ]
+            },
+            {
+                "kit": "Kit Hidrosanitario",
+                "items": [
+                    {
+                        "descripcion": "Tubería Hidráulica PVC Presión 1\/2\" RDE 13,5 - 315 PSI L=6m",
+                        "unidad": "Und",
+                        "cantidades": {
+                            "LEVE": "1",
+                            "MODERADO": "2",
+                            "SEVERO": "3"
+                        }
+                    },
+                    {
+                        "descripcion": "Tanque de agua 500 L",
+                        "unidad": "Und",
+                        "cantidades": {
+                            "SEVERO": "1"
+                        }
+                    },
+                    {
+                        "descripcion": "Tubería PVC sanitaria de 2\" L=6m",
+                        "unidad": "Und",
+                        "cantidades": {
+                            "LEVE": "1",
+                            "MODERADO": "3",
+                            "SEVERO": "5"
+                        }
+                    },
+                    {
+                        "descripcion": "Tubería PVC sanitaria de 3\" L=6m",
+                        "unidad": "Und",
+                        "cantidades": {
+                            "LEVE": "1",
+                            "MODERADO": "3",
+                            "SEVERO": "5"
+                        }
+                    },
+                    {
+                        "descripcion": "Tubería PVC sanitaria de 4\" L=6m",
+                        "unidad": "Und",
+                        "cantidades": {
+                            "LEVE": "2",
+                            "MODERADO": "4",
+                            "SEVERO": "6"
+                        }
+                    },
+                    {
+                        "descripcion": "Tanque pozo séptico",
+                        "unidad": "Und",
+                        "cantidades": {
+                            "SEVERO": "1"
+                        }
+                    },
+                    {
+                        "descripcion": "Rejilla metálica 3x2\" con sosco",
+                        "unidad": "Und",
+                        "cantidades": {
+                            "MODERADO": "2",
+                            "SEVERO": "3"
+                        }
+                    },
+                    {
+                        "descripcion": "Pegante PVC PAVCO 1\/4 galón (Soldadura)",
+                        "unidad": "Und",
+                        "cantidades": {
+                            "LEVE": "1",
+                            "MODERADO": "1",
+                            "SEVERO": "1"
+                        }
+                    },
+                    {
+                        "descripcion": "Limpiador liquido PVC PAVCO 1\/4 galón",
+                        "unidad": "Und",
+                        "cantidades": {
+                            "LEVE": "1",
+                            "MODERADO": "1",
+                            "SEVERO": "1"
+                        }
+                    }
+                ]
+            },
+            {
+                "kit": "Kit Eléctrico",
+                "items": [
+                    {
+                        "descripcion": "Cable 10 AWG - THW",
+                        "unidad": "m",
+                        "cantidades": {
+                            "MODERADO": "25",
+                            "SEVERO": "50"
+                        }
+                    },
+                    {
+                        "descripcion": "Cable 12 AWG - THW",
+                        "unidad": "m",
+                        "cantidades": {
+                            "MODERADO": "25",
+                            "SEVERO": "50"
+                        }
+                    },
+                    {
+                        "descripcion": "Varilla polo a tierra - Copper Weld",
+                        "unidad": "Und",
+                        "cantidades": {
+                            "SEVERO": "1"
+                        }
+                    },
+                    {
+                        "descripcion": "Caja Sencilla Rectangular PVC para Electricidad de 4x2\"",
+                        "unidad": "Und",
+                        "cantidades": {
+                            "SEVERO": "4"
+                        }
+                    },
+                    {
+                        "descripcion": "Caja Sencilla Rectangular PVC para Electricidad de 4x4\"",
+                        "unidad": "Und",
+                        "cantidades": {
+                            "SEVERO": "4"
+                        }
+                    },
+                    {
+                        "descripcion": "Caja plástica eléctrica octagonal de 4\"",
+                        "unidad": "Und",
+                        "cantidades": {
+                            "SEVERO": "4"
+                        }
+                    },
+                    {
+                        "descripcion": "Toma corriente doble",
+                        "unidad": "Und",
+                        "cantidades": {
+                            "MODERADO": "3",
+                            "SEVERO": "5"
+                        }
+                    },
+                    {
+                        "descripcion": "Interruptor Sencillo",
+                        "unidad": "Und",
+                        "cantidades": {
+                            "MODERADO": "3",
+                            "SEVERO": "5"
+                        }
+                    }
+                ]
+            }
+        ],
+        "cubierta": {
+            "ZINC": [
+                {
+                    "kit": "Kit Cubierta Zinc",
+                    "items": [
+                        {
+                            "descripcion": "Teja lámina de zinc (L=2,44 m)",
+                            "unidad": "Und",
+                            "cantidades": {
+                                "LEVE": "4",
+                                "MODERADO": "10",
+                                "SEVERO": "20"
+                            }
+                        },
+                        {
+                            "descripcion": "Amarras",
+                            "unidad": "Und",
+                            "cantidades": {
+                                "LEVE": "24",
+                                "MODERADO": "60",
+                                "SEVERO": "120"
+                            }
+                        },
+                        {
+                            "descripcion": "Vigas de amarre en madera 3x4\"",
+                            "unidad": "m",
+                            "cantidades": {
+                                "SEVERO": "14"
+                            }
+                        },
+                        {
+                            "descripcion": "Liston de Madera 2\" x 3\" x 3m para correas",
+                            "unidad": "Und",
+                            "cantidades": {
+                                "SEVERO": "6"
+                            }
+                        },
+                        {
+                            "descripcion": "Puntillas de 1\"",
+                            "unidad": "Lb",
+                            "cantidades": {
+                                "SEVERO": "4"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

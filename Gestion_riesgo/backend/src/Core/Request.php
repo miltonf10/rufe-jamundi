@@ -34,9 +34,17 @@ final class Request
         return new self($metodo, '/'.trim($ruta, '/'));
     }
 
-    /** El cuerpo llega como JSON; los formularios clásicos no se usan. */
+    /**
+     * El cuerpo llega como JSON. La única excepción es la subida de evidencias,
+     * que por fuerza es multipart y se lee con archivo(); en ese caso php://input
+     * viene vacío y este método devuelve [] sin más.
+     */
     private function leerCuerpo(): array
     {
+        if ($this->esMultipart()) {
+            return [];
+        }
+
         $crudo = file_get_contents('php://input');
         if ($crudo === false || $crudo === '') {
             return [];
@@ -47,9 +55,71 @@ final class Request
         return is_array($datos) ? $datos : [];
     }
 
+    public function esMultipart(): bool
+    {
+        $tipo = (string) ($_SERVER['CONTENT_TYPE'] ?? $_SERVER['HTTP_CONTENT_TYPE'] ?? '');
+
+        return stripos($tipo, 'multipart/form-data') !== false;
+    }
+
+    /**
+     * Campo de texto de un envío multipart.
+     *
+     * Existe aparte de texto() porque en multipart el cuerpo no es JSON y
+     * php://input viene vacío: los campos llegan por $_POST.
+     */
+    public function campo(string $clave, string $porDefecto = ''): string
+    {
+        $v = $_POST[$clave] ?? $porDefecto;
+
+        return is_scalar($v) ? trim((string) $v) : $porDefecto;
+    }
+
+    /**
+     * Un archivo subido, ya comprobado como tal.
+     *
+     * is_uploaded_file() es la defensa contra que alguien pase por `tmp_name` una
+     * ruta del servidor (/etc/passwd, config.php) para que el código la copie a
+     * un sitio accesible.
+     *
+     * @return array{nombre:string,tmp:string,tamano:int,error:int}|null
+     */
+    public function archivo(string $campo): ?array
+    {
+        $f = $_FILES[$campo] ?? null;
+        if (! is_array($f) || is_array($f['tmp_name'] ?? null)) {
+            return null;
+        }
+
+        $error = (int) ($f['error'] ?? UPLOAD_ERR_NO_FILE);
+        $tmp = (string) ($f['tmp_name'] ?? '');
+
+        if ($error === UPLOAD_ERR_OK && ! is_uploaded_file($tmp)) {
+            return null;
+        }
+
+        return [
+            'nombre' => (string) ($f['name'] ?? ''),
+            'tmp' => $tmp,
+            'tamano' => (int) ($f['size'] ?? 0),
+            'error' => $error,
+        ];
+    }
+
     public function input(string $clave, mixed $porDefecto = null): mixed
     {
         return $this->cuerpo[$clave] ?? $porDefecto;
+    }
+
+    /**
+     * El cuerpo completo, para validadores que necesitan verlo entero en vez de
+     * campo por campo.
+     *
+     * @return array<string,mixed>
+     */
+    public function todo(): array
+    {
+        return $this->cuerpo;
     }
 
     public function texto(string $clave, string $porDefecto = ''): string

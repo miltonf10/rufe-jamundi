@@ -47,6 +47,32 @@
 	--color-info: #1577d6;
 	--color-info-bg: #e5f0fc;
 
+	/* Niveles de daño del Anexo 1, con los colores de la escala impresa: quien
+	 * viene del papel la reconoce sin leerla. Van como token porque el mismo
+	 * amarillo que se lee bien sobre blanco desaparece sobre el azul oscuro del
+	 * modo noche, y la escala se usa en dos sitios. */
+	--nivel-leve: #8a6d00;
+	--nivel-moderado: #a85700;
+	--nivel-severo: var(--color-danger);
+	--nivel-colapso: var(--color-muted);
+
+	/* Avisos y pastillas de estado.
+	 *
+	 * El texto y el borde necesitan token propio: el FONDO ya se adaptaba al modo
+	 * oscuro, pero el color de la letra estaba escrito a mano en tonos oscuros,
+	 * así que sobre el fondo oscuro quedaba ilegible. Es el clásico caso de una
+	 * pareja fondo/texto donde solo la mitad es variable. */
+	--aviso-error-texto: #8f271c;
+	--aviso-error-borde: #f0c2bc;
+	--aviso-ok-texto: #146643;
+	--aviso-ok-borde: #b6e0cd;
+	--aviso-info-texto: var(--color-primary-dark);
+	--aviso-info-borde: #bcd9f6;
+	--aviso-alerta-fondo: #fff4dd;
+	--aviso-alerta-texto: #8a5a00;
+	--aviso-alerta-borde: #f2d69a;
+
+
 	/* Series de datos (independientes del acento de marca, ver dataviz) */
 	--series-mujeres: #1577d6;
 	--series-hombres: #f07a3f;
@@ -131,6 +157,31 @@
 		--color-info: #3691e8;
 		--color-info-bg: rgba(54, 145, 232, 0.14);
 
+		--nivel-leve: #e3b93b;
+		--nivel-moderado: #ff9a4d;
+
+	--aviso-error-texto: #ffb4a8;
+	--aviso-error-borde: rgba(232, 105, 90, 0.45);
+	--aviso-ok-texto: #7fe0b6;
+	--aviso-ok-borde: rgba(52, 196, 138, 0.45);
+	--aviso-info-texto: #9ccbf5;
+	--aviso-info-borde: rgba(54, 145, 232, 0.45);
+	--aviso-alerta-fondo: rgba(250, 178, 25, 0.14);
+	--aviso-alerta-texto: #f5c96b;
+	--aviso-alerta-borde: rgba(250, 178, 25, 0.45);
+
+
+		--aviso-error-texto: #ffb4a8;
+		--aviso-error-borde: rgba(232, 105, 90, 0.45);
+		--aviso-ok-texto: #7fe0b6;
+		--aviso-ok-borde: rgba(52, 196, 138, 0.45);
+		--aviso-info-texto: #9ccbf5;
+		--aviso-info-borde: rgba(54, 145, 232, 0.45);
+		--aviso-alerta-fondo: rgba(250, 178, 25, 0.14);
+		--aviso-alerta-texto: #f5c96b;
+		--aviso-alerta-borde: rgba(250, 178, 25, 0.45);
+
+
 		--series-mujeres: #3987e5;
 		--series-hombres: #f4915e;
 		--seq-ninos: #2c4870;
@@ -178,6 +229,20 @@
 	--color-danger-bg: rgba(232, 105, 90, 0.14);
 	--color-info: #3691e8;
 	--color-info-bg: rgba(54, 145, 232, 0.14);
+
+	--nivel-leve: #e3b93b;
+	--nivel-moderado: #ff9a4d;
+
+	--aviso-error-texto: #ffb4a8;
+	--aviso-error-borde: rgba(232, 105, 90, 0.45);
+	--aviso-ok-texto: #7fe0b6;
+	--aviso-ok-borde: rgba(52, 196, 138, 0.45);
+	--aviso-info-texto: #9ccbf5;
+	--aviso-info-borde: rgba(54, 145, 232, 0.45);
+	--aviso-alerta-fondo: rgba(250, 178, 25, 0.14);
+	--aviso-alerta-texto: #f5c96b;
+	--aviso-alerta-borde: rgba(250, 178, 25, 0.45);
+
 
 	--series-mujeres: #3987e5;
 	--series-hombres: #f4915e;

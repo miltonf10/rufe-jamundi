@@ -17,27 +17,106 @@
 //               exactas para que un hijo más específico gane siempre sobre su
 //               padre; usa expresión regular para rutas con parámetros.
 
-import { LayoutDashboard, Users, ShieldCheck, Info } from '@lucide/svelte';
+import {
+	LayoutDashboard,
+	Users,
+	ShieldCheck,
+	Info,
+	ClipboardList,
+	ClipboardPlus,
+	Map as IconoMapa,
+	MapPinned,
+	CloudOff,
+	FilePlus2,
+	FileText,
+	HardHat,
+	ClipboardCheck,
+	Inbox,
+	Video
+} from '@lucide/svelte';
 import type { Component } from 'svelte';
+
+/**
+ * Rutas que se sirven sin sesión: el login y la pre-inscripción ciudadana.
+ *
+ * La lista existe para que añadir una ruta pública sea una decisión visible y
+ * deliberada, en un solo archivo, y no un `if` escondido en el layout. Cada
+ * entrada amplía lo que un desconocido puede abrir.
+ *
+ * Estas rutas se dibujan sin el armazón: ni menú lateral, ni barra superior.
+ *
+ * `/preinscripcion` es la excepción deliberada a «todo exige sesión»: la abre un
+ * ciudadano que no tiene cuenta ni va a tenerla. Por eso solo ESCRIBE una
+ * solicitud —nunca consulta nada— y el servidor la protege con límite por IP,
+ * trampa antirrobot e idempotencia.
+ */
+export const RUTAS_PUBLICAS: string[] = ['/login', '/preinscripcion'];
+
+export function esRutaPublica(ruta: string): boolean {
+	return RUTAS_PUBLICAS.includes(ruta);
+}
+
+/**
+ * Rutas que siguen funcionando sin conexión, con la sesión guardada en el
+ * teléfono y sin que el servidor la haya confirmado.
+ *
+ * Son las del trabajo de campo: levantar una ficha del censo, vigilar las que
+ * aún no salieron e inspeccionar una vivienda. Las tres trabajan contra el
+ * teléfono —los formularios, sus catálogos guardados y la cola en IndexedDB—,
+ * así que sin señal tienen todo lo que necesitan.
+ *
+ * El resto del sistema lee del servidor: el tablero, la bandeja, el mapa y la
+ * administración no tendrían nada que mostrar. Ahí se avisa, en vez de fingir.
+ *
+ * La lista vive aquí, junto a `RUTAS_PUBLICAS`, por la misma razón: ampliar lo
+ * que se abre sin comprobar contra el servidor debe ser una decisión visible en
+ * un solo archivo, no un `if` escondido en el layout.
+ */
+export const RUTAS_SIN_CONEXION: string[] = [
+	'/riesgo/reportar',
+	'/riesgo/pendientes',
+	// La inspección también se levanta en campo, y su formato viaja entero en
+	// los catálogos —criterios del Anexo 1 y materiales del Anexo 2 incluidos—
+	// justamente para que no haga falta señal.
+	'/riesgo/inspeccionar'
+];
+
+export function funcionaSinConexion(ruta: string): boolean {
+	return RUTAS_SIN_CONEXION.includes(ruta);
+}
 
 export const ROLES = {
 	ADMINISTRADOR: 'ADMINISTRADOR',
 	GESTOR: 'GESTOR',
+	/** El profesional que evalúa las viviendas. Solo alcanza su formato. */
+	INSPECTOR: 'INSPECTOR',
 	VISUALIZACION: 'VISUALIZACION'
 } as const;
 
 export type Rol = (typeof ROLES)[keyof typeof ROLES];
 
-/** Cualquier persona autenticada. */
-export const TODOS: Rol[] = [ROLES.ADMINISTRADOR, ROLES.GESTOR, ROLES.VISUALIZACION];
-/** Quienes pueden escribir datos. */
+/**
+ * Cualquier persona autenticada.
+ *
+ * OJO: ya no sirve para proteger lo que muestra datos del censo. Desde que
+ * existe el inspector —que no debe ver fichas de hogares damnificados— eso es
+ * `LECTURA_RUFE`. Es la misma distinción que hace `Auth` en el servidor, que es
+ * quien manda.
+ */
+export const TODOS: Rol[] = [ROLES.ADMINISTRADOR, ROLES.GESTOR, ROLES.INSPECTOR, ROLES.VISUALIZACION];
+/** Quienes pueden escribir datos del censo y decidir sobre las fichas. */
 export const ESCRITURA: Rol[] = [ROLES.ADMINISTRADOR, ROLES.GESTOR];
+/** Quienes pueden consultar el censo y el mapa. */
+export const LECTURA_RUFE: Rol[] = [ROLES.ADMINISTRADOR, ROLES.GESTOR, ROLES.VISUALIZACION];
+/** Quienes levantan y consultan inspecciones de vivienda. */
+export const INSPECCION: Rol[] = [ROLES.ADMINISTRADOR, ROLES.GESTOR, ROLES.INSPECTOR];
 /** Solo administración. */
 export const SOLO_ADMIN: Rol[] = [ROLES.ADMINISTRADOR];
 
 export const ETIQUETA_ROL: Record<Rol, string> = {
 	ADMINISTRADOR: 'Administrador',
 	GESTOR: 'Gestor',
+	INSPECTOR: 'Insp. de vivienda',
 	VISUALIZACION: 'Visualización'
 };
 
@@ -63,8 +142,130 @@ export const NAV_ITEMS: NavItem[] = [
 		title: 'Tablero RUFE — Sismo Jamundí',
 		href: '/dashboard',
 		icon: LayoutDashboard,
-		roles: TODOS,
+		roles: LECTURA_RUFE,
 		match: ['/dashboard']
+	},
+
+	// «Registro» agrupa los dos formatos que se levantan en campo y la cola local.
+	// Separar la cola de la captura evita que la pantalla del formulario tenga que
+	// hacer dos trabajos: levantar una ficha nueva y vigilar las que no salieron.
+	//
+	// Los formatos van primero y con su código oficial, que es como los nombra el
+	// equipo; «Pendientes» cierra el grupo porque no es un formato, es el estado de
+	// lo ya levantado.
+	{
+		id: 'grupo-registro',
+		type: 'group',
+		label: 'Registro',
+		icon: ClipboardPlus,
+		// El grupo se muestra a quien pueda ver alguno de sus hijos; el inspector
+		// solo verá la inspección y Pendientes.
+		roles: INSPECCION
+	},
+	{
+		id: 'captura-rufe',
+		type: 'item',
+		parentId: 'grupo-registro',
+		label: 'RUFE FR-1703-SMD-69',
+		// El título de la barra superior sigue siendo el descriptivo: a esa pantalla
+		// también se llega por un enlace directo, sin haber pasado por el menú, y un
+		// encabezado que solo dijera el código no le diría nada a quien llega así.
+		title: 'Registro Unifamiliar de Emergencias — captura en campo',
+		href: '/riesgo/reportar',
+		icon: FilePlus2,
+		roles: ESCRITURA,
+		match: ['/riesgo/reportar']
+	},
+	{
+		id: 'inspeccionar',
+		type: 'item',
+		parentId: 'grupo-registro',
+		label: 'INSP DE VIVIENDA',
+		title: 'Inspección de viviendas afectadas — banco de materiales',
+		href: '/riesgo/inspeccionar',
+		icon: HardHat,
+		roles: INSPECCION,
+		match: ['/riesgo/inspeccionar']
+	},
+	{
+		id: 'pendientes-rufe',
+		type: 'item',
+		parentId: 'grupo-registro',
+		label: 'Pendientes',
+		title: 'Fichas pendientes de enviar',
+		href: '/riesgo/pendientes',
+		icon: CloudOff,
+		// La cola es de los dos formatos: sin ella, quien inspecciona no sabe si
+		// su trabajo salió del teléfono.
+		roles: INSPECCION,
+		match: ['/riesgo/pendientes']
+	},
+
+	// «Reportes» es el espejo de «Registro»: los mismos dos formatos, con los
+	// mismos nombres, pero para consultar lo ya registrado en vez de levantarlo.
+	// Que la pareja se repita a un lado y al otro es la intención, no un descuido:
+	// quien busca una inspección la encuentra escrita igual en los dos sitios.
+	//
+	// El grupo es de lectura para los tres roles, no solo para quien escribe:
+	// Visualización es justamente el rol que más consulta reportes.
+	{
+		id: 'grupo-reportes',
+		type: 'group',
+		label: 'Reportes',
+		icon: ClipboardList,
+		roles: TODOS
+	},
+	{
+		id: 'reportes-rufe',
+		type: 'item',
+		parentId: 'grupo-reportes',
+		label: 'RUFE FR-1703-SMD-69',
+		title: 'Fichas RUFE registradas',
+		href: '/riesgo/reportes',
+		icon: FileText,
+		roles: LECTURA_RUFE,
+		match: ['/riesgo/reportes', /^\/riesgo\/reportes\/[^/]+$/]
+	},
+	{
+		id: 'preinscripciones',
+		type: 'item',
+		parentId: 'grupo-reportes',
+		label: 'Solicitudes ciudadanas',
+		title: 'Pre-inscripciones recibidas',
+		href: '/riesgo/preinscripciones',
+		icon: Inbox,
+		// Lectura del censo: son solicitudes con nombre, cédula y dirección de
+		// familias. El profesional que inspecciona no las necesita.
+		roles: LECTURA_RUFE,
+		match: ['/riesgo/preinscripciones', /^\/riesgo\/preinscripciones\/[^/]+$/]
+	},
+	{
+		id: 'inspecciones',
+		type: 'item',
+		parentId: 'grupo-reportes',
+		label: 'INSP DE VIVIENDA',
+		title: 'Inspecciones de vivienda registradas',
+		href: '/riesgo/inspecciones',
+		icon: ClipboardCheck,
+		// Todos, incluido Visualización: es el rol que supervisa, y estas fichas
+		// sustentan una entrega de recursos públicos.
+		roles: TODOS,
+		match: ['/riesgo/inspecciones', /^\/riesgo\/inspecciones\/[^/]+$/]
+	},
+
+	// Fuera del grupo «Registro» y con el mismo rol que Reportes: el mapa se
+	// consulta, no se levanta. Meterlo dentro de un grupo restringido a escritura
+	// se lo escondería a quien solo tiene Visualización, que es justamente quien
+	// más lo mira.
+	{
+		id: 'mapas',
+		type: 'item',
+		label: 'Mapas',
+		title: 'Mapa de la afectación',
+		href: '/riesgo/mapas',
+		icon: IconoMapa,
+		roles: LECTURA_RUFE,
+		match: ['/riesgo/mapas']
 	},
 
 	{
@@ -84,6 +285,29 @@ export const NAV_ITEMS: NavItem[] = [
 		icon: Users,
 		roles: SOLO_ADMIN,
 		match: ['/admin/usuarios', /^\/admin\/usuarios\/[^/]+$/]
+	},
+	{
+		id: 'admin-mapas',
+		type: 'item',
+		parentId: 'grupo-admin',
+		label: 'Ubicaciones del mapa',
+		title: 'Ubicación de las direcciones del censo',
+		href: '/admin/mapas',
+		icon: MapPinned,
+		roles: SOLO_ADMIN,
+		match: ['/admin/mapas']
+	},
+
+	{
+		id: 'categorias-video',
+		type: 'item',
+		parentId: 'grupo-admin',
+		label: 'Videos que se piden',
+		title: 'Categorías de video de la pre-inscripción',
+		href: '/admin/categorias-video',
+		icon: Video,
+		roles: SOLO_ADMIN,
+		match: ['/admin/categorias-video']
 	},
 
 	{

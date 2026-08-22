@@ -1,0 +1,296 @@
+{
+    "_porque": "Salida esperada del Anexo 2, generada por PHP y verificada por la prueba del navegador. Si las dos implementaciones se separan, falla una.",
+    "casos": [
+        {
+            "sistema": "MAMPOSTERIA",
+            "nivel": "LEVE",
+            "kit": null,
+            "total": 10,
+            "sin_lista": false,
+            "kits": [
+                "Kit Estructura tipo concreto (Vigas, columnas, placas de piso)",
+                "Kit Mampostería adobe macizo",
+                "Kit Hidrosanitario"
+            ]
+        },
+        {
+            "sistema": "MAMPOSTERIA",
+            "nivel": "LEVE",
+            "kit": "ZINC",
+            "total": 12,
+            "sin_lista": false,
+            "kits": [
+                "Kit Estructura tipo concreto (Vigas, columnas, placas de piso)",
+                "Kit Mampostería adobe macizo",
+                "Kit Hidrosanitario",
+                "Kit Cubierta Zinc"
+            ]
+        },
+        {
+            "sistema": "MAMPOSTERIA",
+            "nivel": "LEVE",
+            "kit": "FIBROCEMENTO",
+            "total": 12,
+            "sin_lista": false,
+            "kits": [
+                "Kit Estructura tipo concreto (Vigas, columnas, placas de piso)",
+                "Kit Mampostería adobe macizo",
+                "Kit Hidrosanitario",
+                "Kit Cubierta Fibrocemento"
+            ]
+        },
+        {
+            "sistema": "MAMPOSTERIA",
+            "nivel": "MODERADO",
+            "kit": null,
+            "total": 24,
+            "sin_lista": false,
+            "kits": [
+                "Kit Estructura tipo concreto (Vigas, columnas, placas de piso)",
+                "Kit Mampostería adobe macizo",
+                "Kit Hidrosanitario",
+                "Kit Eléctrico"
+            ]
+        },
+        {
+            "sistema": "MAMPOSTERIA",
+            "nivel": "MODERADO",
+            "kit": "ZINC",
+            "total": 28,
+            "sin_lista": false,
+            "kits": [
+                "Kit Estructura tipo concreto (Vigas, columnas, placas de piso)",
+                "Kit Mampostería adobe macizo",
+                "Kit Hidrosanitario",
+                "Kit Eléctrico",
+                "Kit Cubierta Zinc"
+            ]
+        },
+        {
+            "sistema": "MAMPOSTERIA",
+            "nivel": "MODERADO",
+            "kit": "FIBROCEMENTO",
+            "total": 29,
+            "sin_lista": false,
+            "kits": [
+                "Kit Estructura tipo concreto (Vigas, columnas, placas de piso)",
+                "Kit Mampostería adobe macizo",
+                "Kit Hidrosanitario",
+                "Kit Eléctrico",
+                "Kit Cubierta Fibrocemento"
+            ]
+        },
+        {
+            "sistema": "MAMPOSTERIA",
+            "nivel": "SEVERO",
+            "kit": null,
+            "total": 32,
+            "sin_lista": false,
+            "kits": [
+                "Kit Estructura tipo concreto (Vigas, columnas, placas de piso)",
+                "Kit Mampostería adobe macizo",
+                "Kit Hidrosanitario",
+                "Kit Eléctrico"
+            ]
+        },
+        {
+            "sistema": "MAMPOSTERIA",
+            "nivel": "SEVERO",
+            "kit": "ZINC",
+            "total": 36,
+            "sin_lista": false,
+            "kits": [
+                "Kit Estructura tipo concreto (Vigas, columnas, placas de piso)",
+                "Kit Mampostería adobe macizo",
+                "Kit Hidrosanitario",
+                "Kit Eléctrico",
+                "Kit Cubierta Zinc"
+            ]
+        },
+        {
+            "sistema": "MAMPOSTERIA",
+            "nivel": "SEVERO",
+            "kit": "FIBROCEMENTO",
+            "total": 37,
+            "sin_lista": false,
+            "kits": [
+                "Kit Estructura tipo concreto (Vigas, columnas, placas de piso)",
+                "Kit Mampostería adobe macizo",
+                "Kit Hidrosanitario",
+                "Kit Eléctrico",
+                "Kit Cubierta Fibrocemento"
+            ]
+        },
+        {
+            "sistema": "MAMPOSTERIA",
+            "nivel": "COLAPSO_TOTAL",
+            "kit": null,
+            "total": 0,
+            "sin_lista": true,
+            "kits": []
+        },
+        {
+            "sistema": "MAMPOSTERIA",
+            "nivel": "COLAPSO_TOTAL",
+            "kit": "ZINC",
+            "total": 0,
+            "sin_lista": true,
+            "kits": []
+        },
+        {
+            "sistema": "MAMPOSTERIA",
+            "nivel": "COLAPSO_TOTAL",
+            "kit": "FIBROCEMENTO",
+            "total": 0,
+            "sin_lista": true,
+            "kits": []
+        },
+        {
+            "sistema": "MADERA",
+            "nivel": "LEVE",
+            "kit": null,
+            "total": 12,
+            "sin_lista": false,
+            "kits": [
+                "Kit estructura (Vigas, columnas, cimentación)",
+                "Kit Entrepisos",
+                "Kit Hidrosanitario"
+            ]
+        },
+        {
+            "sistema": "MADERA",
+            "nivel": "LEVE",
+            "kit": "ZINC",
+            "total": 14,
+            "sin_lista": false,
+            "kits": [
+                "Kit estructura (Vigas, columnas, cimentación)",
+                "Kit Entrepisos",
+                "Kit Hidrosanitario",
+                "Kit Cubierta Zinc"
+            ]
+        },
+        {
+            "sistema": "MADERA",
+            "nivel": "LEVE",
+            "kit": "FIBROCEMENTO",
+            "total": 12,
+            "sin_lista": false,
+            "kits": [
+                "Kit estructura (Vigas, columnas, cimentación)",
+                "Kit Entrepisos",
+                "Kit Hidrosanitario"
+            ]
+        },
+        {
+            "sistema": "MADERA",
+            "nivel": "MODERADO",
+            "kit": null,
+            "total": 22,
+            "sin_lista": false,
+            "kits": [
+                "Kit estructura (Vigas, columnas, cimentación)",
+                "Kit Muros",
+                "Kit Entrepisos",
+                "Kit Hidrosanitario",
+                "Kit Eléctrico"
+            ]
+        },
+        {
+            "sistema": "MADERA",
+            "nivel": "MODERADO",
+            "kit": "ZINC",
+            "total": 24,
+            "sin_lista": false,
+            "kits": [
+                "Kit estructura (Vigas, columnas, cimentación)",
+                "Kit Muros",
+                "Kit Entrepisos",
+                "Kit Hidrosanitario",
+                "Kit Eléctrico",
+                "Kit Cubierta Zinc"
+            ]
+        },
+        {
+            "sistema": "MADERA",
+            "nivel": "MODERADO",
+            "kit": "FIBROCEMENTO",
+            "total": 22,
+            "sin_lista": false,
+            "kits": [
+                "Kit estructura (Vigas, columnas, cimentación)",
+                "Kit Muros",
+                "Kit Entrepisos",
+                "Kit Hidrosanitario",
+                "Kit Eléctrico"
+            ]
+        },
+        {
+            "sistema": "MADERA",
+            "nivel": "SEVERO",
+            "kit": null,
+            "total": 28,
+            "sin_lista": false,
+            "kits": [
+                "Kit estructura (Vigas, columnas, cimentación)",
+                "Kit Muros",
+                "Kit Entrepisos",
+                "Kit Hidrosanitario",
+                "Kit Eléctrico"
+            ]
+        },
+        {
+            "sistema": "MADERA",
+            "nivel": "SEVERO",
+            "kit": "ZINC",
+            "total": 33,
+            "sin_lista": false,
+            "kits": [
+                "Kit estructura (Vigas, columnas, cimentación)",
+                "Kit Muros",
+                "Kit Entrepisos",
+                "Kit Hidrosanitario",
+                "Kit Eléctrico",
+                "Kit Cubierta Zinc"
+            ]
+        },
+        {
+            "sistema": "MADERA",
+            "nivel": "SEVERO",
+            "kit": "FIBROCEMENTO",
+            "total": 28,
+            "sin_lista": false,
+            "kits": [
+                "Kit estructura (Vigas, columnas, cimentación)",
+                "Kit Muros",
+                "Kit Entrepisos",
+                "Kit Hidrosanitario",
+                "Kit Eléctrico"
+            ]
+        },
+        {
+            "sistema": "MADERA",
+            "nivel": "COLAPSO_TOTAL",
+            "kit": null,
+            "total": 0,
+            "sin_lista": true,
+            "kits": []
+        },
+        {
+            "sistema": "MADERA",
+            "nivel": "COLAPSO_TOTAL",
+            "kit": "ZINC",
+            "total": 0,
+            "sin_lista": true,
+            "kits": []
+        },
+        {
+            "sistema": "MADERA",
+            "nivel": "COLAPSO_TOTAL",
+            "kit": "FIBROCEMENTO",
+            "total": 0,
+            "sin_lista": true,
+            "kits": []
+        }
+    ]
+}

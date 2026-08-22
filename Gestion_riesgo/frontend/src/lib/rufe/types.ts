@@ -19,6 +19,10 @@ export interface Hogar {
 	hogar: string;
 	barrio: string;
 	zona: Zona;
+	/** Dirección del predio tal como está escrita en el censo. Es lo único con
+	 * lo que la sección Mapas puede ubicarlo, y viene desordenada: la nota de
+	 * los planos de la Alcaldía ya advierte de esas inconsistencias. */
+	direccion: string;
 	/** Cuántas personas de `barrios[].total` pertenecen a este hogar — para
 	 * poder responder "cuántas PERSONAS fueron evacuadas", no solo cuántos
 	 * hogares. */
