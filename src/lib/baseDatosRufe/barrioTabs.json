@@ -206,5 +206,37 @@
 	{
 		"nombre": "La Arboleda",
 		"gid": "1382667104"
+	},
+	{
+		"nombre": "Verdi",
+		"gid": "200000001"
+	},
+	{
+		"nombre": "Guabal",
+		"gid": "200000002"
+	},
+	{
+		"nombre": "Popular",
+		"gid": "200000003"
+	},
+	{
+		"nombre": "Juan de Ampudia",
+		"gid": "200000004"
+	},
+	{
+		"nombre": "Quintas de Bolivar",
+		"gid": "200000005"
+	},
+	{
+		"nombre": "Bosque Encantado",
+		"gid": "200000006"
+	},
+	{
+		"nombre": "Amigos 200",
+		"gid": "200000007"
+	},
+	{
+		"nombre": "TIMBA",
+		"gid": "123456789"
 	}
 ]
