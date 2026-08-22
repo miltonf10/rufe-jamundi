@@ -1,6 +1,6 @@
 {
-  "total": 2947,
-  "asOf": "20 de agosto de 2026 a las 11:41 p. m.",
+  "total": 2949,
+  "asOf": "21 de agosto de 2026 a las 9:57 p. m.",
   "barrios": [
     {
       "name": "Terranova",
@@ -16,11 +16,11 @@
     {
       "name": "San Antonio",
       "total": 360,
-      "M": 145,
-      "F": 199,
+      "M": 146,
+      "F": 198,
       "Ninos": 27,
       "Jovenes": 45,
-      "Adultos": 106,
+      "Adultos": 105,
       "AdultosMayores": 55,
       "zona": "Rural"
     },
@@ -91,6 +91,17 @@
       "zona": "Urbana"
     },
     {
+      "name": "Potrerito",
+      "total": 58,
+      "M": 24,
+      "F": 34,
+      "Ninos": 3,
+      "Jovenes": 8,
+      "Adultos": 11,
+      "AdultosMayores": 10,
+      "zona": "Rural"
+    },
+    {
       "name": "Pangola",
       "total": 57,
       "M": 27,
@@ -100,17 +111,6 @@
       "Adultos": 41,
       "AdultosMayores": 5,
       "zona": "Urbana"
-    },
-    {
-      "name": "Potrerito",
-      "total": 57,
-      "M": 24,
-      "F": 33,
-      "Ninos": 3,
-      "Jovenes": 8,
-      "Adultos": 10,
-      "AdultosMayores": 10,
-      "zona": "Rural"
     },
     {
       "name": "Chagres",
@@ -201,17 +201,6 @@
       "zona": "Urbana"
     },
     {
-      "name": "San Vicente",
-      "total": 24,
-      "M": 13,
-      "F": 11,
-      "Ninos": 0,
-      "Jovenes": 0,
-      "Adultos": 5,
-      "AdultosMayores": 2,
-      "zona": "Rural"
-    },
-    {
       "name": "Timba",
       "total": 24,
       "M": 13,
@@ -220,6 +209,17 @@
       "Jovenes": 6,
       "Adultos": 9,
       "AdultosMayores": 1,
+      "zona": "Rural"
+    },
+    {
+      "name": "San Vicente",
+      "total": 23,
+      "M": 13,
+      "F": 10,
+      "Ninos": 0,
+      "Jovenes": 0,
+      "Adultos": 4,
+      "AdultosMayores": 2,
       "zona": "Rural"
     },
     {
@@ -234,6 +234,17 @@
       "zona": "Urbana"
     },
     {
+      "name": "Portal del Jordán",
+      "total": 18,
+      "M": 4,
+      "F": 14,
+      "Ninos": 0,
+      "Jovenes": 1,
+      "Adultos": 5,
+      "AdultosMayores": 11,
+      "zona": "Urbana"
+    },
+    {
       "name": "Bocas del Palo",
       "total": 17,
       "M": 4,
@@ -242,17 +253,6 @@
       "Jovenes": 0,
       "Adultos": 0,
       "AdultosMayores": 0,
-      "zona": "Urbana"
-    },
-    {
-      "name": "Portal del Jordán",
-      "total": 16,
-      "M": 4,
-      "F": 12,
-      "Ninos": 0,
-      "Jovenes": 1,
-      "Adultos": 5,
-      "AdultosMayores": 9,
       "zona": "Urbana"
     },
     {
@@ -1407,6 +1407,19 @@
       "evacuada": "Sin dato"
     },
     {
+      "hogar": "VILLA COLOMBIA-8",
+      "barrio": "Villa Colombia",
+      "zona": "Rural",
+      "personas": 1,
+      "estadoBien": "Averiado",
+      "tipoBien": "Vivienda",
+      "tenencia": "Propietario",
+      "visita": "NO",
+      "quienVisita": "",
+      "observacion": "",
+      "evacuada": "NO"
+    },
+    {
       "hogar": "BONANZA-1",
       "barrio": "Bonanza",
       "zona": "Urbana",
@@ -1888,29 +1901,16 @@
       "evacuada": "Sin dato"
     },
     {
-      "hogar": "PORTAL-JORDAN-3",
+      "hogar": "PORTAL-JORDAN-4",
       "barrio": "Portal del Jordán",
       "zona": "Urbana",
-      "personas": 1,
-      "estadoBien": "Habitable",
+      "personas": 3,
+      "estadoBien": "Averiado",
       "tipoBien": "Vivienda",
       "tenencia": "Propietario",
       "visita": "Sin dato",
       "quienVisita": "",
       "observacion": "Vía averiada en la terraza y fisuras en toda la casa.",
-      "evacuada": "Sin dato"
-    },
-    {
-      "hogar": "PORTAL-JORDAN-4",
-      "barrio": "Brisas del Jordán",
-      "zona": "Urbana",
-      "personas": 2,
-      "estadoBien": "No habitable",
-      "tipoBien": "Finca",
-      "tenencia": "Propietario",
-      "visita": "Sin dato",
-      "quienVisita": "",
-      "observacion": "Daños estructurales, fisuras y grietas en el piso, paredes y techos. (Anotación: 'No contestó')",
       "evacuada": "Sin dato"
     },
     {
@@ -9916,7 +9916,7 @@
       "estadoBien": "Averiado",
       "tipoBien": "Vivienda",
       "tenencia": "Propietario",
-      "visita": "SI",
+      "visita": "Sin dato",
       "quienVisita": "",
       "observacion": "Caída de cielo falso, se desplazó una viga, pared principal, grietas paredes.",
       "evacuada": "Sin dato"
@@ -9994,7 +9994,7 @@
       "estadoBien": "Averiado",
       "tipoBien": "Vivienda",
       "tenencia": "Propietario",
-      "visita": "SI",
+      "visita": "Sin dato",
       "quienVisita": "",
       "observacion": "Afectación en techo.",
       "evacuada": "Sin dato"
@@ -10007,7 +10007,7 @@
       "estadoBien": "Destruido",
       "tipoBien": "Vivienda",
       "tenencia": "Propietario",
-      "visita": "NO",
+      "visita": "Sin dato",
       "quienVisita": "",
       "observacion": "Vivienda destruida.",
       "evacuada": "Sin dato"
@@ -12128,7 +12128,7 @@
       "tenencia": "",
       "visita": "Sin dato",
       "quienVisita": "",
-      "observacion": "",
+      "observacion": "VOLCMIENTO DEL MURO",
       "evacuada": "Sin dato"
     },
     {
@@ -13576,7 +13576,7 @@
     },
     {
       "hogar": "199",
-      "barrio": "San Vicente",
+      "barrio": "Potrerito",
       "zona": "Rural",
       "personas": 1,
       "estadoBien": "No habitable",
@@ -14540,10 +14540,10 @@
       "hogar": "278",
       "barrio": "Portal del Jordán",
       "zona": "Urbana",
-      "personas": 2,
+      "personas": 1,
       "estadoBien": "No habitable",
       "tipoBien": "Vivienda",
-      "tenencia": "Arrendatario",
+      "tenencia": "",
       "visita": "Sin dato",
       "quienVisita": "",
       "observacion": "TECHO CAIDO, FRACTURAS EN PAREDES, PERDIDA TOTAL. PRESENTAN VIDEOS E IMAGENES AL MOMENTO DEL CENSO",
@@ -17098,19 +17098,6 @@
       "evacuada": "Sin dato"
     },
     {
-      "hogar": "496",
-      "barrio": "Villa Colombia",
-      "zona": "Rural",
-      "personas": 1,
-      "estadoBien": "Averiado",
-      "tipoBien": "Vivienda",
-      "tenencia": "Propietario",
-      "visita": "NO",
-      "quienVisita": "",
-      "observacion": "AGRIETAMIENTO EN TECHOS Y PAREDES",
-      "evacuada": "NO"
-    },
-    {
       "hogar": "498",
       "barrio": "Simon Bolívar",
       "zona": "Urbana",
@@ -19378,6 +19365,6 @@
     "Zona inconsistente para \"Chontaduro\" (hogar 186): se mantuvo Rural, se ignoró Urbana.",
     "Zona inconsistente para \"Chontaduro\" (hogar 188): se mantuvo Rural, se ignoró Urbana.",
     "Zona inconsistente para \"Chontaduro\" (hogar 190): se mantuvo Rural, se ignoró Urbana.",
-    "55 persona(s) re-digitalizada(s) en BASE-DATOS RUFE: se actualizaron sus datos de bien/tenencia/zona y se reasignaron a un hogar nuevo — el hogar original al que pertenecían puede haber quedado con menos integrantes de los reales si sus demás compañeros de hogar aún no fueron re-digitalizados."
+    "53 persona(s) re-digitalizada(s) en BASE-DATOS RUFE: se actualizaron sus datos de bien/tenencia/zona y se reasignaron a un hogar nuevo — el hogar original al que pertenecían puede haber quedado con menos integrantes de los reales si sus demás compañeros de hogar aún no fueron re-digitalizados."
   ]
 }
